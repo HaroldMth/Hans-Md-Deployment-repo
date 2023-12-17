@@ -1,6 +1,6 @@
 { 
-  "name": "KING-MD",
-  "description": "A Whatsapp md bot built By Naveed to make experience better",
+  "name": "WONDER-WOMAN",
+  "description": "A Whatsapp bot for executing simple group task to advance task",
   "logo": "https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "King-Two", "KING-MD", "KING","king-Bot","theme bot","multi device","baileys"],
   "success_url": "/",
@@ -8,7 +8,7 @@
 "env": {
   "OWNER_NAME": {
   "description": "OWNER NAME",
-      "value": "NAVEED DOGAR"
+      "value": "WONDER WOMAN"
   },
   "ALIVE_MESSAGE": {
     "description": " SET YOUR ALIVE MESSAGE FOR THE BOT",
