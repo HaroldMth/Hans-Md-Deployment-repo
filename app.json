@@ -16,7 +16,7 @@
     },
   "AUTO_READ_STATUS": {
     "description": "Fill the value true if you want bot view your Statuses.",
-    "required" :false,
+    "required" :true,
     "value": "false"
       },
     "HEROKU_API_KEY": {
@@ -52,13 +52,13 @@
     },
   "LEVEL_UP_MESSAGE": {
     "description": "Fill the value true if you want bot send Level up message in chat.",
-     "required" :false,
+     "required" :true,
      "value": "false"
     },
       "READ_MESSAGE": {
     "description": "Fill the value true if you want bot to read all messages.",
-     "required" :false,
-     "value": "true"
+    
+     "value": "false"
     },
     "BOT_NAME": {
 	    "description": "CHOOSE YOUR BOT NAME",
@@ -67,8 +67,8 @@
 },
     "DISABLE_PM": {
       "description": "Disable bot in pm",
-      "value": "false",
-      "required" :false
+      "value": "true"
+ 
     },
       "PREFIX": {
   "description": "Enter your desired prefix for bot.",
