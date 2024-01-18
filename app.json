@@ -1,6 +1,6 @@
 { 
   "name": "KING-MD",
-  "description": "A Whatsapp md bot built By Naveed to make experience better",
+  "description": "A Whatsapp md bot built By piyush to make experience better",
   "logo": "https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "King-Two", "KING-MD", "KING","king-Bot","theme bot","multi device","baileys"],
   "success_url": "/",
@@ -8,7 +8,7 @@
 "env": {
   "OWNER_NAME": {
   "description": "OWNER NAME",
-      "value": "NAVEED DOGAR"
+      "value": "PIYUSH"
   },
     "AUTO_STATUS_SAVER": {
       "description": "Automatically saves status of every person and sends in log number.",
@@ -80,15 +80,15 @@
   },
   "OWNER_NUMBER": {
     "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
-       "value": "92Xxxxxxxxxx"
+       "value": "918777033301"
   },
    "SESSION_ID": {
-    "description": "Please put your Session ID that u scanned from the bot.... If u haven't scanned go to KING-MD Github Repo U can find the Scanner Option"
+    "description": "Please put your Sessioscanned from the bot.... If u haven't scanned go to KING-MD Github Repo U can find the Scanner Option"
   },
     "OPENAI_API_KEY": {
     "description": "Please put your OPENAI api key here.Get it from beta.openai.com(optional if u don't wan't then don't put it ",
-       "value": "ADD A OPEN AI KEY",
-       "required" :false
+       "value": "AIzaSyAAB7-bEPZOWIAtvyzfV8qhXHqdrsdL6DQ",
+       "required" :true
   },
   "MONGODB_URI": {
     "description": "A secret String for Mongodb Connection.(Required),change for better experience",
