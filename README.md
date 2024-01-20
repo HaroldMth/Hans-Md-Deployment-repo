@@ -1,18 +1,18 @@
 </p>
 <p align="center">
-  <a href="https://chat.whatsapp.com/JIJplkiYyrFE4dyFGade43">
-    <img alt=Support height="350" src="https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg"> 
+  <a href="https://chat.whatsapp.com/JosUYsmBhrsHwcbbAGuw68">
+    <img alt=Support height="350" src="https://i.imgur.com/GLaZZMb.jpg"> 
     </p>
-<h1 align="center">    KING-MULTI-DEVICE (BETA)
+<h1 align="center">    SCORPION-MULTI-DEVICE (BETA)
 </h1>
 <p align="center"> 
   
-<p align="center"> A Whatsapp Bot Create By Naveed Dogar To Do Everything That Is Possible On WhatsApp
+<p align="center"> A Whatsapp Bot Create By Mr Saviya To Do Everything That Is Possible On WhatsApp
  
   </a>
 </p>
 <p align="center">
-<a href="https://github.com/naveeddogar"><img title="Author" src="https://img.shields.io/badge/KING_MD-MULTI_DEVICE-black?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/naveeddogar"><img title="Author" src="https://img.shields.io/badge/SCORPION_MD-MULTI_DEVICE-black?style=for-the-badge&logo=github"></a>
 <p/>
 
 
@@ -24,23 +24,23 @@
 
    <p align="left">
   <a href="https://github.com/naveeddogar/KING-MD/fork">
-    <img src="https://img.shields.io/github/forks/naveeddogar/KING-MD?label=Fork&style=social">
+    <img src="https://img.shields.io/github/forks/Mr Saviya/SCORPION-MD?label=Fork&style=social">
   <p align="left"> 
   <a href="https://github.com/naveeddogar/KING-MD/stargazers">
-    <img src="https://img.shields.io/github/stars/naveeddogar/KING-MD?style=social">
+    <img src="https://img.shields.io/github/stars/Mr Saviya/SCORPION-MD?style=social">
       
   
  
 
 </p>
-<p align="center"><img src="https://profile-counter.glitch.me/{naveeddogar}/count.svg" alt="naveeddogar :: Visitor's Count" /></p>
+<p align="center"><img src="https://profile-counter.glitch.me/{Saviya}/count.svg" alt="Saviya :: Visitor's Count" /></p>
 <p align="center">
- <a href="https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w" target="_blank">
+ <a href="https://chat.whatsapp.com/JosUYsmBhrsHwcbbAGuw68" target="_blank">
     <img alt="whatsapp Group" src="https://img.shields.io/badge/ Whatsapp Support Channel -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
 </p>
 
-<a href="https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w"><img alt="WhatsApp" src="https://img.shields.io/badge/-Whatsapp%20Channel-yellow?style=for-the-badge&logo=whatsapp&logoColor=black"/></a>
+<a href="https://chat.whatsapp.com/JosUYsmBhrsHwcbbAGuw68"><img alt="WhatsApp" src="https://img.shields.io/badge/-Whatsapp%20Channel-yellow?style=for-the-badge&logo=whatsapp&logoColor=black"/></a>
 
 
 # DEPLOY SETUP
@@ -109,7 +109,7 @@
 ---
 
 
-<h2 align="center"> Star This Repo If You like KING-MD🌟
+<h2 align="center"> Star This Repo If You like SCORPION-MD🌟
 </h2>
 
 #### Thanks To 
@@ -119,5 +119,7 @@
 2: Zubair Bro
 
 3: SamPandy Bro
+
+4: Mr. Saviya
 
 #### NOTE: DON'T MODIFY THIS BOT FIRST INFORM THE OWNER
