@@ -13,10 +13,10 @@ global.gurl = 'https://instagram.com/naveeddogar_' // add your username
 global.sudo = process.env.SUDO || '923096566451'
 global.devs = '923096566451';
 global.website = 'https://github.com/naveeddogar/KING-MD' // Hello world
-global.THUMB_IMAGE = process.env.THUMB_IMAGE || 'https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg'
+global.THUMB_IMAGE = process.env.THUMB_IMAGE || 'https://telegra.ph/file/fa5b78d261746954c7c58.png'
 module.exports = {
-  botname:   process.env.BOT_NAME === undefined ? 'KING-MDv1' : process.env.BOT_NAME,
-  ownername: process.env.OWNER_NAME === undefined ? 'Naveed Dogar' : process.env.OWNER_NAME,
+  botname:   process.env.BOT_NAME === undefined ? 'E bot 4v' : process.env.BOT_NAME,
+  ownername: process.env.OWNER_NAME === undefined ? 'Nethindu Thaminda ' : process.env.OWNER_NAME,
   sessionName:  process.env.SESSION_ID === undefined ? false : process.env.SESSION_ID,
   author:  process.env.PACK_AUTHER.split(";")[0] === undefined ? 'Naveed-Dogar' : process.env.PACK_AUTHER.split(";")[0],
   auto_read_status :  process.env.AUTO_READ_STATUS  || 'true' ,
@@ -34,7 +34,19 @@ module.exports = {
   antilink:  process.env.ANTILINK_VALUES === undefined ? 'chat.whatsapp.com' : process.env.ANTILINK_VALUES,
   antilinkaction: process.env.ANTILINK_ACTION === undefined ? 'remove' : process.env.ANTILINK_ACTION,
   BRANCH: 'main', 
-  ALIVE_MESSAGE:  process.env.ALIVE_MESSAGE === undefined ? '' : process.env.ALIVE_MESSAGE,
+  ALIVE_MESSAGE:  process.env.ALIVE_MESSAGE === undefined ? '𝗘 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗕𝗢𝗧 
+
+Hello there I am Online !  
+
+*🧑‍💻 Devoloper  :* 𝙴 𝙱𝙾𝚇 𝚂𝙻 ˣ ᵀᴬᴹ
+*🧬 Version :* 2.0
+*🗃️ Public Group :* https://chat.whatsapp.com/CwKotDYmATM4S3XwZwdTSJ 
+
+☑️ *𝙱𝙾𝚃 𝙾𝙽𝙻𝙸𝙽𝙴= .𝚊𝚕𝚒𝚟𝚎*
+☑️ *𝙱𝙾𝚃 𝙼𝙴𝙽𝚄= .𝚖𝚎𝚗𝚞*
+
+*►𝗕ץ ᳆⃞⃚៚▱𝘽𝙄𝙏 𝙭ᵀᴹᑥש* 
+' : process.env.ALIVE_MESSAGE,
   autobio:  process.env.AUTO_BIO === undefined ? false : process.env.AUTO_BIO,
   OPENAI_API_KEY:  process.env.OPENAI_API_KEY === undefined ? false : process.env.OPENAI_API_KEY,
   heroku:  process.env.heroku === undefined ? false : process.env.heroku,
