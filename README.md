@@ -50,7 +50,7 @@
 <a href='https://github.com/naveeddogar/KING-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=git&logoColor=white'/></a>
 
 ## 2 *`⨷ SCAN QR`*
-<a href='https://qr-genrator-for-king-3996f7fcd90d.herokuapp.com/' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Scan Qr code-black?style=for-the-badge&logo=opencv&logoColor=white'/></a>
+<a href='https://king-md-qr-genrator.vercel.app/' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Scan Qr code-black?style=for-the-badge&logo=opencv&logoColor=white'/></a>
 
 ## *`⨷ NOW DEPLOY`*
 
