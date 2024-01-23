@@ -1,7 +1,7 @@
 {
                "name": "KING-MD",
                "version": "1.0.1",
-               "description": "Multi Device whatsapp bot by Naveed Dogar.",
+               "description": "Multi Device WhatsApp bot by Naveed Dogar.",
                "main": "lib/client.js",
                "type": "commonjs",
                "license": "GPL-3.0",
