@@ -341,5 +341,62 @@ text +="\n*Match Ended:* " + dat.data[i].matchEnded;
  return await message.reply( text);
 }catch(e){return await message.error(`${e}\n\n command: cric`,e,`*_Uhh dear, Didn't get any results!_*`) }
 
-   }
-)
+})
+
+    //------------------------------------------------------------------------------------
+
+smd({
+   pattern: "github",
+   category: "search",
+   desc: "Finds info about song",
+   filename: __filename,
+},
+async(message, match) => {
+ try{
+
+   message.react("🔍")
+         if (!match) return message.reply(`Give me a user name like ${prefix}github SuhailTechInfo`)
+
+         const { data } = await axios(`https://api.github.com/users/${match}`)
+   if(!data) return await message.send(`*_Didn't get any results, Provide valid user name!_*`)
+   let gitdata =  data
+         message.sendMessage(message.jid, {
+           image: { url: gitdata.avatar_url }, caption:`ㅤㅤㅤ*[ GITHUB USER INFO ]*
+
+🚩 Id : ${gitdata.id}
+🔖 Nickname : ${gitdata.name}
+🔖 Username : ${gitdata.login}
+✨ Bio : ${gitdata.bio}
+🏢 Company : ${gitdata.company}
+📍 Location : ${gitdata.location}
+📧 Email : ${gitdata.email}
+📰 Blog : ${gitdata.blog}
+🔓 Public Repo : ${gitdata.repos_url}
+🔐 Public Gists : ${gitdata.gists_url}
+💕 Followers : ${gitdata.followers}
+👉 Following : ${gitdata.following}
+🔄 Updated At : ${gitdata.updated_at}
+🧩 Created At : ${gitdata.created_at}`
+         }, { quoted: message })
+
+          }catch(e){return await message.error(`${e}\n\n command: github`,e,`*_Didn't get any results, Sorry!_*`) }
+   })
+
+//------------------------------------------------------------------------------------
+smd({
+   pattern: "coffe",
+   alias:["tea","kofi"],
+   category: "search",
+  react : "🫡",
+   desc: "send randome coffe",
+   filename: __filename,
+},
+async(m) => {
+ try{
+  // m.react("🫡")
+   return await m.bot.sendMessage(m.chat, {image: { url: 'https://coffee.alexflipnote.dev/random' },caption: `Here is your Coffee...`, }, { quoted: m })
+
+          }catch(e){return await m.error(`${e}\n\n command: coffe`,e,`*_Didn't get any results, Sorry!_*`) }
+
+
+   })
