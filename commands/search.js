@@ -1,16 +1,16 @@
 /**
 ========================================================
-     █▀ █▀▀ █▀▀ ▀█▀ █▀█ █▀█ ▄▄ ▀█ ░ █▀█           |•|
-     ▄█ ██▄ █▄▄ ░█░ █▄█ █▀▄ ░░ █▄ ▄ █▄█           |•|
+      █▄▀ █ █▄ █ ▄▀     █▄ ▄█ █▀▄
+      █ █ █ █ ▀█ ▀▄█ ▀▀ █ ▀ █ █▄▀
 ========================================================
  Copyright (C) 2022.                                                                                        
  Licensed under the  GPL-3.0 License;                                                      
  You may not use this file except in compliance with the License.    
  It is supplied in the hope that it may be useful                                     
- * @project_name : Secktor-2.0                                                                    
- * @author : Slasher-Official <https://github.com/X-S-L-A-S-H-E-R>   
- * @description : Secktor-2.0 ,A Multi-functional whatsapp bot.       
- * @version 2.0.1                                                                                             
+ * @project_name : KING-MD                                                                    
+ * @author : naveeddogar <https://github.com/naveeddogar>   
+ * @description : KING-MD ,A Multi-functional whatsapp bot.       
+ * @version 1.0.1                                                                                             
  ========================================================
  **/
 
@@ -71,7 +71,7 @@ cmd({
             filename: __filename,
         },
         async(Void, citel, text) => {
-            if (!text) return citel.reply("Give me location.Baka!!");
+            if (!text) return citel.reply("Give me location.Bro!!");
             let wdata = await axios.get(
                 `https://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=en`
             );
@@ -139,7 +139,7 @@ cmd({
         filename: __filename,
     },
     async(Void, citel, text) => {
-        if (!text) return citel.reply(`give me a query\n*Example : .google Who is Slasher-Official.*`);
+        if (!text) return citel.reply(`give me a query\n*Example : .google Who is naveeddogar.*`);
         let google = require('google-it');
         google({ 'query': text}).then(res => {
             let msg= `Google Search From : ${text} \n\n`;
@@ -165,7 +165,7 @@ cmd({
             if (!text) return citel.reply("Provide me a query!")
             if (!text) return reply("Hey bie please tell me for which pic you're looking");
             let name1 = text.split("|")[0]
-            let name2 = text.split("|")[1] || `1`
+            let name2 = text.split("|")[1] || `5`
             citel.reply(`Sending ${name2} image(s) of ${name1} in chat`)
             let nn = name2
             for (let i = 0; i < nn; i++) {
@@ -200,7 +200,7 @@ cmd({
     },
     async(Void, citel, text) => {
         var inputnumber = text.split(" ")[0]
-        if (!inputnumber.includes('x')) return citel.reply('You did not add x\nExample: iswa 9196285162xx')
+        if (!inputnumber.includes('x')) return citel.reply('You did not add x\nExample: iswa 930965662xx')
         citel.reply(`Searching for WhatsApp account in given range...`)
 
         function countInstances(string, word) {
@@ -252,3 +252,94 @@ cmd({
     }
 )
 
+//---------------------------------------------------------------------------
+cmd({
+     pattern: "nowa",
+        category: "search",
+        desc: "Searches in given rage about given number.",
+        use: '9112345678xx',
+        filename: __filename,
+    },
+    async(Void, citel, text) => {
+        var inputnumber = text.split(" ")[0]
+        if (!inputnumber.includes('x')) return citel.reply('You did not add x\nExample: nowa 930965662xx')
+        citel.reply(`Searching for WhatsApp account in given range...`)
+
+        function countInstances(string, word) {
+            return string.split(word).length - 1;
+        }
+        var number0 = inputnumber.split('x')[0]
+        var number1 = inputnumber.split('x')[countInstances(inputnumber, 'x')] ? inputnumber.split('x')[countInstances(inputnumber, 'x')] : ''
+        var random_length = countInstances(inputnumber, 'x')
+        var randomxx;
+        if (random_length == 1) {   randomxx = 10 } 
+        else if (random_length == 2) { randomxx = 100  } 
+        else if (random_length == 3) {randomxx = 1000  }
+        var text = `*--『 List of Whatsapp Numbers 』--*\n\n`
+        var nobio = `\n*Bio:* || \nHey there! I am using WhatsApp.\n`
+        var nowhatsapp = `\n*Numbers with no WhatsApp account within provided range.*\n`
+        for (let i = 0; i < randomxx; i++) {
+            var nu = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+            var status1 = nu[Math.floor(Math.random() * nu.length)]
+            var status2 = nu[Math.floor(Math.random() * nu.length)]
+            var status3 = nu[Math.floor(Math.random() * nu.length)]
+            var dom4 = nu[Math.floor(Math.random() * nu.length)]
+            var random;
+            if (random_length == 1) {
+                random = `${status1}`
+            } else if (random_length == 2) {
+                random = `${status1}${status2}`
+            } else if (random_length == 3) {
+                random = `${status1}${status2}${status3}`
+            } else if (random_length == 4) {
+                random = `${status1}${status2}${status3}${dom4}`
+            }
+            var anu = await Void.onWhatsApp(`${number0}${i}${number1}@s.whatsapp.net`);
+            var anuu = anu.length !== 0 ? anu : false
+            try {
+                try {
+                    var anu1 = await Void.fetchStatus(anu[0].jid)
+                } catch {
+                    var anu1 = '401'
+                }
+                if (anu1 == '401' || anu1.status.length == 0) {
+                    nobio += `wa.me/${anu[0].jid.split("@")[0]}\n`
+                } else {
+                    text += `🧐 *Number:* wa.me/${anu[0].jid.split("@")[0]}\n ✨*Bio :* ${anu1.status}\n🍁*Last update :* ${moment(anu1.setAt).tz('Asia/Kolkata').format('HH:mm:ss DD/MM/YYYY')}\n\n`
+                }
+            } catch { nowhatsapp += `${number0}${i}${number1}\n` }
+        }
+        citel.reply(`${text}${nobio}${nowhatsapp}`)
+
+    }
+)
+    //---------------------------------------------------------------------------
+
+smd({
+            pattern: "cric",
+            category: "search",
+            desc: "Sends info of given query from Google Search.",
+            use: '<text>',
+            filename: __filename,
+        },
+        async(message, text) => {
+try{
+            await message.reply (`*_Please Wait, Getting Cricket Info_*`);
+const response = await fetch('https://api.cricapi.com/v1/currentMatches?apikey=f68d1cb5-a9c9-47c5-8fcd-fbfe52bace78');
+const dat = await response.json();
+
+for (let i=0 ; i <  dat.data.length; i++) {
+let j = i+1;
+text +=`\n*--------------------- MATCH ${i}-------------------*`;
+text +="\n*Match Name:* "+ dat.data[i].name;
+text +="\n*Match Status:* "+ dat.data[i].status;
+text +="\n*Match Date:* " + dat.data[i].dateTimeGMT ;
+text +="\n*Match Started:* " + dat.data[i].matchStarted;
+text +="\n*Match Ended:* " + dat.data[i].matchEnded;
+
+}
+ return await message.reply( text);
+}catch(e){return await message.error(`${e}\n\n command: cric`,e,`*_Uhh dear, Didn't get any results!_*`) }
+
+   }
+)
