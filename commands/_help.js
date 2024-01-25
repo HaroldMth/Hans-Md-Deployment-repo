@@ -60,40 +60,40 @@ Secktor.cmd({
                     .locale('id')
                 const date = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
                 let total = await sck1.countDocuments()
-                let str = `┎───⊷❮ *${Config.botname}* ❯───⊷❍\n`
+                let str = `┎───═❮ *${Config.botname}* ❯═──⊷❍\n`
                 str +=
-                    '```' + `┃✦╭──────────────◆
-┃✦┃ 𝙋𝙡𝙪𝙜𝙞𝙣𝙨: ${commands.length}
-┃✦┃ 𝙐𝙨𝙚𝙧: ${citel.pushName}
-┃✦┃ 𝙊𝙬𝙣𝙚𝙧: ${Config.ownername}
-┃✦┃ 𝙋𝙧𝙚𝙛𝙞𝙭: [ ${prefix} ]
-┃✦┃ 𝙈𝙚𝙢: ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}
-┃✦┃ 𝘿𝙖𝙩𝙚: ${date}
-┃✦┃ 𝙈𝙤𝙙𝙚: ${Config.worktype}
-┃✦┃ 𝙋𝙡𝙖𝙩𝙚𝙛𝙤𝙧𝙢: Kali•Linux
-┃✦┃ 𝙑𝙚𝙧𝙨𝙞𝙤𝙣: 1.1.1
-┃✦┃ 
-┃✦┃ ▒▓ ▍▌▌▉▏▎▌▉▐▏▌▓▒
-┃✦┃ ▒▓ ▍▌▌▉▏▎▌▉▐▏▌▓▒
-┃✦┃ 
-┃✦┃ © 𝘽𝙮: ${Config.ownername}
-┃✦╰━━━━━━━━━━━───◆
-╰━━━━━━━━━━━──⊷✦\n
+                    '```' + `┃❖╭──────────────◆
+┃❖┃ 𝙋𝙡𝙪𝙜𝙞𝙣𝙨: ${commands.length}
+┃❖┃ 𝙐𝙨𝙚𝙧: ${citel.pushName}
+┃❖┃ 𝙊𝙬𝙣𝙚𝙧: ${Config.ownername}
+┃❖┃ 𝙋𝙧𝙚𝙛𝙞𝙭: [ ${prefix} ]
+┃❖┃ 𝙈𝙚𝙢: ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}
+┃❖┃ 𝘿𝙖𝙩𝙚: ${date}
+┃❖┃ 𝙈𝙤𝙙𝙚: ${Config.WORKTYPE}
+┃❖┃ 𝙋𝙡𝙖𝙩𝙚𝙛𝙤𝙧𝙢: King•Linux
+┃❖┃ 𝙑𝙚𝙧𝙨𝙞𝙤𝙣: 1.2.1
+┃❖┃ 
+┃❖┃ ✦ ▍▌▌▉▏▎▌▉▐▏▌✦
+┃❖┃ ✦ ▍▌▌▉▏▎▌▉▐▏▌✦
+┃❖┃ 
+┃❖┃ © 𝘽𝙮: ${Config.ownername}
+┃❖╰━═━═━═━═━━━───◆
+╰━━━━═━═━═━═──⊷◆\n
 ` + '```'
                 for (const category in cmds) 
                 {
-                   str += `╭━═══〘 *${tiny(category)}* 〙═══━⊷❍\n` ;
-                   if(text.toLowerCase() == category.toLowerCase()){ str = `╭━═══〘 *${tiny(category)}* 〙═══━⊷❍\n` ;      
-                        for (const plugins of cmds[category]) { str += `┃✷│ ${fancytext(plugins,1)}\n` ; }
-                        str += `╰━═════════════━⊷❍\n`  ;
+                   str += `┎━═══{ *${tiny(category)}* }═══━⊷❍\n┃✯╭────────────···▸\n┻✯│\n` ;
+                   if(text.toLowerCase() == category.toLowerCase()){ str = `┎━═══{ *${tiny(category)}* }═══━⊷❍\n┃✯╭────────────···▸\n┻✯│\n` ;      
+                        for (const plugins of cmds[category]) { str += `│✯│◦➛ ${fancytext(plugins,1)}\n` ; }
+                        str += `┳✯│\n┃✯╰────────────···▸\n╰━═════════════━⊷❍\n`  ;
                         break ;
                    }
-                   else { for (const plugins of cmds[category]) { str += `┃✷│ ${fancytext(plugins,1)}\n` ; }
-                         str += `╰━═════════════━⊷❍\n`  ; 
+                   else { for (const plugins of cmds[category]) { str += `│✯│◦➛ ${fancytext(plugins,1)}\n` ; }
+                         str += `┳✯│\n┃✯╰────────────···▸\n╰━═════════════━⊷❍\n`  ; 
                    }
   
                 }
-                str+= `🔥 𝙆𝙄𝙉𝙂-𝙈𝘿  🎯`
+                str+= `🔥 𝙆𝙄𝙉𝙂-𝙈𝘿 *_MULTI DEVICE_*🎯`
                 let buttonMessaged = {
                     image: { url: THUMB_IMAGE },
                     caption: str
@@ -126,7 +126,6 @@ Secktor.cmd({
              try{ return await Void.sendMessage(citel.chat, { image: { url: THUMB_IMAGE }, caption: text + Config.caption}); }catch{return await send(citel,str,{},"",citel);}
           }
       )
-      
       **/
     //---------------------------------------------------------------------------
 Secktor.cmd({
