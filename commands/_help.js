@@ -95,9 +95,21 @@ Secktor.cmd({
                 }
                 str+= `🔥 𝙆𝙄𝙉𝙂-𝙈𝘿 *_MULTI DEVICE_*🎯`
                 let buttonMessaged = {
-                    image: { url: THUMB_IMAGE },
-                    caption: str
-                };
+          let buttonMessaged = {
+              text: str,
+              contextInfo: {
+                  externalAdReply: {
+                      title: '',
+                      body: '',
+                      renderLargerThumbnail: true,
+                      thumbnailUrl: await THUMB_IMAGE,
+                      thumbnail: '',
+                      mediaType: 1,
+                      mediaUrl: '',
+                      sourceUrl: `https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+                  },
+              },
+          };
                 return await Void.sendMessage(citel.chat, buttonMessaged);
             }
         }
