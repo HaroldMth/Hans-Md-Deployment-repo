@@ -98,6 +98,7 @@ Secktor.cmd({
               text: str,
               contextInfo: {
                   externalAdReply: {
+                  showAdAttribution: true,
                       title: Config.botname,
                       body: Config.ownername,
                       renderLargerThumbnail: true,
