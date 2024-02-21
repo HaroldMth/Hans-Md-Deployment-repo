@@ -95,7 +95,6 @@ Secktor.cmd({
                 }
                 str+= `🔥 𝙆𝙄𝙉𝙂-𝙈𝘿 *_MULTI DEVICE_*🎯`
                 let buttonMessaged = {
-          let buttonMessaged = {
               text: str,
               contextInfo: {
                   externalAdReply: {
