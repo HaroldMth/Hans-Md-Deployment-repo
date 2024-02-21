@@ -69,7 +69,7 @@ Secktor.cmd({
 ┃❖┃ 𝙋𝙧𝙚𝙛𝙞𝙭: [ ${prefix} ]
 ┃❖┃ 𝙈𝙚𝙢: ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}
 ┃❖┃ 𝘿𝙖𝙩𝙚: ${date}
-┃❖┃ 𝙈𝙤𝙙𝙚: ${Config.worktype}
+┃❖┃ 𝙈𝙤𝙙𝙚: ${Config.WORKTYPE}
 ┃❖┃ 𝙋𝙡𝙖𝙩𝙚𝙛𝙤𝙧𝙢: King•Linux
 ┃❖┃ 𝙑𝙚𝙧𝙨𝙞𝙤𝙣: 1.2.1
 ┃❖┃ 
@@ -98,8 +98,8 @@ Secktor.cmd({
               text: str,
               contextInfo: {
                   externalAdReply: {
-                      title: '',
-                      body: '',
+                      title: Config.botname,
+                      body: Config.ownername,
                       renderLargerThumbnail: true,
                       thumbnailUrl: await THUMB_IMAGE,
                       thumbnail: '',
