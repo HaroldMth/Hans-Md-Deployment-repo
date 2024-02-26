@@ -40,12 +40,12 @@ cmd({
             ];
             let buttonMessage = {
                 image: {
-                    url: 'https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg',
+                    url: 'https://telegra.ph/file/15df494b1bf15454fe836.jpg',
                 },
 
                 caption: `
 
-*⦁──🎃𝙎𝙀𝙏𝙏𝙄𝙉𝙂 𝙇𝙄𝙎𝙏📍──⦁*
+*⦁──🎃DANI TOOLS LIST📍──⦁*
 
 1♻️➣ To put Antilink type :
 Eg:- .setvar ANTILINK:false
@@ -105,7 +105,7 @@ Eg:- .set THUMB_IMAGE:put image url
 Eg:- .setvar WORKTYPE:public/private
 
 
-©𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙀𝘿 𝘽𝙔 𝙆𝙄𝙉𝙂-𝙈𝘿
+©𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙀𝘿 𝘽𝙔 DANI-MD 
 `,
 
                 footer: tlang().footer,
