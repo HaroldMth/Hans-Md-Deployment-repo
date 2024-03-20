@@ -1,5 +1,5 @@
 { 
-  "name": "KING-MD",
+  "name": "ART-MD",
   "description": "A Whatsapp md bot built By Naveed to make experience better",
   "logo": "https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "King-Two", "KING-MD", "KING","king-Bot","theme bot","multi device","baileys"],
@@ -8,7 +8,7 @@
 "env": {
   "OWNER_NAME": {
   "description": "OWNER NAME",
-      "value": "NAVEED DOGAR"
+      "value": "ART"
   },
     "AUTO_STATUS_SAVER": {
       "description": "Automatically saves status of every person and sends in log number.",
@@ -16,8 +16,8 @@
       },
   "AUTO_READ_STATUS": {
     "description": "Fill the value true if you want bot view your Statuses.",
-    "required" :false,
-    "value": "false"
+    "required" :true,
+    "value": "true"
       },
     "HEROKU_API_KEY": {
     "description": "Put HEROKU API KEY",
@@ -33,7 +33,7 @@
     },
     "ANTI_BAD_WORD": {
     "description": "Put words here. If you want it enabled in your bot otherwise leave it blank",
-     "required" :false
+     "required" :true
     },
    "ANTILINK_VALUES": {
     "description": "Put words for antilink",
@@ -67,7 +67,7 @@
     "BOT_NAME": {
 	    "description": "Choose your bot name",
 	    "required": "true",
-	    "value": "*KING-MD*"
+	    "value": "*ART-MD*"
 },
     "DISABLE_PM": {
       "description": "Disable bot in pm",
@@ -80,10 +80,10 @@
   },
   "OWNER_NUMBER": {
     "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
-       "value": "92Xxxxxxxx"
+       "value": "923461584582"
   },
    "SESSION_ID": {
-    "description": "Please put your Session ID that u scanned from the bot.... If u haven't scanned go to KING-MD Github Repo U can find the Scanner Option"
+    "description": "KING-MD;;;eyJub2lzZUtleSI6eyJwcml2YXRlIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiaUw1c29TTHMxcDVodm5RU0NWR0V5Q2svZnVXc3JSRHVWUDBDUGVqYkxWdz0ifSwicHVibGljIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiK01ZZ3pkNXMzY01KWitYaEpDOUd2eXFzVUI4RWhwNjFnY09CRHhrZUdpcz0ifX0sInNpZ25lZElkZW50aXR5S2V5Ijp7InByaXZhdGUiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJLT3dvUU14S05DanozTldGa2JBL0ZRamhiNjhxdmE3ekNnSmlSeHF5Z1VZPSJ9LCJwdWJsaWMiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJIS1VHS1E0QmNGdzRzOCtJQ2orcTdrTk0rayt4K1BBRy84WURsVTYycVZvPSJ9fSwic2lnbmVkUHJlS2V5Ijp7ImtleVBhaXIiOnsicHJpdmF0ZSI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6Im1ISVJPVXN2dEFXbVpFU1c3dCtoSXBQMSszanA4S0xyWmpLd1ZDTEt4M2s9In0sInB1YmxpYyI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6ImNCUlVQcTU5dXBPVXhzOGtuSll5eG1rS2wySzVucnF6S2lxUFdhczk2U009In19LCJzaWduYXR1cmUiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJKdHZXSHNqT2tqbitBVWR1b2xZWG5UUnpMRXowbEhzYkxRQUtlUTBqRVNxVGZYQXJzWjBadXV0aGVXUGZyUStXUEpxd3p4d2ZaWFF0SUVFU3FEakhBdz09In0sImtleUlkIjoxfSwicmVnaXN0cmF0aW9uSWQiOjEsImFkdlNlY3JldEtleSI6ImpFb0RvSHBhRndjU0VLbzNQQlhySTlYb3ZncXJxUnVRVEFQZmhJSkRlcE09IiwicHJvY2Vzc2VkSGlzdG9yeU1lc3NhZ2VzIjpbXSwibmV4dFByZUtleUlkIjozMSwiZmlyc3RVbnVwbG9hZGVkUHJlS2V5SWQiOjMxLCJhY2NvdW50U3luY0NvdW50ZXIiOjAsImFjY291bnRTZXR0aW5ncyI6eyJ1bmFyY2hpdmVDaGF0cyI6ZmFsc2V9LCJkZXZpY2VJZCI6IjIxdDZFUjJuVEZHY0lNUTZ1eS1IT1EiLCJwaG9uZUlkIjoiZjdiYWUzN2EtZTdkMC00MzgxLThlODItMGQ0YThiZGExZmEzIiwiaWRlbnRpdHlJZCI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6IkNNU2t3blZ1UFdoTlRjUkQ0MjJLa2ZBWEFjbz0ifSwicmVnaXN0ZXJlZCI6ZmFsc2UsImJhY2t1cFRva2VuIjp7InR5cGUiOiJCdWZmZXIiLCJkYXRhIjoiaStiOVhpMzRrdlpBR3I3Z3EzTUdwb1hjd3RNPSJ9LCJyZWdpc3RyYXRpb24iOnt9LCJhY2NvdW50Ijp7ImRldGFpbHMiOiJDTFRsa3BnSEVNWHE2YThHR0FJZ0FDZ0EiLCJhY2NvdW50U2lnbmF0dXJlS2V5IjoiOHNmWVlORE9zR20vS2NxWG10MGVZU2tESU81cXp1b2pkUlArT25VRjRtVT0iLCJhY2NvdW50U2lnbmF0dXJlIjoiY2tveGJmMVM0UWY0Q3UxU2pVU0FCNWpuUzlJSXJLVmFkYk1wTzFqTVJidjdJUlo3L2k3RllRMG55SisxbU82Z1J5c01BN0J1aUhMRUR3MUVsZlMxQVE9PSIsImRldmljZVNpZ25hdHVyZSI6IlJxQm8zaGlFNmxHWFZNdkUzdmw1SWRjNExRVHlzZXVaOURSTHlsWG1LVEhWcm5TWW5JYlNXNXJ5djhpamhRcmZKNjBZTnZOU1diT0Z3dWZMdC9YNER3PT0ifSwibWUiOnsiaWQiOiI5MjM0NjE1ODQ1ODI6MjBAcy53aGF0c2FwcC5uZXQiLCJuYW1lIjoiQSJ9LCJzaWduYWxJZGVudGl0aWVzIjpbeyJpZGVudGlmaWVyIjp7Im5hbWUiOiI5MjM0NjE1ODQ1ODI6MjBAcy53aGF0c2FwcC5uZXQiLCJkZXZpY2VJZCI6MH0sImlkZW50aWZpZXJLZXkiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOiJCZkxIMkdEUXpyQnB2eW5LbDVyZEhtRXBBeUR1YXM3cUkzVVQvanAxQmVKbCJ9fV0sInBsYXRmb3JtIjoiYW5kcm9pZCIsImxhc3RBY2NvdW50U3luY1RpbWVzdGFtcCI6MTcxMDkxMjgzOSwibXlBcHBTdGF0ZUtleUlkIjoiQUFBQUFHQkMifQ=="-"Please put your Session ID that u scanned from the bot.... If u haven't scanned go to KING-MD Github Repo U can find the Scanner Option"
   },
     "OPENAI_API_KEY": {
     "description": "Please put your OPENAI api key here.Get it from beta.openai.com(optional if u don't wan't then don't put it ",
@@ -96,7 +96,7 @@
   },
     "THEME": {
     "description": "Don't Change . No Need To Change Only Avilable King-Md .",
-     "value": "KING-MD"
+     "value": "ART-MD"
   },
     "WORKTYPE": {
   "description": "Worktype of your bot. Use public or private, if it is private then only bot number can use it. If public then everyone can use it.",
