@@ -120,4 +120,6 @@
 
 3: SamPandy Bro
 
+4: Rushmaster12
+
 #### NOTE: DON'T MODIFY THIS BOT FIRST INFORM THE OWNER
