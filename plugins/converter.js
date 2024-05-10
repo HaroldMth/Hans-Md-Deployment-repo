@@ -890,6 +890,114 @@ catch (err) { return citel.reply("```Error While Fetching Snapshot```")}
     }
 )
 
+//========================================================================
+
+cmd({
+  pattern: "cpu",
+  desc: "To check bot status",
+  category: "general",
+  filename: __filename,
+},
+    async(Void, citel, text) => {
+  try{
+      const used = process.memoryUsage()
+      const cpus = os.cpus().map(cpu => {
+          cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
+          return cpu
+      })
+      const cpu = cpus.reduce((last, cpu, _, { length }) => 
+      {
+
+          last.total += cpu.total
+          last.speed += cpu.speed / length
+          last.times.user += cpu.times.user
+          last.times.nice += cpu.times.nice
+          last.times.sys += cpu.times.sys
+          last.times.idle += cpu.times.idle
+          last.times.irq += cpu.times.irq
+          return last
+      },{ speed: 0,total: 0,times: {user: 0,nice: 0,sys: 0,idle: 0,irq: 0 } }
+      )
+    timestampe = speed();
+    latensie = speed() - timestampe;
+    var neww = performance.now()
+    var oldd = performance.now()
+                  
+    respon = `*sp*
+    
+  * Runtime:* ${runtime(process.uptime())}
+  * Speed:* ${latensie.toFixed(3)}/${(oldd - neww).toFixed(3)} ms
+  * RAM:* ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+  
+  *❳ Memory Usage:*
+      ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n      ')}
+  
+${cpus[0] ? `  *❲❳ Total CPU Usage:*
+  *${cpus[0].model.trim()} (${cpu.speed} MHZ)*
+      ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}
+\n  *❲ CPU Core Usage (${cpus.length} Core CPU)*
+  ${cpus.map((cpu, i) => `*Core ${i + 1}: ${cpu.model.trim()} (${cpu.speed} MHZ)*
+      ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}`).join('\n\n')}` : ''}
+`.trim()
+      return await msg.send(respon,{},"",msg)
+  }catch(e){msg.error(e)}
+})
+
+
+//========================================================================
+
+cmd({
+  pattern: "ping2",
+  desc: "To check bot speed",
+  category: "general",
+  filename: __filename,
+},
+async(darkshan, msg) => {
+  try{
+      const used = process.memoryUsage()
+      const cpus = os.cpus().map(cpu => {
+          cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
+          return cpu
+      })
+      const cpu = cpus.reduce((last, cpu, _, { length }) => 
+      {
+
+          last.total += cpu.total
+          last.speed += cpu.speed / length
+          last.times.user += cpu.times.user
+          last.times.nice += cpu.times.nice
+          last.times.sys += cpu.times.sys
+          last.times.idle += cpu.times.idle
+          last.times.irq += cpu.times.irq
+          return last
+      },{ speed: 0,total: 0,times: {user: 0,nice: 0,sys: 0,idle: 0,irq: 0 } }
+      )
+    timestampe = speed();
+    latensie = speed() - timestampe;
+    var neww = performance.now()
+    var oldd = performance.now()
+                  
+    respon = `*❲❒❳ dark shan md Server Info ❲❒❳*
+    
+  *❲❒❳ Runtime:* ${runtime(process.uptime())}
+  *❲❒❳ Speed:* ${latensie.toFixed(3)}/${(oldd - neww).toFixed(3)} ms
+  *❲❒❳ RAM:* ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+  
+  *❲❒❳ Memory Usage:*
+      ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n      ')}
+  
+${cpus[0] ? `  *❲❒❳ Total CPU Usage:*
+  *${cpus[0].model.trim()} (${cpu.speed} MHZ)*
+      ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}
+\n  *❲❒❳ CPU Core Usage (${cpus.length} Core CPU)*
+  ${cpus.map((cpu, i) => `*Core ${i + 1}: ${cpu.model.trim()} (${cpu.speed} MHZ)*
+      ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}`).join('\n\n')}` : ''}
+`.trim()
+      return await msg.send(respon,{},"",msg)
+  }catch(e){msg.error(e)}
+})
+
+
 
      //---------------------------------------------------------------------------
  cmd({ on: "body" }, async(Void, citel) => {
