@@ -39,13 +39,13 @@
 
       ```
       OWNER_NUMBER="923096566451"
-      MONGODB_URI="mongodb+srv://secktorbotnew:sampandeyxahil@x-s-l-a-s-h-e-r.hmrqazm.mongodb.net/?retryWrites=true&w=majority"
+      MONGODB_URI="put your mongodb"
       SESSION_ID = "ID-here"
-      THUMB_IMAGE = "https://i.ibb.co/GkbRsdF/secktor-high-resolution-logo-black-on-white-background.png"
+      THUMB_IMAGE = "your bot logo url"
       port = 5000
       email = "textnow1pak@gmail.com"
-      global_url = "insta url here"
-      OWNER_NAME = "Naveed Dogar"
+      global_url = "https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w"
+      OWNER_NAME = "NaveedDogar"
       AUTO_REACTION = false
       FAKE_COUNTRY_CODE = 212
       READ_MESSAGE = false
