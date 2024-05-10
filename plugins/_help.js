@@ -16,7 +16,7 @@ Account And Repo Banned
 
  * @project_name : KING-MD                                                                    
  * @author : naveeddogar <https://github.com/naveeddogar>   
- * @description : KING-MD ,A Multi-Functional Whatsapp Bot Create By Naveed Dogar.       
+ * @description : KING-MD ,A  Multi-Functional Whatsapp Bot Create By Naveed Dogar.       
  * @version : 1.2.9
  * @license : Apache-2.0
  ========================================================
