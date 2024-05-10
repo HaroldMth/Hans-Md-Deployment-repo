@@ -90,8 +90,23 @@
        "value": "ADD A OPEN AI KEY",
        "required" :false
   },
+	"CAPTION": {
+    "description": "Put words for caption",
+     "value": "© GENERATE BY KING-MD",
+     "required" :false
+     },
+	"REMOVE_BG_KEY": {
+    "description": "Put remove bg api here",
+     "value": "your api",
+     "required" :false
+     },
+	"ALWAYS_ONLINE": {
+    "description": "Put flase or true",
+     "value": "true",
+     "required" :false
+     },
   "MONGODB_URI": {
-    "description": "A secret String for Mongodb Connection.(Required),change for better experience",
+    "description": "A secret String for Mongodb Connection.(Required),put new for better experience",
     "value": "put your mongodb"
   },
     "THEME": {
