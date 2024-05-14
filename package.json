@@ -1,17 +1,17 @@
 {
-               "name": "king-md",
-               "version": "1.2.9",
-               "description": "Multi Device WhatsApp Bot by Naveed Dogar.",
+               "name": "KING-MD",
+               "version": "1.0.1",
+               "description": "Multi Device WhatsApp bot by Naveed Dogar.",
                "main": "lib/client.js",
                "type": "commonjs",
-               "license": "Apache-2.0",
+               "license": "GPL-3.0",
    "scripts": {
-                "start": "pm2 start lib/client.js --deep-monitoring --attach --name KING-MD",
-                "stop": "pm2 stop KING-MD"
+                "start": "pm2 start lib/client.js --deep-monitoring --attach --name king",
+                "stop": "pm2 stop king"
                 },
-               "author": "naveeddogar",
+               "author": "SamPandey001",
               "dependencies": {
-                       "@whiskeysockets/baileys": "6.5.0", 
+                       "@sampandey001/baileys": "latest", 
                        "@adiwajshing/keyed-db": "^0.2.4",
                        "awesome-phonenumber": "^3.3.0",
                        "anime-character-random": "latest",
@@ -30,7 +30,7 @@
                        "discord-xp": "^1.1.16",
                        "mongoose": "^6.2.1",
                        "mumaker": "latest",
-                       "google-it": "^1.6.4",
+                       "google-it": "^1.6.2",
                        "file-type": "^16.5.3",
                        "form-data": "^4.0.0",
                        "ffmpeg": "^0.0.4",
@@ -50,7 +50,7 @@
                        "google-tts-api": "^2.0.2",
                        "path": "^0.12.7",
                        "request": "^2.88.2",
-                       "simple-git": "^3.15.1",
+                       "simple-git": "^3.16.1",
                        "@shineiichijo/marika": "^2.0.3",           
                        "translatte": "^3.0.1",
                        "util": "^0.12.4",           
@@ -69,10 +69,10 @@
                     },
                  "repository": {
                  "type": "git",
-                 "url": "git+https://github.com/TechnicalNaveed5/KING-TEST.git"
+                 "url": "git+https://github.com/naveeddogar/KING-MD.git"
                   },
                  "bugs": {
-                 "url": "https://github.com/TechnicalNaveed5/KING-TEST/issues"
+                 "url": "https://github.com/naveeddogar/KING-MD/issues"
                   },
-                 "homepage": "https://github.com/TechnicalNaveed5/KING-TEST#readme"
+                 "homepage": "https://github.com/naveeddogar/KING-MD#readme"
                   }
