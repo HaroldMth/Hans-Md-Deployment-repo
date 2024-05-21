@@ -3,7 +3,7 @@
         pkgs.nodejs
         pkgs.nodePackages.typescript
         pkgs.imagemagick
-        pkgs.yarn
+        pkgs.yarn.king
         pkgs.git
         pkgs.ffmpeg
         pkgs.neofetch
