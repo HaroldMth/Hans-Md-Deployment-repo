@@ -110,6 +110,78 @@ Void.sendMessage(citel.chat,{image:{url:data.data[0].url}})
 }
 )
 
+cmd({
+    pattern: "rmbg",
+    alias :['removebg'],
+    desc: "remove background of image",
+    category: "Ai",
+    use: '<Hii,King-Md>',
+    filename: __filename,
+},
+async(Void, citel,text) => {
+	      try {
+        const url = input.trim();
+        if (!url || !isValidUrl(url)) {
+          return await message.send("*_Please provide a valid image URL._*");
+        }
+  
+        const apiUrl = `https://aemt.me/removebg?url=${encodeURIComponent(url)}`;
+        const response = await axios.get(apiUrl, {
+          headers: {
+            "accept": "application/json",
+          },
+        });
+        const data = response.data;
+  
+        if (!data || !data.url || !data.url.status === "true") {
+          return await message.reply("*Failed to remove background from the image.*");
+        }
+  
+        const resultUrl = data.url.result;
+        const imageBuffer = await axios.get(resultUrl, { responseType: "arraybuffer" });
+        const buffer = Buffer.from(imageBuffer.data, "binary");
+        await message.bot.sendMessage(message.chat, { image: buffer }, { quoted: message });
+      } catch (error) {
+        await message.error(error + "\n\nCommand: rmbg", error, "*Failed to remove background from the image.*");
+      }
+    }
+  );
+  
+  function isValidUrl(url) {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+cmd({
+    pattern: "remini",
+    alias :['reminiai'],
+    desc: "enhance the picture quality",
+    category: "Ai",
+    filename: __filename,
+},
+async(Void, citel,text) => {
+	      let _0x4da3a4 = _0x1bd29b.image ? _0x1bd29b : _0x1bd29b.reply_message;
+      if (!_0x4da3a4 || !_0x4da3a4.image) {
+        return await _0x1bd29b.send("*Reply to image, to enhance quality!*");
+      }
+      try {
+        let _0x5b1096 = await _0x4da3a4.download();
+        const _0x1ac1f7 = await processing(_0x5b1096, "enhance");
+        await _0x1bd29b.send(_0x1ac1f7, {}, "img", _0x1bd29b);
+        _0x5b1096 = false;
+      } catch (_0x4eecc9) {
+        _0x1bd29b.error(
+          _0x4eecc9 + "\n\nCommand: remini",
+          _0x4eecc9,
+          "*Process Denied :(*"
+        );
+      }
+    }
+  );
 //---------------------------------------------------------------------------
 cmd({
         pattern: "repo",
