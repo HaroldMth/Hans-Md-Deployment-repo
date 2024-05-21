@@ -14,7 +14,7 @@
  ========================================================
  **/
 
-const { sck, sck1,cmd, jsonformat, botpic, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
+const { sck, sck1,cmd, jsonformat, botpic, TelegraPh, RandomXP, Config, tlang, warndb, sleep ,fetchJson, runtime,getAdmin,getBuffer, prefix } = require('../lib')
 const moment = require("moment-timezone");
 const fs = require('fs-extra')
 const Levels = require("discord-xp");
@@ -38,6 +38,43 @@ cmd({
 
         }
     )
+  //---------------------------------------------------------------------------
+ cmd({
+    pattern: "setwelcome",
+    desc: "sets welcome message in specific group.",
+    category: "misc",
+},
+async(Void, citel, text,{ isCreator }) => {
+    if (!isCreator) return citel.reply(tlang().owner)
+          let Group = await sck.findOne({ id: citel.chat })
+            if (!Group) {
+                await new sck({ id: citel.chat, welcome: text,events:'true' }).save()
+                return citel.reply('Welcome added added for this group.')
+            } else {
+                await await sck.updateOne({ id: citel.chat }, { welcome:text ,events:'true'})
+                return citel.reply('Welcome updated successfully.')
+                
+            }      
+}
+)
+ //---------------------------------------------------------------------------
+cmd({
+    pattern: "setgoodbye",
+    desc: "sets goodbye message in specific group.",
+    category: "misc",
+},
+async(Void, citel, text,{ isCreator }) => {
+    if (!isCreator) return citel.reply(tlang().owner)
+          let Group = await sck.findOne({ id: citel.chat })
+            if (!Group) {
+                await new sck({ id: citel.chat, goodbye: text,events:'true' }).save()
+                return citel.reply('Goodbye added for this group.');
+            } else {
+                await await sck.updateOne({ id: citel.chat }, { goodbye:text,events:'true' })
+                return citel.reply('Goodbye updated successfully.');     
+            }      
+}
+)
     //---------------------------------------------------------------------------
 
     cmd({
@@ -1032,6 +1069,39 @@ cmd({
         }
 
     )
+     //---------------------------------------------------------------------------
+ cmd({
+             pattern: "antilink",
+             desc: "activates and deactivates antilink.\nuse buttons to toggle.",
+             category: "group",
+             filename: __filename,
+         },
+         async(Void, citel, text) => {
+             if (!citel.isGroup) return citel.reply(tlang().group);
+             const groupAdmins = await getAdmin(Void, citel)
+             const botNumber = await Void.decodeJid(Void.user.id)
+             const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+             const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+             if (!isAdmins) return citel.reply(tlang().admin)
+             if (!isBotAdmins) return citel.reply(tlang().botadmin)
+             let buttons = [{
+                     buttonId: `${prefix}act antilink`,
+                     buttonText: {
+                         displayText: "Turn On",
+                     },
+                     type: 1,
+                 },
+                 {
+                     buttonId: `${prefix}deact antilink`,
+                     buttonText: {
+                         displayText: "Turn Off",
+                     },
+                     type: 1,
+                 },
+             ];
+             await Void.sendButtonText(citel.chat, buttons, `Activate antilink:Deletes Link + kick`, Void.user.name, citel);
+         }
+     )
     //---------------------------------------------------------------------------
 cmd({
             pattern: "block",
