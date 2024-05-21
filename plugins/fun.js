@@ -18,7 +18,7 @@ const { dare, truth, random_question } = require('../lib/truth-dare.js')
 const axios = require('axios')
 const { cmd ,parseJid,getAdmin,tlang } = require("../lib");
 const eco = require('discord-mongoose-economy')
- const ty = eco.connect(mongodb);
+const ty = eco.connect(mongodb);
     //---------------------------------------------------------------------------
 cmd({
             pattern: "question",
