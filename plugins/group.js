@@ -14,7 +14,7 @@
  ========================================================
  **/
 
-const { sck, sck1,cmd, jsonformat, botpic, TelegraPh, RandomXP, Config, tlang, warndb, sleep ,fetchJson,getAdmin,getBuffer, prefix } = require('../lib')
+const { sck, sck1,cmd, jsonformat, botpic, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
 const moment = require("moment-timezone");
 const fs = require('fs-extra')
 const Levels = require("discord-xp");
@@ -42,7 +42,7 @@ cmd({
  cmd({
     pattern: "setwelcome",
     desc: "sets welcome message in specific group.",
-    category: "misc",
+    category: "group",
 },
 async(Void, citel, text,{ isCreator }) => {
     if (!isCreator) return citel.reply(tlang().owner)
@@ -61,7 +61,7 @@ async(Void, citel, text,{ isCreator }) => {
 cmd({
     pattern: "setgoodbye",
     desc: "sets goodbye message in specific group.",
-    category: "misc",
+    category: "group",
 },
 async(Void, citel, text,{ isCreator }) => {
     if (!isCreator) return citel.reply(tlang().owner)
