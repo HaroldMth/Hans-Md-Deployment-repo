@@ -223,6 +223,5 @@
 
 - ***I will only Assist You in Bot Deployment and Hosting, Not in Bot Modifying.***
 - ***This Bot [KING-MD](https://github.com/naveeddogar/KING-MD) Has Been Made Under The [Apache-2.0 license](https://github.com/naveeddogar/KING-MD/blob/main/LICENSE).***
-- ***So No Copy This Bot, Or Re-Uploading, Any Thing Not Allowed Without Permission***
-- ***If Someone Modify My Bot Or Try To Copy It I Will Instantly Give Legal Copy Right Strike And Ban That User Repo And Account***
+
 - ***This Bot Is Only For Fun and Helps***
