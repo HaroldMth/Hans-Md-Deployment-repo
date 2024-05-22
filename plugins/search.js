@@ -321,3 +321,46 @@ return await citel.reply(`${nobio}${nowhatsapp}`)
   
 }
    )
+
+//---------------------------------------------------------------------------
+     cmd({
+        pattern: 'ss',
+        alias :['webss' , 'fullss'],
+        category: "search",
+        desc: "Provides screenshot of given url",
+        use: '<text>',
+        filename: __filename,
+    },
+    async(Void, citel, text) => {
+let limit = 5;
+try {
+if (!text) return citel.reply("```Uhh Please, Give me Url!```");
+let urll = `https://image.thum.io/get/fullpage/=${text.match(/\bhttps?:\/\/\S+/gi)[0]}&width=1280&height=720`
+let media  = await getBuffer(urll)
+return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
+}
+catch (err) { return citel.reply("```Error While Fetching Snapshot```")}
+    }
+)
+
+//---------------------------------------------------------------------------
+     cmd({
+        pattern: 'screenshot',
+        alias :['webshot' , 'fullshot'],
+        category: "search",
+        desc: "Provides screenshot of any web",
+        use: '<text>',
+        filename: __filename,
+    },
+    async(Void, citel, text) => {
+let limit = 5;
+try {
+if (!text) return citel.reply("```Uhh Please, Give me Url!```");
+let urll = `https://image.thum.io/get/fullpage/=${text.match(/\bhttps?:\/\/\S+/gi)[0]}&width=1280&height=720`
+let media  = await getBuffer(urll)
+return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
+}
+catch (err) { return citel.reply("```Error While Fetching Snapshot```")}
+    }
+)
+
