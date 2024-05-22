@@ -299,8 +299,7 @@ cmd({
   }
 });
 
-
-
+//---------------------------------------------------------------------------
 cmd({
   pattern: "gjid",
   fromMe: true,
@@ -316,6 +315,7 @@ cmd({
   await citel.reply(`The JID of this group is: ${groupJID}`);
 });
 
+//---------------------------------------------------------------------------
 cmd({
   pattern: "archive",
   desc: "Archives a chat to hide it from your chat list",
@@ -337,7 +337,7 @@ cmd({
   }
 });
 
-
+//---------------------------------------------------------------------------
 cmd({
   pattern: "groupbroad",
   fromMe: true,
@@ -353,7 +353,7 @@ cmd({
   return await citel.reply("_Broadcast sent successfully_");
 });
 
-
+//---------------------------------------------------------------------------
 cmd({
     pattern: "teddyy",    
     catergory: "fun",    
@@ -366,7 +366,7 @@ cmd({
         await sleep(500);
         await Void.sendMessage(citel.chat,{text:`(\\_/)\n( •.•)\n/>${teddy[i]}`,  edit: key })             
       }
-    
+//---------------------------------------------------------------------------    
 cmd({
 
             pattern: "settings",           
