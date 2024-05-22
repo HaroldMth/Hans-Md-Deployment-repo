@@ -102,51 +102,7 @@ async function tiktokdl (url) {
 
 
 //---------------------------------------------------------------------------
-cmd({
-  pattern: 'fb',
-  alias:'facebook',
-  fromMe: false,
-  catergory:'downloader',
-  react:'🔥',
-  desc: 'Download fb video without watermark',
-},
-async (Void,citel, text,) => {
-	try {
-       let query = input.split(" ")[0].trim();
-       if (!query || !query.startsWith("https://")) {
-         return await message.send(
-           "*_Please provide a valid Facebook Video URL._*\n*Example: " +
-             prefix +
-             "fb https://www.facebook.com/watch/?v=2018727118289093_*"
-         );
-       }
-       let video = await astroJson(
-         "https://api-smd.onrender.com/api/fbdown?url=" + query
-       );
-       if (!video || !video.status) {
-         return await message.reply("*Invalid Video URL!*");
-       }
-       return await message.bot.sendMessage(
-         message.chat,
-         {
-           video: {
-             url: video.result.Normal_video, // Assuming you want the normal quality video
-           },
-           caption: Config.caption,
-         },
-         {
-           quoted: message,
-         }
-       );
-     } catch (error) {
-    await 
-Void.sendMessage(error + "\n\nCommand: facebook",
-         error,
-         "*_Video not found!_*"
-       );
-     }
-   }
- );
+
 
 //---------------------------------------------------------------------------
 cmd({
