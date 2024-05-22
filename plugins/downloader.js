@@ -14,7 +14,7 @@
  ========================================================
  **/
 
-const { tlang, ringtone, cmd,fetchJson, sleep, botpic, getBuffer, pinterest, prefix, Config } = require('../lib')
+const { tlang, ringtone, cmd,fetchJson, astroJson sleep, botpic, getBuffer, pinterest, prefix, Config } = require('../lib')
 const { mediafire } = require("../lib/mediafire.js");
 const {GDriveDl} = require('../lib/scraper.js')
 const fbInfoVideo = require('fb-info-video'); 
@@ -111,23 +111,42 @@ cmd({
   desc: 'Download fb video without watermark',
 },
 async (Void,citel, text,) => {
-  let url = text.split(' ')[0];
-
-  if (!text) {
-    return citel.reply('Please provide a fb video URL.');
-  }
-
-  try {
-    let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
-
-   if(! data || !data.result ) return citel.reply("no results found")
-
+	try {
+       let query = input.split(" ")[0].trim();
+       if (!query || !query.startsWith("https://")) {
+         return await message.send(
+           "*_Please provide a valid Facebook Video URL._*\n*Example: " +
+             prefix +
+             "fb https://www.facebook.com/watch/?v=2018727118289093_*"
+         );
+       }
+       let video = await astroJson(
+         "https://api-smd.onrender.com/api/fbdown?url=" + query
+       );
+       if (!video || !video.status) {
+         return await message.reply("*Invalid Video URL!*");
+       }
+       return await message.bot.sendMessage(
+         message.chat,
+         {
+           video: {
+             url: video.result.Normal_video, // Assuming you want the normal quality video
+           },
+           caption: Config.caption,
+         },
+         {
+           quoted: message,
+         }
+       );
+     } catch (error) {
     await 
-Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
-  } catch (error) {
-    citel.reply(`Error: ${error.message || error}`);
-  }
-});
+Void.sendMessage(error + "\n\nCommand: facebook",
+         error,
+         "*_Video not found!_*"
+       );
+     }
+   }
+ );
 
 //---------------------------------------------------------------------------
 cmd({
