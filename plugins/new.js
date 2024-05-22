@@ -207,8 +207,7 @@ cmd({
         filename: __filename,
     },
     async(Void, citel, text) => {
-        citel.reply(`*Check your DM I LEFT SOMETHING THERE🤭 ${tlang().greet}*`);
-        await Void.sendMessage(`${citel.sender}`, {
+        await Void.sendMessage(citel.reply(`*Check your DM I LEFT SOMETHING THERE🤭 ${tlang().greet}*`); {
             image: log0,
             caption: `*Channel Name: King-Support*\n*Link:* https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
         });
@@ -216,22 +215,39 @@ cmd({
     }
 )
 
-cmd(
-  {
-    pattern: "supportgc",
-    desc: "To check ping",
-    react: "🗨️",
-    category: "user",
-    filename: __filename,
-  },
-  async(Void, citel, text) => {
-    const SupportMsg = `KING-MD V1.3 Official Support Channel\n\n *ʟɪɴᴋ:*https://chat.whatsapp.com/Dd2RCJsumFWBfQ6290pDy8 \n\n ${Config.botname} *WORKS*`;
+cmd({
+        pattern: "supportgc",
+        alias: ["about"],
+        desc: "To check bot status",
+        category: "user",
+        filename: __filename,
+    },
+    async(Void, citel) => {
+        let ter = `
+This Is Support
+`;
+        let buttonMessaged = {
+            image: {
+                url: await botpic(),
+            },
+            caption: ter,
+            footer: tlang().footer,
+            headerType: 4,
+            contextInfo: {
+                externalAdReply: {
+                showAdAttribution: true,
+                    title: Config.botname,
+                    body: `Bot-Support`,
+                    thumbnail: log0,
+                    mediaType: 2,
+                    mediaUrl: '',
+                    sourceUrl: `https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+                },
+            },
+        };
+        return await Void.sendMessage(citel.chat, buttonMessaged, {
+            quoted: citel,
+        });
 
-    const contextInfo = {
-      forwardingScore: 999,
-      isForwarded: true,
-    };
-
-    await Void.sendMessage(SupportMsg, { contextInfo });
-  }
-);
+    }
+)
