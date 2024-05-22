@@ -127,8 +127,8 @@ cmd({
     )
 //---------------------------------------------------------------------------
 cmd({
-            pattern: "del",
-            alias: ["delete"],
+            pattern: "delete",
+            alias: ["deletemsg"],
             desc: "Deletes message of any user",
             category: "group",
             filename: __filename,
@@ -223,8 +223,28 @@ cmd({
     citel.reply("Successfully left the group🙂.");
   } catch (error) {
     console.error(error);
-    citel.reply("Failed to leave the group.🤦🏽‍♂️");
+    citel.reply("you leave the group.🤦🏽‍♂️");
   }
+});
+
+//---------------------------------------------------------------------------
+cmd({
+  pattern: "del",
+  alias: ["delt"],
+  desc: "Deletes your own message",
+  category: "misc",
+  use: "<reply to your message>",
+}, async (Void, citel, text) => {
+  if (!citel.quoted) return citel.reply("Please reply to the message you want to delete🙂.");
+  if (!citel.quoted.fromMe) return citel.reply("You can only delete your own messages🙄.");
+  const { chat, fromMe, id } = citel.quoted;
+  const key = {
+    remoteJid: chat,
+    fromMe,
+    id,
+  };
+
+  await Void.sendMessage(chat, { delete: key });
 });
 
 //---------------------------------------------------------------------------
