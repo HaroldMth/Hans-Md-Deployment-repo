@@ -64,6 +64,114 @@ async(Void, citel, text,{ isCreator }) => {
 
 //---------------------------------------------------------------------------
 cmd({
+    pattern: "request",
+    desc: "Send a request message to the bot developer.",
+    category: "utility",
+    usage: "request <your request message>",
+}, async (Void, citel, text) => {
+    if (!text) {
+        await citel.reply("Please provide your request message. Example: request Please fix or add a new feature.");
+        return;
+    }
+    const developerNumber = '923096566451';
+    const requestMessage = `*Request from ${citel.sender}*\n\n${text}`;
+    await Void.sendMessage(developerNumber + "@s.whatsapp.net", { text: requestMessage }, { quoted: citel });
+    await citel.reply("Your request has been sent to the bot developer. Thank you!");
+});
+
+    //---------------------------------------------------------------------------
+cmd({
+            pattern: "retrive2",
+            desc: "Copies and Forwords viewonce message.",
+            category: "group",
+            filename: __filename,
+            use: '<reply to a viewonce message.>',
+        },
+        async(Void, citel, text) => {
+            if (!citel.quoted) return reply("Please reply to any message Image or Video!");
+            let mime = citel.quoted.mtype
+            if (/viewOnce/.test(mime)) {
+                const mtype = Object.keys(quoted.message)[0];
+                delete quoted.message[mtype].viewOnce;
+                const msgs = proto.Message.fromObject({
+                    ...quoted.message,
+                  });
+                const prep = generateWAMessageFromContent(citel.chat, msgs, { quoted: citel });
+                await Void.relayMessage(citel.chat, prep.message, { messageId: prep.key.id });
+            } else {
+                await citel.reply("please, reply to viewOnceMessage");
+            }
+        }
+    )
+//---------------------------------------------------------------------------
+cmd({
+            pattern: "memegen",
+            desc: "Write text on quoted image.",
+            category: "group",
+            filename: __filename,
+            use: '<text>',
+        },
+        async(Void, citel, text) => {
+            let mime = citel.quoted.mtype
+            if (!/image/.test(mime)) return citel.reply(`Reply to Photo With Caption *text*`)
+            mee = await Void.downloadAndSaveMediaMessage(citel.quoted)
+            mem = await TelegraPh(mee)
+            meme = await getBuffer(`https://api.memegen.link/images/custom/-/${text}.png?background=${mem}`)
+            let buttonMessage = {
+                image: meme,
+                caption: "Here you go",
+                footer: tlang().footer,
+                headerType: 4,
+            };
+            Void.sendMessage(citel.chat, buttonMessage, {
+                quoted: citel,
+            });
+            await fs.unlinkSync(mee)
+
+        }
+    )
+//---------------------------------------------------------------------------
+cmd({
+            pattern: "del",
+            alias: ["delete"],
+            desc: "Deletes message of any user",
+            category: "group",
+            filename: __filename,
+            use: '<quote/reply message.>',
+        },
+        async(Void, citel, text) => {
+            if (citel.quoted.Bot) {
+                const key = {
+                    remoteJid: citel.chat,
+                    fromMe: false,
+                    id: citel.quoted.id,
+                    participant: citel.quoted.sender
+                }
+                await Void.sendMessage(citel.chat, { delete: key })
+
+            }
+            if (!citel.quoted.isBot) {
+                if (!citel.isGroup) return citel.reply(tlang().group)
+                const groupAdmins = await getAdmin(Void, citel)
+                const botNumber = await Void.decodeJid(Void.user.id)
+                const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+                const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+                if (!isAdmins) return citel.reply('Only Admins are allowed to delete other persons message.')
+                if (!isBotAdmins) return citel.reply('I can\'t delete anyones message without getting Admin Role.')
+                if (!citel.quoted) return citel.reply(`Please reply to the message. ${tlang().greet}`);
+                let { chat, fromMe, id } = citel.quoted;
+                const key = {
+                    remoteJid: citel.chat,
+                    fromMe: false,
+                    id: citel.quoted.id,
+                    participant: citel.quoted.sender
+                }
+                await Void.sendMessage(citel.chat, { delete: key })
+            }
+        }
+    )
+//---------------------------------------------------------------------------
+cmd({
 
             pattern: "settings",           
             desc: "(setting list).",
