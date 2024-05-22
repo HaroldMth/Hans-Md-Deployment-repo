@@ -102,45 +102,32 @@ async function tiktokdl (url) {
 
 
 //---------------------------------------------------------------------------
-cmd(
-    {
-        pattern: "facebook",
-	react: "📽️",
-	alias: ['fb'],
-        category:"downloader",
+cmd({
+  pattern: 'fb',
+  alias:'facebook',
+  fromMe: false,
+  catergory:'downloader',
+  react:'🔥',
+  desc: 'Download fb video without watermark',
+},
+async (Void,citel, text,) => {
+  let url = text.split(' ')[0];
 
-        filename: __filename
-    },
-    async (Void, citel, text) => {
-        try {
-            if (!text) {
-                citel.reply("*Please provide a valid URL* 🌏.");
-                return;
-            }
+  if (!text) {
+    return citel.reply('Please provide a fb video URL.');
+  }
 
-            const wamod = await fetchJson(`https://kaveesha-sithum-api.cyclic.cloud/fbdl?url=${text}`);
+  try {
+    let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
 
-            if (!wamod.result || !wamod.result.hd) {
-                citel.reply("Failed to fetch video URL or HD link ❌.");
-                return;
-            }
-            
-            await Void.sendMessage(
-                citel.chat,
-                {
-                    video: { url: wamod.result.hd },
-                    mimetype: "video/mp4",
-                    caption:'┏━━━━━━━━━━━━━┓\n\n🐹 * ${Config.botname} ꜰʙ ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*🐹\n\n▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁\n\n✷▎🎋⃟🥷 *ᴄʀᴇᴀᴛᴇʀ*: Naveed\n\n✷▎🎋⃟🥷 *ᴄʀᴇᴀᴛᴇʀ ɴᴜᴍʙᴇʀ*:  wa.me//+923096566452\n\n┗━━━━━━━━━━━━━┛\n\n*ʏᴏᴜʀ ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ*...🔥🔥'
-                },
-                { quoted: citel }
-            );
+   if(! data || !data.result ) return citel.reply("no results found")
 
-        } catch (error) {
-            citel.reply("An error occurred: " + error.message);
-        }
-    }
-);
-
+    await 
+Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
+  } catch (error) {
+    citel.reply(`Error: ${error.message || error}`);
+  }
+});
 
 //---------------------------------------------------------------------------
 cmd({
