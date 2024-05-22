@@ -200,3 +200,18 @@ ZIP CODE : 10089
         }
     )
             
+cmd({
+        pattern: "support",
+        desc: "Sends official support group link.",
+        category: "group",
+        filename: __filename,
+    },
+    async(Void, citel, text) => {
+        citel.reply(`*Check your DM I LEFT SOMETHING THERE🤭 ${tlang().greet}*`);
+        await Void.sendMessage(`${citel.sender}`, {
+            image: log0,
+            caption: `*Channel Name: King-Support*\n*Link:* https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+        });
+
+    }
+)
