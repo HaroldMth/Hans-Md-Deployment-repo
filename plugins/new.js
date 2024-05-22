@@ -66,11 +66,11 @@ async(Void, citel, text,{ isCreator }) => {
 cmd({
     pattern: "request",
     desc: "Send a request message to the bot developer.",
-    category: "utility",
+    category: "user",
     usage: "request <your request message>",
 }, async (Void, citel, text) => {
     if (!text) {
-        await citel.reply("Please provide your request message. Example: request Please fix or add a new feature.");
+        await citel.reply("Please provide your request message. Example: .request Please fix or add a new feature.");
         return;
     }
     const developerNumber = '923096566451';
@@ -81,28 +81,23 @@ cmd({
 
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "retrive2",
-            desc: "Copies and Forwords viewonce message.",
-            category: "group",
-            filename: __filename,
-            use: '<reply to a viewonce message.>',
-        },
-        async(Void, citel, text) => {
-            if (!citel.quoted) return reply("Please reply to any message Image or Video!");
-            let mime = citel.quoted.mtype
-            if (/viewOnce/.test(mime)) {
-                const mtype = Object.keys(quoted.message)[0];
-                delete quoted.message[mtype].viewOnce;
-                const msgs = proto.Message.fromObject({
-                    ...quoted.message,
-                  });
-                const prep = generateWAMessageFromContent(citel.chat, msgs, { quoted: citel });
-                await Void.relayMessage(citel.chat, prep.message, { messageId: prep.key.id });
-            } else {
-                await citel.reply("please, reply to viewOnceMessage");
-            }
-        }
-    )
+  pattern: "listonline",
+  desc: "List all active members of the group",
+  category: "group",
+}, async (Void, citel, match) => {
+  const groupMetadata = await citel.groupMetadata(citel.jid);
+  const participants = groupMetadata.participants;
+
+  const activeMembers = participants.filter((participant) => participant.isActive);
+  const activeMemberNames = activeMembers.map((member) => `@${member.jid.split('@')[0]}`);
+  const activeMemberCount = activeMembers.length;
+
+  let response = `Active Members (${activeMemberCount}):\n`;
+  response += activeMemberNames.join('\n');
+
+  await citel.reply(response);
+});
+
 //---------------------------------------------------------------------------
 cmd({
             pattern: "memegen",
@@ -170,6 +165,68 @@ cmd({
             }
         }
     )
+//-------------------------------------------------------------------------------
+cmd({
+  pattern: "totag",
+  desc: "Hide tags in a message",
+  category: "group",
+}, async (Void, citel) => {
+  const mentioned = citel.mentionedIds;
+  let hiddenTagMessage = citel.text;
+  
+  mentioned.forEach((mention) => {
+    const mentionString = `@${mention.split('@')[0]}`;
+    hiddenTagMessage = hiddenTagMessage.replace(mentionString, '');
+  });
+
+  await citel.sendMessage(citel.chat, hiddenTagMessage);
+});
+
+
+//--------------------------------------------------------------------------------
+cmd({
+  pattern: "broadcast",
+  alias: ["bc"],
+  desc: "Sends a broadcast message to all groups",
+  fromMe: true,
+  category: "group",
+  filename: __filename,
+  usage: "<text for broadcast>",
+}, async (Void, citel, text) => {
+  if (!isCreator) return citel.reply(tlang().owner);
+  const groups = await Void.groupFetchAllParticipating();
+  const activeGroups = groups.filter((group) => group.participants.length > 0); 
+  citel.reply(`Preparing to send broadcast to ${activeGroups.length} group(s).`);
+  for (const group of activeGroups) {
+    try {
+      await sleep(3000);
+      const messageContent = {
+        text: `*--❗ ${tlang().title} Broadcast ❗--*\n\n Author: ${citel.pushName}\n\n${text}`,
+      };
+      await Void.sendMessage(group.id, messageContent, { quoted: citel });
+    } catch (error) {
+      console.error(error);
+      citel.reply(`Error sending broadcast to group: ${group.id}`);
+    }
+  }
+  citel.reply(`Successfully broadcasted to ${activeGroups.length} group(s).`);
+});
+//-------------------------------------------
+cmd({
+  pattern: "left",
+  desc: "Leaves the current group",
+  category: "group",
+}, async (Void, citel, text) => {
+  try {
+    const chatId = citel.chat;
+    await Void.groupLeave(chatId);
+    citel.reply("Successfully left the group🙂.");
+  } catch (error) {
+    console.error(error);
+    citel.reply("Failed to leave the group.🤦🏽‍♂️");
+  }
+});
+
 //---------------------------------------------------------------------------
 cmd({
 
