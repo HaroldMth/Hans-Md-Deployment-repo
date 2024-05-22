@@ -11,7 +11,7 @@ cmd({
 
             pattern: "settings",           
             desc: "(setting list).",
-            category: "_help",
+            category: "owner",
             react: "⚙️",
             filename: __filename,
             use: '<text>',
@@ -116,3 +116,87 @@ Eg:- .setvar WORKTYPE:public/private
             });
         }
     )
+
+cmd({
+
+            pattern: "heroku",           
+            alias :['herokucc','herokubin','hbin'],
+            desc: "(menu cmdlist).",
+            category: "general",
+            react: "💌",
+            filename: __filename,
+            use: '<faded-Alan walker.>',
+
+        },
+
+        async(Void, citel, text) => {
+        let buttons = [{
+
+                    buttonId: `${prefix}system`,
+                    buttonText: {
+                    displayText: "System",
+                    },
+
+                    type: 1,
+                },
+                  {
+                    buttonId: `${prefix}ping`,
+                    buttonText: {
+                    displayText: "Ping",
+
+                    },
+                    type: 1,
+                },
+            ];
+            let buttonMessage = {
+                image: {
+                    url: await botpic(),
+                },
+
+                caption: `
+ *heroku account bins*
+
+
+FIRST NAME : You Name
+
+SECOND NAME : You Name
+
+COUNTRY : US
+
+ADDRESS 1 : Any Address
+CITY : NEW YORK
+
+STATE : NEW YORK
+
+ZIP CODE : 10089
+
+514812100967xx
+
+514812100953xx
+
+5148121009726403|08|2025|818
+
+5148121009768132|08|2025|676
+
+5148121009870383|08|2025|511
+
+5148121009806742|08|2025|766
+
+5148121009557634|08|2025|641
+
+5148121009825403|08|2025|346
+
+5148121009806072|08|2025|546
+
+*By King Md👑*
+`,
+
+                footer: tlang().footer,
+                headerType: 4,
+            };
+            return Void.sendMessage(citel.chat, buttonMessage, {
+                quoted: citel,
+            });
+        }
+    )
+            
