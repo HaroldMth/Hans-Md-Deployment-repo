@@ -143,6 +143,72 @@ cmd(
 
 
 //---------------------------------------------------------------------------
+cmd({
+            pattern: "wamod",
+            desc: "Downloads WhatsApp Mods.",
+            category: "downloader",
+            filename: __filename,
+            use: '<fm wrld >',
+        },
+    async (Void, citel, text) => {
+        try {
+            const wamod = await fetchJson(`https://kaveesha-sithum-api.cyclic.cloud/fouadwa-scraper`);
+
+            // Send the APK file
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_whatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_whatsapp.name,
+                    caption: 'KING-MD\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ɴᴀᴠᴇᴇᴅ ᴅᴏɢᴀʀ'
+                },
+                { quoted: citel }
+            );
+
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_fmwhatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_fmwhatsapp.name,
+                    caption: 'KING-MD\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ɴᴀᴠᴇᴇᴅ ᴅᴏɢᴀʀ'
+                },
+                { quoted: citel }
+            );
+
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_gbwhatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_gbwhatsapp.name,
+                    caption: 'KING-MD\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ɴᴀᴠᴇᴇᴅ ᴅᴏɢᴀʀ'
+                },
+                { quoted: citel }
+            );
+
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_yowhatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_yowhatsapp.name,
+                    caption: 'KING-MD\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ɴᴀᴠᴇᴇᴅ ᴅᴏɢᴀʀ '
+                },
+                { quoted: citel }
+            );
+
+
+
+
+        } catch (error) {
+            citel.reply(error.toString()); // Convert the error to a string before sending
+        }
+    }
+);
+
+//---------------------------------------------------------------------------
 
 
 cmd({
