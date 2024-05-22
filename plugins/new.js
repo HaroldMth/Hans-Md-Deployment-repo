@@ -224,14 +224,14 @@ cmd(
     category: "user",
     filename: __filename,
   },
-  async (message) => {
-    const SupportMsg = `𝐖𝐀𝐒𝐈 𝐌𝐃 𝐕2 𝐎𝐅𝐅𝐈𝐂𝐀𝐋 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏\n\n *ʟɪɴᴋ:*https://chat.whatsapp.com/Dd2RCJsumFWBfQ6290pDy8 \n\n ${Config.botname} *WORKS*`;
+  async(Void, citel, text) => {
+    const SupportMsg = `KING-MD V1.3 Official Support Channel\n\n *ʟɪɴᴋ:*https://chat.whatsapp.com/Dd2RCJsumFWBfQ6290pDy8 \n\n ${Config.botname} *WORKS*`;
 
     const contextInfo = {
       forwardingScore: 999,
       isForwarded: true,
     };
 
-    await message.send(SupportMsg, { contextInfo });
+    await Void.sendMessage(SupportMsg, { contextInfo });
   }
 );
