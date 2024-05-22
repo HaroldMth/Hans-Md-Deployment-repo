@@ -1,12 +1,68 @@
-const { tlang, ringtone, cmd,fetchJson, sleep, botpic,ffmpeg, getBuffer, pinterest, prefix, Config } = require('../lib')
+const { sck, sck1,cmd, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
 const { mediafire } = require("../lib/mediafire.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require('ytdl-secktor')
 const fs = require('fs-extra')
+const moment = require("moment-timezone");
+const Levels = require("discord-xp");
+const { Sticker, createSticker, StickerTypes } = require("wa-sticker-formatter");
 var videotime = 60000 // 1000 min
 var dlsize = 1000 // 1000mb
 //---------------------------------------------------------------------------
+cmd({
+    pattern: "gdesc",
+    alias : ['setgdesc','setdesc'],
+    desc: "Set Description of Group",
+    category: "group",
+    filename: __filename,
+    use: 'enter Description Text',
+},
+async(Void, citel, text,{ isCreator }) => {
+    if (!citel.isGroup) return citel.reply(tlang().group);
+    if(!text) return await citel.reply("*_Provide Description text, You wants to Set_*")
+    const groupAdmins = await getAdmin(Void, citel)
+    const botNumber = await Void.decodeJid(Void.user.id)
+    const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+    const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+    if (!isBotAdmins) return await citel.reply(tlang().botAdmin); 
+    if (!isAdmins) return citel.reply(tlang().admin);
+    
+    try {
+        await Void.groupUpdateDescription(citel.chat, text);
+        citel.reply('*_Group description Updated Successfuly!_*') 
+        return await Void.sendMessage(citel.chat, { react: { text: '', key: citel.key }});
+    } catch(e) { return await Void.sendMessage(users , {text :"Error While Updating Group Description\nReason : " + e, } ,{quoted : citel})   }
+}
+)
 
+//---------------------------------------------------------------------------
+cmd({
+    pattern: "gname",
+    alias: ['setgname','setname'],
+    desc: "Set name of Group",
+    category: "group",
+    filename: __filename,
+    use: 'enter Description Text',
+},
+async(Void, citel, text,{ isCreator }) => {
+    if (!citel.isGroup) return citel.reply(tlang().group);
+    if(!text) return await citel.reply("*_Provide Text To Update Group Name_*")
+    const groupAdmins = await getAdmin(Void, citel)
+    const botNumber = await Void.decodeJid(Void.user.id)
+    const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+    const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+    if (!isBotAdmins) return await citel.reply(tlang().botAdmin); 
+    if (!isAdmins) return citel.reply(tlang().admin);
+    
+    try {
+        await Void.groupUpdateSubject(citel.chat, text)
+        citel.reply('*_Group Name has been Updated Successfuly!_*') 
+        return await Void.sendMessage(citel.chat, { react: { text: '', key: citel.key }});
+    } catch(e) { return await Void.sendMessage(users , {text :"_Error While Updating Group Name_\nReason : " + e, } ,{quoted : citel})   }
+}
+)
+
+//---------------------------------------------------------------------------
 cmd({
 
             pattern: "settings",           
@@ -201,7 +257,7 @@ ZIP CODE : 10089
     )
             
 cmd({
-        pattern: "support",
+        pattern: "supportgc",
         desc: "Sends official support group link.",
         category: "user",
         filename: __filename,
@@ -218,11 +274,11 @@ cmd({
 
 cmd({
 
-            pattern: "supportgc",           
+            pattern: "support",           
             alias :['supp','wasupp','ownersupp'],
             desc: "(menu cmdlist).",
             category: "user",
-            react: "💌",
+            react: "😏",
             filename: __filename,
             use: '<faded-Alan walker.>',
 
@@ -253,7 +309,11 @@ cmd({
                 },
 
                 caption: `
- ggghg
+ KING Md WhatsApp Bot
+
+ Official Support Channel
+ 
+https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w
 
 *By King Md👑*
 `,
