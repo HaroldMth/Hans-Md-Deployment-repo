@@ -1,4 +1,5 @@
-const { sck, sck1,cmd, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
+const { sck, sck1,cmd, jsonformat, updateProfilePicture, forwardMessage, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
+const Config = require('../config')
 const { mediafire } = require("../lib/mediafire.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require('ytdl-secktor')
@@ -248,6 +249,125 @@ cmd({
 });
 
 //---------------------------------------------------------------------------
+cmd({
+  pattern: 'antidelete',
+  fromMe: true,
+  desc: 'Configure Anti-Delete preferences',
+  category: 'owner',
+}, async (Void, citel, text) => {
+  const args = text.split(' | ');
+
+  if (args.length === 1 && args[0].toLowerCase() === 'off') {
+    antideleteOwners.delete(citel.sender.jid);
+    return await citel.reply('Anti-Delete turned off.');
+  }
+
+  if (args.length === 1 && args[0].toLowerCase() === 'on') {
+    antideleteOwners.add(citel.sender.jid);
+    return await citel.reply('Anti-Delete turned on. Deleted messages will be sent to you.');
+  } else {
+    return await citel.reply('Invalid format. Example: antidelete on');
+  }
+});
+
+cmd({
+  on: 'message',
+  fromMe: false,
+}, async (Void, citel, message) => {
+  if (antideleteOwners.size > 0 && citel.key.fromMe === false) {
+    antideleteOwners.forEach(async ownerJID => {
+      const deletedBy = citel.key.fromMe ? 'you' : citel.key.participant;
+      const sentBy = citel.key.fromMe ? 'you' : citel.key.remoteJid;
+
+      const messageText = message.hasOwnProperty('text') ? message.text : 'Non-text message';
+
+      const deletedMessageID = citel.message.id;
+      const deletedMessageContent = await Void.getMessageById(deletedMessageID);
+
+      const report = ` *Someone deleted a message!!*\n\n * Deleted by:* _${deletedBy}_\n *✉️ Sent by:* _${sentBy}_\n * *Message text:* \`\`\`${messageText}\`\`\``;
+
+      if (message.hasOwnProperty('image') || message.hasOwnProperty('video') || message.hasOwnProperty('audio')) {
+        report += `\n\n*Message media:*\n`;
+        for (const media of Object.values(message)) {
+          if (media.hasOwnProperty('mimetype')) {
+            report += `- ${media.mimetype}\n`;
+          }
+        }
+      }
+
+      await Void.sendMessage(ownerJID, report, citel.message);
+    });
+  }
+});
+
+
+
+cmd({
+  pattern: "gjid",
+  fromMe: true,
+  desc: "Get the JID of the current group",
+  category : "user",
+}, async (Void, citel) => {
+  if (!citel.isGroup) {
+    await citel.reply("This command can only be used in a group.");
+    return;
+  }
+
+  const groupJID = citel.chat;
+  await citel.reply(`The JID of this group is: ${groupJID}`);
+});
+
+cmd({
+  pattern: "archive",
+  desc: "Archives a chat to hide it from your chat list",
+  category: "user",
+  use: "<reply to chat>",
+}, async (Void, citel, text) => {
+  if (!citel.quoted) return citel.reply("Please reply to the chat you want to archive.");
+  const chatId = citel.quoted.chat;
+  try {
+    const lastMessage = await getLastMessageInChat(chatId);
+    await Void.chatModify({
+      archive: true,
+      lastMessages: [lastMessage],
+    }, chatId);
+    citel.reply("Chat successfully archived!");
+  } catch (error) {
+    console.error(error);
+    citel.reply("Failed to archive chat.");
+  }
+});
+
+
+cmd({
+  pattern: "groupbroad",
+  fromMe: true,
+  desc: "Send a broadcast message to the group",
+  catergory: "owner",
+}, async (Void, citel, text) => {
+  if (!text) return await citel.reply("_Please provide a message to broadcast_");
+
+  const groupJid = "120363193106986276@g.us"; 
+
+  await Void.sendMessage(groupJid, text);
+
+  return await citel.reply("_Broadcast sent successfully_");
+});
+
+
+cmd({
+    pattern: "teddyy",    
+    catergory: "fun",    
+    dear: "cute teddy",   
+    filename: __filename,
+},async(Void,citel ,text) => {
+      let teddy = ['❤', '💕', '😻', '🧡', '💛', '💚', '💙', '💜', '🖤', '❣', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥️', '💌', '🙂', '🤗', '😌', '😉', '🤗', '😊', '🎊', '🎉', '🎁', '🎈']
+      const { key } = await Void.sendMessage(citel.chat,{text :  `(\\_/)\n( •.•)\n/>🤍` })
+      for (let i = 0; i < teddy.length; i++) {
+        await sleep(500);
+        await Void.sendMessage(citel.chat,{text:`(\\_/)\n( •.•)\n/>${teddy[i]}`,  edit: key })             
+      }
+    
 cmd({
 
             pattern: "settings",           
