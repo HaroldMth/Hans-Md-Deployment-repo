@@ -1,5 +1,4 @@
 const { sck, sck1,cmd, jsonformat, updateProfilePicture, forwardMessage, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
-const Config = require('../config')
 const { mediafire } = require("../lib/mediafire.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require('ytdl-secktor')
