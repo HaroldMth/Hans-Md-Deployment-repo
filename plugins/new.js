@@ -203,7 +203,7 @@ ZIP CODE : 10089
 cmd({
         pattern: "support",
         desc: "Sends official support group link.",
-        category: "group",
+        category: "user",
         filename: __filename,
     },
     async(Void, citel, text) => {
@@ -215,3 +215,23 @@ cmd({
 
     }
 )
+
+cmd(
+  {
+    pattern: "supportgc",
+    desc: "To check ping",
+    react: "🗨️",
+    category: "user",
+    filename: __filename,
+  },
+  async (message) => {
+    const SupportMsg = `𝐖𝐀𝐒𝐈 𝐌𝐃 𝐕2 𝐎𝐅𝐅𝐈𝐂𝐀𝐋 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏\n\n *ʟɪɴᴋ:*https://chat.whatsapp.com/Dd2RCJsumFWBfQ6290pDy8 \n\n ${Config.botname} *WORKS*`;
+
+    const contextInfo = {
+      forwardingScore: 999,
+      isForwarded: true,
+    };
+
+    await message.send(SupportMsg, { contextInfo });
+  }
+);
