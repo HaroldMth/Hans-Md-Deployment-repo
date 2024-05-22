@@ -207,47 +207,62 @@ cmd({
         filename: __filename,
     },
     async(Void, citel, text) => {
-        await Void.sendMessage(citel.reply(`*Check your DM I LEFT SOMETHING THERE🤭 ${tlang().greet}*`); {
+        citel.reply(`*Check your DM I LEFT SOMETHING THERE🤭 ${tlang().greet}*`);
+        await Void.sendMessage(`${citel.sender}`, {
             image: log0,
-            caption: `*Channel Name: King-Support*\n*Link:* https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+            caption: `*Name: King-Support*\n*Link:* https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
         });
 
     }
 )
 
 cmd({
-        pattern: "supportgc",
-        alias: ["about"],
-        desc: "To check bot status",
-        category: "user",
-        filename: __filename,
-    },
-    async(Void, citel) => {
-        let ter = `
-This Is Support
-`;
-        let buttonMessaged = {
-            image: {
-                url: await botpic(),
-            },
-            caption: ter,
-            footer: tlang().footer,
-            headerType: 4,
-            contextInfo: {
-                externalAdReply: {
-                showAdAttribution: true,
-                    title: Config.botname,
-                    body: `Bot-Support`,
-                    thumbnail: log0,
-                    mediaType: 2,
-                    mediaUrl: '',
-                    sourceUrl: `https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
-                },
-            },
-        };
-        return await Void.sendMessage(citel.chat, buttonMessaged, {
-            quoted: citel,
-        });
 
-    }
-)
+            pattern: "supportgc",           
+            alias :['supp','wasupp','ownersupp'],
+            desc: "(menu cmdlist).",
+            category: "user",
+            react: "💌",
+            filename: __filename,
+            use: '<faded-Alan walker.>',
+
+        },
+
+        async(Void, citel, text) => {
+        let buttons = [{
+
+                    buttonId: `${prefix}system`,
+                    buttonText: {
+                    displayText: "System",
+                    },
+
+                    type: 1,
+                },
+                  {
+                    buttonId: `${prefix}ping`,
+                    buttonText: {
+                    displayText: "Ping",
+
+                    },
+                    type: 1,
+                },
+            ];
+            let buttonMessage = {
+                image: {
+                    url: await botpic(),
+                },
+
+                caption: `
+ ggghg
+
+*By King Md👑*
+`,
+
+                footer: tlang().footer,
+                headerType: 4,
+            };
+            return Void.sendMessage(citel.chat, buttonMessage, {
+                quoted: citel,
+            });
+        }
+    )
