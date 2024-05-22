@@ -354,6 +354,39 @@ cmd({
 
 //---------------------------------------------------------------------------    
 cmd({
+    pattern: "teddyy",    
+    category: "fun",    
+    dear: "cute teddy",   
+    filename: __filename,
+},async(Void,citel ,text) => {
+      let teddy = ['❤', '💕', '😻', '🧡', '💛', '💚', '💙', '💜', '🖤', '❣', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥️', '💌', '🙂', '🤗', '😌', '😉', '🤗', '😊', '🎊', '🎉', '🎁', '🎈']
+      const { key } = await Void.sendMessage(citel.chat,{text :  `(\\_/)\n( •.•)\n/>🤍` })
+      for (let i = 0; i < teddy.length; i++) {
+        await sleep(500);
+        await Void.sendMessage(citel.chat,{text:`(\\_/)\n( •.•)\n/>${teddy[i]}`,  edit: key })             
+      }
+
+})
+
+//---------------------------------------------------------------------------    
+
+cmd({
+    pattern: "heart",    
+    category: "fun",    
+    dear: "cute hearts",   
+    filename: __filename,
+},async(Void,citel ,text) => {
+      let teddy = ['❤', '💕', '😻', '🧡', '💛', '💚', '💙', '💜', '🖤', '❣', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥️', '💌', '🙂', '🤗', '😌', '😉', '🤗', '😊', '🎊', '🎉', '🎁', '🎈']
+      const { key } = await Void.sendMessage(citel.chat,{text :  `(\\_/)\n( •.•)\n/>🤍` })
+      for (let i = 0; i < teddy.length; i++) {
+        await sleep(500);
+        await Void.sendMessage(citel.chat,{text:`(\\_/)\n( •.•)\n/>${teddy[i]}`,  edit: key })             
+      }
+
+})
+//---------------------------------------------------------------------------    
+
+cmd({
 
             pattern: "settings",           
             desc: "(setting list).",
