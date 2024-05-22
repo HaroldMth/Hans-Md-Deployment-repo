@@ -1,4 +1,4 @@
-const { sck, sck1,cmd, jsonformat, forwardMessage, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
+const { sck, sck1,cmd, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
 const { mediafire } = require("../lib/mediafire.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require('ytdl-secktor')
@@ -247,20 +247,6 @@ cmd({
   await Void.sendMessage(chat, { delete: key });
 });
 
-
-//---------------------------------------------------------------------------
-cmd({
-    pattern: "teddyy",    
-    catergory: "fun",    
-    dear: "cute teddy",   
-    filename: __filename,
-},async(Void,citel ,text) => {
-      let teddy = ['❤', '💕', '😻', '🧡', '💛', '💚', '💙', '💜', '🖤', '❣', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥️', '💌', '🙂', '🤗', '😌', '😉', '🤗', '😊', '🎊', '🎉', '🎁', '🎈']
-      const { key } = await Void.sendMessage(citel.chat,{text :  `(\\_/)\n( •.•)\n/>🤍` })
-      for (let i = 0; i < teddy.length; i++) {
-        await sleep(500);
-        await Void.sendMessage(citel.chat,{text:`(\\_/)\n( •.•)\n/>${teddy[i]}`,  edit: key })             
-      }
 //---------------------------------------------------------------------------    
 cmd({
 
