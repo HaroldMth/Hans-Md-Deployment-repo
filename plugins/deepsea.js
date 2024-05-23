@@ -268,13 +268,13 @@
      )
      //---------------------------------------------------------------------------
  cmd({
-             pattern: "leaves",
-             category: "textpro",
+             pattern: "glow",
+             category: "logo",
              desc: "Some text to image feature with various styles."
          },
          async(Void, citel, text) => {
              if (!text) return citel.reply('_Need text._')
-             let anu = await maker.textpro('https://textpro.me/natural-leaves-text-effect-931.html', text)
+             let anu = await maker.textpro('https://textpro.me/free-advanced-glow-text-effect-873.html', text)
              Void.sendMessage(citel.chat, {
                  image: {
                      url: anu.image
