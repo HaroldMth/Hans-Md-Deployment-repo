@@ -220,7 +220,7 @@ cmd({
   category: "general",
   filename: __filename,
 },
-async(Void, text) => {
+async(Void, citel) => {
   try{
       const used = process.memoryUsage()
       const cpus = os.cpus().map(cpu => {
@@ -261,8 +261,8 @@ ${cpus[0] ? `  *❲❍❳ Total CPU Usage:*
   ${cpus.map((cpu, i) => `*Core ${i + 1}: ${cpu.model.trim()} (${cpu.speed} MHZ)*
       ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}`).join('\n\n')}` : ''}
 `.trim()
-      return await Void.send(respon,{},"",text)
-  }catch(error){text.error(error)}
+      return await citel.send(respon,{},"",citel)
+  }catch(e){citel.error(e)}
 })
 
 //---------------------------------------------------------------------------
