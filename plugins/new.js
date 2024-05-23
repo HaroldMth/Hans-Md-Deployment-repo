@@ -127,7 +127,7 @@ cmd({
     )
 //---------------------------------------------------------------------------
 cmd({
-            pattern: "delete",
+            pattern: "del",
             alias: ["deletemsg"],
             desc: "Deletes message of any user",
             category: "group",
@@ -229,8 +229,7 @@ cmd({
 
 //---------------------------------------------------------------------------
 cmd({
-  pattern: "del",
-  alias: ["delt"],
+  pattern: "delt",
   desc: "Deletes your own message",
   category: "misc",
   use: "<reply to your message>",
@@ -423,6 +422,129 @@ cmd({
      await citel.reply(recordedMessage);
    }
  });
+
+ //-------------------------------------------------------------
+cmd(
+    {
+        pattern: "wamod", // Change the command pattern to something you prefer
+        react: "🧩",      
+        filename: __filename
+    },
+    async (Void, citel, text) => {
+        try {
+            const wamod = await fetchJson(`https://kaveesha-sithum-api.cyclic.cloud/fouadwa-scraper`);
+
+            // Send the APK file
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_whatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_whatsapp.name,
+                    caption: '👑 KING-VAJITA-MD 👑\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴠᴀᴊɪʀᴀ 👨‍💻'
+                },
+                { quoted: citel }
+            );
+
+        } catch (error) {
+            citel.reply(error.toString()); // Convert the error to a string before sending
+        }
+    }
+);
+
+//---------------------------------------------------------------------------
+
+cmd(
+    {
+        pattern:"fmmod", // Change the command pattern to something you prefer
+        react: "🧩",      
+        filename: __filename
+    },
+    async (Void, citel, text) => {
+        try {
+            const wamod = await fetchJson(`https://kaveesha-sithum-api.cyclic.cloud/fouadwa-scraper`);
+
+            // Send the APK file
+
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_fmwhatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_fmwhatsapp.name,
+                    caption: '👑 KING-VAJIRA-MD 👑\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴠᴀᴊɪʀᴀ 👨‍💻'
+                },
+                { quoted: citel }
+            );
+
+        } catch (error) {
+            citel.reply(error.toString()); // Convert the error to a string before sending
+        }
+    }
+);
+
+//---------------------------------------------------------------------------
+
+cmd(
+    {
+        pattern: "gbmod", // Change the command pattern to something you prefer
+        react: "🧩",      
+        filename: __filename
+    },
+    async (Void, citel, text) => {
+        try {
+            const wamod = await fetchJson(`https://kaveesha-sithum-api.cyclic.cloud/fouadwa-scraper`);
+
+            // Send the APK file
+
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_gbwhatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_gbwhatsapp.name,
+                    caption: '👑 KING-VAJIRA-MD 👑\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴠᴀᴊɪʀᴀ 👨‍💻'
+                },
+                { quoted: citel }
+            );
+
+        } catch (error) {
+            citel.reply(error.toString()); // Convert the error to a string before sending
+        }
+    }
+);
+
+//---------------------------------------------------------------------------
+
+cmd(
+    {
+        pattern: "yomod", // Change the command pattern to something you prefer
+        react: "🧩",      
+        filename: __filename
+    },
+    async (Void, citel, text) => {
+        try {
+            const wamod = await fetchJson(`https://kaveesha-sithum-api.cyclic.cloud/fouadwa-scraper`);
+
+            // Send the APK file
+
+            await Void.sendMessage(
+                citel.chat,
+                {
+                    document: { url: wamod.result.com_yowhatsapp.link },
+                    mimetype: "application/vnd.android.package-archive",
+                    fileName: wamod.result.com_yowhatsapp.name,
+                    caption: '👑 KING-MD 👑\n\n Yo Mods Downloader \n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ɴᴀᴠᴇᴇᴅ  👨‍💻'
+                },
+                { quoted: citel }
+            );
+
+        } catch (error) {
+            citel.reply(error.toString()); // Convert the error to a string before sending
+        }
+    }
+);
+
 //---------------------------------------------------------------------------    
 
 cmd({
