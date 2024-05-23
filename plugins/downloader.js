@@ -102,7 +102,51 @@ async function tiktokdl (url) {
 
 
 //---------------------------------------------------------------------------
-
+cmd({
+  pattern: 'fb',
+  alias:'facebook',
+  fromMe: false,
+  category:'downloader',
+  react:'🔥',
+  desc: 'Download fb video without watermark',
+},
+async (Void,citel, text,) => {
+	try {
+       let query = text.split(" ")[0].trim();
+       if (!query || !query.startsWith("https://")) {
+         return await citel.reply(
+           "*_Please provide a valid Facebook Video URL._*\n*Example: " +
+             prefix +
+             "fb https://www.facebook.com/watch/?v=2018727118289093_*"
+         );
+       }
+       let video = await axios(
+         "https://api-smd.onrender.com/api/fbdown?url=" + query
+       );
+       if (!video || !video.status) {
+         return await citel.reply("*Invalid Video URL!*");
+       }
+       return await Void.sendMessage(
+         citel.chat,
+         {
+           video: {
+             url: video.result.Normal_video, // Assuming you want the normal quality video
+           },
+           caption: Config.botname,
+         },
+         {
+           quoted: message,
+         }
+       );
+     } catch (error) {
+    await 
+Void.sendMessage(error + "\n\nCommand: facebook",
+         error,
+         "*_Video not found!_*"
+       );
+     }
+   }
+ );
 
 //---------------------------------------------------------------------------
 cmd({
@@ -132,19 +176,19 @@ cmd({
                     contextInfo: {
                         externalAdReply: {
                             title: `Here you go✨`,
-                            body: `${Config.ownername}`,
+                            body: Config.ownername,
                             thumbnail: log0,
                             mediaType: 2,
                             mediaUrl: ``,
-                            sourceUrl: ``
+                            sourceUrl: gurl,
                         }
                     }
                 }
                 return Void.sendMessage(citel.chat, buttonMessage, {
                     quoted: citel
                 })
-            } catch (e) {
-                console.log(e)
+            } catch (error) {
+                console.log(error)
             }
         })
 //---------------------------------------------------------------------------
