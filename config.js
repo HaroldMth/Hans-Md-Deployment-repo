@@ -6,12 +6,12 @@ if (fs.existsSync('config.env')) require('dotenv').config({ path: __dirname+'/co
 global.owner = process.env.OWNER_NUMBER.split(",")
 global.mongodb = process.env.MONGODB_URI || ""
 global.port= process.env.PORT || 5000
-global.email = 'textnow1pak@gmail.com'
+global.email = 'jameskk640@gmail.com'
 global.github = 'https://github.com/naveeddogar/KING-MD'
 global.location = 'pakistan/multan'
-global.gurl = 'https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w' // add your username
-global.sudo = process.env.SUDO || '923096566451'
-global.devs = '923096566451';
+global.gurl = '' // add your username
+global.sudo = process.env.SUDO || '254758248796'
+global.devs = '254758248796';
 global.website = 'https://king-session.vercel.app' // Hello world
 global.THUMB_IMAGE = process.env.THUMB_IMAGE || 'https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg'
 module.exports = {
