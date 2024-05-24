@@ -19,37 +19,35 @@ var dlsize = 1000 // 1000mb
 const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
-cmd({
+
 
 
 //---------------------------------------------------------------------------
 cmd({
-        pattern: "hirunews",
-        category: "news",
-        react: "📑",
+    pattern: "natural",
+    desc: "Set wallpaper",
+    category: "wallpaper",
+    filename: __filename,
+},
+async(Void, citel, text) => {
+        
+        const response = await fetch('https://api.unsplash.com/photos/random?client_id=72utkjatCBC-PDcx7-Kcvgod7-QOFAm2fXwEeW8b8cc');
+const data = await response.json();
+  const url =data.urls.regular
+  //citel.reply ('url here :'+url);
 
-        filename: __filename
-    },
-    async(Void, citel,text) => {
-    const hirunew = await hirunews()
-    const caption = `*_|📃 𝐇𝐈𝐑𝐔𝐔 𝐍𝐄𝐖𝐒_* 
+                let buttonMessaged = {
+                    image: { url: url },
+                    caption: `*╰┈➤ 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝙳 𝙱𝚈 ${Config.botname}*`,
+                    footer: tlang().footer,
+                    headerType: 4,
+                   
+                };
+                return await Void.sendMessage(citel.chat, buttonMessaged , {quoted : citel});
 
-🌹⃝⃘̉̉̉̉̉̉🧚 *ᴛɪᴛᴇʟ* :  ${hirunew.result.title}
 
-🌹⃝⃘̉̉̉̉̉̉🧚 *ᴅᴀᴛᴇ & ᴛɪᴍᴇ* :  ${hirunew.result.dateandtime}
-
-🌹⃝⃘̉̉̉̉̉̉🧚 *ᴜʀʟ* : ${hirunew.result.link}
-
-🌹⃝⃘̉̉̉̉̉̉🧚 *ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ* : ${hirunew.result.description}
-
-*┗━━━━━━━━━━━━━━⛶*
-
- ©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴍʀ naveed`
-
-await Void.sendMessage(citel.chat, { image: { url: hirunew.result.image }, caption: caption }, { quoted: citel })
-
-    })
-
+}
+   )
 //---------------------------------------------------------------------------
 cmd({
     pattern: "walp",
