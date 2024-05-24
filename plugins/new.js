@@ -17,32 +17,68 @@ const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
 cmd({
-            pattern: "channelyt",           
-            alias :['suppvv','wasuppvv'],
-            desc: "(owner support list).",
-            category: "user",
-            react: "👁️‍🗨️",
+            pattern: "tagadmin",           
+            desc: "owner support list",
+            category: "group",
             filename: __filename,
-            use: '<faded-Alan walker.>',
+            use: '',
 
         },
     async(Void, citel, text) => {
-  const slog = await getBuffer(global.slogo);
-  await Void.sendMessage(citel.chat, {
-    'image': slog,
-    'text': "┏━━⟪⟪ 🅼♥︎❚❚♥︎🆉 ⟫━⦿\n┃✗ *_•ɢʀᴏᴜᴘ ɴᴀᴍᴇ•_* \n┃✗ *•sɪɢᴍᴀ ᴹᴰ-sᴜᴘᴘᴏʀᴛ•* \n┃✗ *_•ɢʀᴏᴜᴘ ʟɪɴᴋ•_* " + gurl + "\n┃✗ *_•ᴅᴇᴠᴇʟᴏᴘᴇʀ•_* 𝐌𝐚𝐡𝐞𝐫 𝐙𝐮𝐛𝐚𝐢𝐫\n┗━━━━━━━━━━⦿",
-    'contextInfo': {
-      'externalAdReply': {
-        'title': "sᴜᴘᴘᴏʀᴛ",
-        'body': "Easy to Use",
-        'thumbnail': slog,
-        'mediaType': 4,
-        'mediaUrl': '',
-        'sourceUrl': gurl
-      }
+        if (!citel.isGroup) return citel.reply(tlang().group);
+        const groupMetadata = citel.isGroup ? await Void.groupMetadata(citel.chat).catch((e) => {}) : "";
+        const participants = citel.isGroup ? await groupMetadata.participants : "";
+        const groupAdmins = participants.filter(p => p.admin)
+        const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+        
+        
+        const listAdmin = groupAdmins.map((v, i) => `┃✗ @${v.id.split('@')[0]}`).join('\n')
+    
+    
+    let tag = `┏━━⟪⟪ ${Config.botname} ⟫━⦿\n┃✗ *_•𝚃𝙰𝙶𝙶𝙴𝙳 𝙱𝚈•_* @${citel.sender.split("@")[0]}
+    ${text ? "≡ bot :" + text : ""}
+┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━⦿
+${listAdmin}
+┗━━━━━━━━━━⦿\n*_⤹★ᴘᴏᴡᴇʀᴇᴅ ʙʏ★⤸ sɪɢᴍᴀ ᴹᴰ_*
+    `.trim()
+    return await Void.sendMessage(citel.chat,{text : tag ,mentions: [citel.sender, ...groupAdmins.map(v => v.id) ,]} ,)
+    
+    
+    
     }
-  });
-});
+    )
+
+cmd({
+            pattern: "tagdmin",           
+            desc: "owner support list",
+            category: "group",
+            filename: __filename,
+            use: '',
+
+        },
+    async(Void, citel, text) => {
+        if (!citel.isGroup) return citel.reply(tlang().group);
+        const groupMetadata = citel.isGroup ? await Void.groupMetadata(citel.chat).catch((e) => {}) : "";
+        const participants = citel.isGroup ? await groupMetadata.participants : "";
+        const groupAdmins = participants.filter(p => p.admin)
+        const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+        
+        
+        const listAdmin = groupAdmins.map((v, i) => `┃✗ @${v.id.split('@')[0]}`).join('\n')
+    
+    
+    let tag = `┏━━⟪⟪ ${Config.botname} ⟫━⦿\n┃✗ *_•𝚃𝙰𝙶𝙶𝙴𝙳 𝙱𝚈•_* @${citel.sender.split("@")[0]}
+    ${text ? "≡ Void :" + text : ""}
+┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━⦿
+${listAdmin}
+┗━━━━━━━━━━⦿\n*_⤹★ᴘᴏᴡᴇʀᴇᴅ ʙʏ★⤸ sɪɢᴍᴀ ᴹᴰ_*
+    `.trim()
+    return await Void.sendMessage(citel.chat,{text : tag ,mentions: [citel.sender, ...groupAdmins.map(v => v.id) ,]} ,)
+    
+    
+    
+    }
+    )
 
 
 //---------------------------------------------------------------------------
