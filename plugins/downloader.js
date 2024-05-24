@@ -536,7 +536,7 @@ axios.get(url, { responseType: 'stream' })
                     }
                   Void.sendMessage(citel.chat, buttonMessage, { quoted: citel })
 
-    citel.send('*𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳𝙸𝙽𝙶:*');
+    citel.send('*𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳𝙸𝙽𝙶:*')
 	console.log('File downloaded successfully');
 
   
