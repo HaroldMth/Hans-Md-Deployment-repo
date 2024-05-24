@@ -1,4 +1,4 @@
-const { sck, sck1,cmd, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
+const { sck, sck1,cmd, cmdBuffer, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, Config, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
 const { mediafire } = require("../lib/mediafire.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require('ytdl-secktor')
@@ -69,15 +69,43 @@ cmd({
   desc: "Generate a temporary email address.",
   category: "core",
 }, async (Void, citel) => {
-  const userId = citel.sender;
-
-  try {
-    // Generate a temporary email address
-    const email = await generateTempEmail(userId);
-    await citel.reply(`Your temporary email address is: ${email}`);
+   try {
+    if (!secmailData[citel.sender]) {
+      const tempEmail = await tempmail.create();
+      if (!tempEmail || !tempEmail[0]) {
+        return await citel.reply("*Request Denied!*");
+      }
+      const emailParts = tempEmail[0].split("@");
+      secmailData[citel.sender] = {
+        email: tempEmail[0],
+        login: emailParts[0],
+        domain: emailParts[1]
+      };
+    }
+    var buffer = false;
+    try {
+      buffer = await cmdBuffer(tmpUrl);
+    } catch (error) {}
+    await citel.reply(
+      `*YOUR TEMPMAIL INFO*
+*EMAIL:* ${secmailData[citel.sender].email}
+*Login:* ${secmailData[citel.sender].login}
+*Domain:* ${secmailData[citel.sender].domain}
+*USE _${prefix}checkmail_ to get latest emails!
+*USE _${prefix}delmail_ to delete current email!
+${Config.botname}
+`.trim(),
+      {
+        contextInfo: {
+          ...(await citel.bot.contextInfo("TEMPMAIL", citel.senderName, buffer))
+        }
+      },
+      "cmd",
+      citel
+    );
   } catch (error) {
-    console.error('Error generating temporary email:', error);
-    await citel.reply('An error occurred while generating the temporary email address.');
+    console.log(error);
+    await citel.reply("*Request Denied!*");
   }
 });
 
@@ -534,12 +562,12 @@ cmd({
 cmd({
         pattern: "paste",
         desc: "create paste of text.",
-        category: "extra",
+        category: "core",
         filename: __filename,
     },
     async(Void, citel,text) => {
  let a = citel.quoted ? citel.quoted.text : citel.text;
-let { data } = await axios.get(`https://api.telegra.ph/createPage?access_token=d3b25feccb89e508a9114afb82aa421fe2a9712b963b387cc5ad71e58722&title=Secktor-2.0+Bot&author_name=Slasher-Official &content=[%7B"tag":"p","children":["${a.replace(/ /g,'+')}"]%7D]&return_content=true`);
+let { data } = await axios.get(`https://api.telegra.ph/createPage?access_token=d3b25feccb89e508a9114afb82aa421fe2a9712b963b387cc5ad71e58722&title=King-Md+Bot&author_name=Naveeddogar&content=[%7B"tag":"p","children":["${a.replace(/ /g,'+')}"]%7D]&return_content=true`);
 return citel.reply(`*Paste created on telegraph*\nName:-${util.format(data.result.title)} \nUrl:- ${util.format(data.result.url)}`)
     }
 );
