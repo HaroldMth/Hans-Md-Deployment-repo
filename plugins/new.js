@@ -97,16 +97,33 @@ const data = await response.json();
 
  //----------------------------------------------------------------------------
 cmd({
-    pattern: "bike",
-    desc: "Set wallpaper",
-    category: "wallpaper",
-    filename: __filename,
-},
-async(Void, citel, text) => {
-        let anu = await fetchJson('https://raw.githubusercontent.com/no-name7788/SIGMA-MD/main/Media/WallPapers/Bike_Pics.json')
-    let random = anu[Math.floor(Math.random() * anu.length)]
-    return await Void.sendMessage(citel.chat,{image :{url : random } , caption: `*╰┈➤ 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝙳 𝙱𝚈 ${Config.botname}*`  }, { quoted: citel })
-})
+  pattern: "bike",
+  desc: "Set wallpaper",
+  category: "wallpaper",
+  filename: __filename,
+}, async (Void, citel, text) => {
+  try {
+    const response = await fetchJson('https://raw.githubusercontent.com/no-name7788/SIGMA-MD/main/Media/WallPapers/Bike_Pics.json');
+    const wallpapers = response;
+    const randomIndex = Math.floor(Math.random() * wallpapers.length);
+    const randomWallpaper = wallpapers[randomIndex];
+    const caption = `*╰┈➤ ${Config.botname} GENERATED WALLPAPER*`;
+    if (citel.chat) {
+      return await Void.sendMessage(citel.chat, {
+        image: {
+          url: randomWallpaper
+        },
+        caption: caption
+      }, {
+        quoted: citel
+      });
+    } else {
+      console.log("Chat object not found.");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 
  //----------------------------------------------------------------------------
 cmd({
