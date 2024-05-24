@@ -8,62 +8,21 @@ const axios = require('axios');
 const moment = require("moment-timezone");
 const Levels = require("discord-xp");
 const { Sticker, createSticker, StickerTypes } = require("wa-sticker-formatter");
+const Config = require('../config')
+const maker = require('mumaker')
 var videotime = 60000 // 1000 min
 var dlsize = 1000 // 1000mb
 const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
-
-// Create a map to store temporary email addresses and messages
-const tempEmails = new Map();
-
-// Function to generate a temporary email address
-async function generateTempEmail(userId) {
-  const options = {
-    method: 'GET',
-    url: 'https://privatix-temp-mail-v1.p.rapidapi.com/request/new/',
-    headers: {
-      'X-RapidAPI-Key':'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b',
-      'X-RapidAPI-Host': 'privatix-temp-mail-v1.p.rapidapi.com'
-    }
-  };
-
-  try {
-    const response = await axios.request(options);
-    const email = response.data.email;
-    tempEmails.set(userId, { address: email, messages: [] }); // Store the generated email address for the user
-    return email;
-  } catch (error) {
-    console.error('Error generating temporary email:', error);
-    throw error;
-  }
-}
-
-// Function to check the inbox of a temporary email address
-async function checkInbox(userId) {
-  const email = tempEmails.get(userId).address;
-
-  const options = {
-    method: 'GET',
-    url: `https://privatix-temp-mail-v1.p.rapidapi.com/request/keepalive/id/${email}/`,
-    headers: {
-      'X-RapidAPI-Key':'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b',
-      'X-RapidAPI-Host': 'privatix-temp-mail-v1.p.rapidapi.com'
-    }
-  };
-
-  try {
-    const response = await axios.request(options);
-    const messages = response.data;
-    tempEmails.get(userId).messages = messages; // Update the messages in the map
-    return messages;
-  } catch (error) {
-    console.error('Error checking temporary email inbox:', error);
-    throw error;
-  }
-}
-
-// Command for generating a temporary email address
+cmd({ pattern: "check", alias: ["testbot"], category: "logomaker", react: "✅", desc: "Some text to image feature with various styles." }, async(Void, citel, text) => {
+        if (!text) return citel.react("✅")
+        let anu = await maker.textpro('https://fdown.net/download.php', Url)
+        Void.sendMessage(citel.chat, { video: { url: anu }, caption: `⦿.*𝗠𝗔𝗗𝗘 𝗕𝗬 :-* ${tlang().title} 👨‍💻 ${tlang().greet}` }, { quoted: citel })
+    })
+                           
+ //----------------------------------------------------------------------------
+                                                                                       
 cmd({
   pattern: "tempmail",
   desc: "Generate a temporary email address.",
