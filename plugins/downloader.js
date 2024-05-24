@@ -112,8 +112,8 @@ cmd({
 },
 async (Void,citel, text,) => {
 	try {
-       let text = text.split(" ")[0].trim();
-       if (!text || !text.startsWith("https://")) {
+       let query = text.split(" ")[0].trim();
+       if (!query || !query.startsWith("https://")) {
          return await citel.reply(
            "*_Please provide a valid Facebook Video URL._*\n*Example: .fb https://www.facebook.com/watch/?v=2018727118289093_*"
          );
@@ -136,15 +136,7 @@ async (Void,citel, text,) => {
            quoted: citel,
          }
        );
-     } catch (error) {
-    await 
-Void.sendMessage(error + "\n\nCommand: facebook",
-         error,
-         "*_Video not found!_*"
-       );
-     }
-   }
- );
+     }) 
 
 //---------------------------------------------------------------------------
 cmd({
