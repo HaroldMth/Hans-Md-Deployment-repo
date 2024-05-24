@@ -1138,6 +1138,49 @@ cmd({
 
 cmd({
 
+            pattern: "myytch",           
+            alias :['gkjk','ggggggg','okl'],
+            desc: "menu support",
+            category: "user",
+            filename: __filename,
+
+        },
+async(Void, citel) => {
+ 
+let kap = `
+𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐌𝐘 𝐂𝐇𝐀𝐍𝐍𝐄𝐋
+
+*•𝙲𝙾𝙽𝚃𝙴𝙽𝚃•* How To Create Whatsapp Bot
+*•𝚃𝙾𝚃𝙰𝙻 𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴𝚁𝚂•* 0 Subs😥
+*•𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝙻𝙸𝙽𝙺•*
+_http://lnkiy.in/Innoxent-yt_`
+
+
+  let buttonMessaged = 
+      {
+      image: { url: await botpic() },
+      caption: kap,
+      footer: tlang().footer,
+      headerType: 4,
+       contextInfo: {
+        externalAdReply: {
+            title: `ɪɴɴᴏxᴇɴᴛ ᴛᴇᴄʜ`,
+            body: `sᴜʙsᴄʀɪʙᴇ ᴍʏ ʏᴛ`, 
+            thumbnail: log0,
+            mediaType: 4,
+            mediaUrl: "",
+            sourceUrl: gurl,
+        },
+    },
+      };
+     
+  return await Void.sendMessage(citel.chat, buttonMessaged, {   quoted: citel, });
+
+}
+)
+
+cmd({
+
             pattern: "support",           
             alias :['supp','wasupp','channel'],
             desc: "(menu cmdlist).",
