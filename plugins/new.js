@@ -16,21 +16,68 @@ var dlsize = 1000 // 1000mb
 const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
-cmd({ pattern: "check", alias: ["testbot"], category: "logo", react: "✅", desc: "Some text to image feature with various styles." }, async(Void, citel, text) => {
-        if (!text) return citel.react("✅")
-        let anu = await maker.textpro('https://fdown.net/download.php', Url)
-        Void.sendMessage(citel.chat, { video: { url: anu }, caption: `⦿.*𝗠𝗔𝗗𝗘 𝗕𝗬 :-* ${tlang().title} 👨‍💻 ${tlang().greet}` }, { quoted: citel })
-    })
-
 cmd({
-    pattern: "gdesc",
-    desc: "Set Description of Group",
-    category: "group",
+    pattern: "walp",
+    desc: "Set wallpaper",
+    category: "wallpaper",
     filename: __filename,
 },
 async(Void, citel, text) => {
         
         const response = await fetch('https://api.unsplash.com/photos/random?client_id=72utkjatCBC-PDcx7-Kcvgod7-QOFAm2fXwEeW8b8cc');
+const data = await response.json();
+  const url =data.urls.regular
+  //citel.reply ('url here :'+url);
+
+                let buttonMessaged = {
+                    image: { url: url },
+                    caption: `*╰┈➤ 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝙳 𝙱𝚈 ${Config.botname}*`,
+                    footer: tlang().footer,
+                    headerType: 4,
+                   
+                };
+                return await Void.sendMessage(citel.chat, buttonMessaged , {quoted : citel});
+
+
+}
+   )
+
+ //----------------------------------------------------------------------------
+cmd({
+    pattern: "random",
+    desc: "get Radom wallpapers",
+    category: "wallpaper",
+    filename: __filename,
+},
+async(Void, citel, text) => {
+        
+        const response = await fetch('https://api.unsplash.com/photos/random?client_id=72utkjatCBC-PDcx7-Kcvgod7-QOFAm2fXwEeW8b8cc');
+const data = await response.json();
+  const url =data.urls.regular
+  //citel.reply ('url here :'+url);
+
+                let buttonMessaged = {
+                    image: { url: url },
+                    caption: `*╰┈➤ 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝙳 𝙱𝚈 ${Config.botname}*`,
+                    footer: tlang().footer,
+                    headerType: 4,
+                   
+                };
+                return await Void.sendMessage(citel.chat, buttonMessaged , {quoted : citel});
+
+
+}
+   )
+ //----------------------------------------------------------------------------
+cmd({
+    pattern: "asthetic",
+    desc: "Set wallpaper",
+    category: "wallpaper",
+    filename: __filename,
+},
+async(Void, citel, text) => {
+        
+        const response = await fetch('https://api.maher-zubair.tech/wallpaper/asthetic');
 const data = await response.json();
   const url =data.urls.regular
   //citel.reply ('url here :'+url);
