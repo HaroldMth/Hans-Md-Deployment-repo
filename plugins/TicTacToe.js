@@ -17,6 +17,23 @@
  const { cmd, parseJid,getAdmin,tlang } = require("../lib/");
  const eco = require('discord-mongoose-economy')
  const ty = eco.connect(mongodb);
+
+cmd(
+  {
+    pattern: "dice",
+    desc: "play dice game.",
+    filename: __filename,
+    category: "games",
+  },
+	async (Void,citel,text) => {
+    const randomNumber = Math.floor(Math.random() * 6);
+    const diceEmoji = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+    const reactEmoji = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"];
+    let index  = Math.floor(Math.random() * diceEmoji.length)
+    let msg =  await Void.sendMessage(citel.chat, {    text: diceEmoji[index]});
+    return await Void.sendMessage(citel.chat, { react: { text: reactEmoji[index] , key: msg.key }}); 
+  })
+
 cmd(
   {
     pattern: "delttt",
