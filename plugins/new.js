@@ -35,11 +35,11 @@ cmd({
         const listAdmin = groupAdmins.map((v, i) => `┃✗ @${v.id.split('@')[0]}`).join('\n')
     
     
-    let tag = `┏━━⟪⟪ ${Config.botname} ⟫━⦿\n┃✗ *_•𝚃𝙰𝙶𝙶𝙴𝙳 𝙱𝚈•_* @${citel.sender.split("@")[0]}
+    let tag = `┏━━❮ ${Config.botname} ❯━❍\n┃✮ *_•𝚃𝙰𝙶𝙶𝙴𝙳 𝙱𝚈•_* @${citel.sender.split("@")[0]}
     ${text ? "≡ bot :" + text : ""}
-┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━⦿
+┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━❍
 ${listAdmin}
-┗━━━━━━━━━━⦿\n*_⤹★ᴘᴏᴡᴇʀᴇᴅ ʙʏ★⤸ sɪɢᴍᴀ ᴹᴰ_*
+┗━━━━━━━━━━❍\n*_⤹★ᴘᴏᴡᴇʀᴇᴅ ʙʏ★⤸ ᴋɪɴɢ-ᴍᴅ_*
     `.trim()
     return await Void.sendMessage(citel.chat,{text : tag ,mentions: [citel.sender, ...groupAdmins.map(v => v.id) ,]} ,)
     
@@ -49,36 +49,85 @@ ${listAdmin}
     )
 
 cmd({
-            pattern: "tagdmin",           
-            desc: "owner support list",
-            category: "group",
-            filename: __filename,
-            use: '',
-
-        },
-    async(Void, citel, text) => {
+    pattern: "antidemote",
+    desc: "Detects demote and Automaticaly promote demote person",
+    category: "wallpaper",
+    filename: __filename,
+},
+    async(Void, citel, text,{ isCreator }) => {
         if (!citel.isGroup) return citel.reply(tlang().group);
         const groupMetadata = citel.isGroup ? await Void.groupMetadata(citel.chat).catch((e) => {}) : "";
         const participants = citel.isGroup ? await groupMetadata.participants : "";
-        const groupAdmins = participants.filter(p => p.admin)
+        const groupAdmins = await getAdmin(Void, citel)
         const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
-        
-        
-        const listAdmin = groupAdmins.map((v, i) => `┃✗ @${v.id.split('@')[0]}`).join('\n')
-    
-    
-    let tag = `┏━━⟪⟪ ${Config.botname} ⟫━⦿\n┃✗ *_•𝚃𝙰𝙶𝙶𝙴𝙳 𝙱𝚈•_* @${citel.sender.split("@")[0]}
-    ${text ? "≡ Void :" + text : ""}
-┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━⦿
-${listAdmin}
-┗━━━━━━━━━━⦿\n*_⤹★ᴘᴏᴡᴇʀᴇᴅ ʙʏ★⤸ sɪɢᴍᴀ ᴹᴰ_*
-    `.trim()
-    return await Void.sendMessage(citel.chat,{text : tag ,mentions: [citel.sender, ...groupAdmins.map(v => v.id) ,]} ,)
-    
-    
-    
-    }
-    )
+        if (!isAdmins && !isCreator) return citel.reply(tlang().admin);
+            
+      let checkinfo = await sck.findOne({ id : citel.chat })  || await new sck({ id: citel.chat}).save();
+      if (text.toLowerCase().startsWith("on") || text.toLowerCase().startsWith("act") || text.toLowerCase().startsWith("enable") ) {
+        if (checkinfo.antidemote == 'true') return await citel.send("*_Anti_Demote Already Enabled In Current Chat!_*")
+        await sck.updateOne({ id: citel.chat }, { antidemote : 'true' });
+        return await citel.send("*_Anti_Demote Enable Succesfully!_ _No One Demote Here Now_.*")
+      }else if (text.toLowerCase().startsWith("off") || text.toLowerCase().startsWith("deact") || text.toLowerCase().startsWith("disable") ) {
+        if (checkinfo.antidemote == 'false') return await citel.send("*_Anti_Demote Already Disabled In Current Chat!_*")
+        await sck.updateOne({ id: citel.chat }, { antidemote : 'false' });
+        return await citel.send("*_Anti_Demote Disable Succesfully!_*")
+      }
+      else return await citel.reply(`*_Please Toggle between "On" And "Off"._*\n*_To Enable & Disable Demoting Peoples!_*`)
+});
+    //---------------------------------------------------------------------------
+cmd({
+    pattern: "antipromote",
+    desc: "Detects Promote and Automaticaly demote promoted person",
+    category: "wallpaper",
+    filename: __filename,
+},
+    async(Void, citel, text,{ isCreator }) => {
+        if (!citel.isGroup) return citel.reply(tlang().group);
+        const groupMetadata = citel.isGroup ? await Void.groupMetadata(citel.chat).catch((e) => {}) : "";
+        const participants = citel.isGroup ? await groupMetadata.participants : "";
+        const groupAdmins = await getAdmin(Void, citel)
+        const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+        if (!isAdmins && !isCreator) return citel.reply(tlang().admin);
+            
+      let checkinfo = await sck.findOne({ id : citel.chat })  || await new sck({ id: citel.chat}).save();
+      if (text.toLowerCase().startsWith("on") || text.toLowerCase().startsWith("act") || text.toLowerCase().startsWith("enable") ) {
+        if (checkinfo.antipromote == 'true') return await citel.send("*_Anti_Promote Already Enabled In Current Chat!_*")
+        await sck.updateOne({ id: citel.chat }, { antipromote : 'true' });
+        return await citel.send("*_Anti_Promote Enable Succesfully!_ _No One Promote Here Now_.*")
+      }else if (text.toLowerCase().startsWith("off") || text.toLowerCase().startsWith("deact") || text.toLowerCase().startsWith("disable") ) {
+        if (checkinfo.antipromote == 'false') return await citel.send("*_Anti_Promote Already Disabled In Current Chat!_*")
+        await sck.updateOne({ id: citel.chat }, { antipromote : 'false' });
+        return await citel.send("*_Anti_Promote Disable Succesfully!_*")
+      }
+      else return await citel.reply(`*_Please Toggle between "On" And "Off"._*\n*_To Stop Promoting Peoples in Chat_*`)
+});
+    //---------------------------------------------------------------------------
+cmd({
+    pattern: "pdm",
+    desc: "Detect Promote/Demote Users And Send Alerts in Chat",
+    category: "group",
+    filename: __filename,
+},
+    async(Void, citel, text,{ isCreator }) => {
+        if (!citel.isGroup) return citel.reply(tlang().group);
+        const groupMetadata = citel.isGroup ? await Void.groupMetadata(citel.chat).catch((e) => {}) : "";
+        const participants = citel.isGroup ? await groupMetadata.participants : "";
+        const groupAdmins = await getAdmin(Void, citel)
+        const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+        if (!isAdmins && !isCreator) return citel.reply(tlang().admin);
+            
+      let checkinfo = await sck.findOne({ id : citel.chat })  || await new sck({ id: citel.chat}).save();
+      if (text.toLowerCase().startsWith("on") || text.toLowerCase().startsWith("act") || text.toLowerCase().startsWith("enable") ) {
+        if (checkinfo.pdm == 'true') return await citel.send("*_Promote/Demote Alerts Already Enabled In Current Chat!_*")
+        await sck.updateOne({ id: citel.chat }, { pdm : 'true' });
+        return await citel.send("*_Promote/Demote Alerts Enable Succesfully!_*")
+      }else if (text.toLowerCase().startsWith("off") || text.toLowerCase().startsWith("deact") || text.toLowerCase().startsWith("disable") ) {
+        if (checkinfo.pdm == 'false') return await citel.send("*_Promote/Demote Alerts Already Disabled In Current Chat!_*")
+        await sck.updateOne({ id: citel.chat }, { pdm : 'false' });
+        return await citel.send("*_Promote/Demote Alerts Disable Succesfully!_*")
+      }
+      else return await citel.reply(`*_Please Toggle between "On" And "Off"._*\n*_To get And Stop Promote/Demote Alerts_*`)
+});
 
 
 //---------------------------------------------------------------------------
