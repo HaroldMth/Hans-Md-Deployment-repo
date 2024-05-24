@@ -112,16 +112,14 @@ cmd({
 },
 async (Void,citel, text,) => {
 	try {
-       let query = text.split(" ")[0].trim();
-       if (!query || !query.startsWith("https://")) {
+       let text = text.split(" ")[0].trim();
+       if (!text || !text.startsWith("https://")) {
          return await citel.reply(
-           "*_Please provide a valid Facebook Video URL._*\n*Example: " +
-             prefix +
-             "fb https://www.facebook.com/watch/?v=2018727118289093_*"
+           "*_Please provide a valid Facebook Video URL._*\n*Example: .fb https://www.facebook.com/watch/?v=2018727118289093_*"
          );
        }
        let video = await axios(
-         "https://api-smd.onrender.com/api/fbdown?url=" + query
+         "https://api-smd.onrender.com/api/fbdown?url=" + text
        );
        if (!video || !video.status) {
          return await citel.reply("*Invalid Video URL!*");
@@ -135,7 +133,7 @@ async (Void,citel, text,) => {
            caption: Config.botname,
          },
          {
-           quoted: message,
+           quoted: citel,
          }
        );
      } catch (error) {
