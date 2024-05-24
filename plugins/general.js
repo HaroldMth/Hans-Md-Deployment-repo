@@ -14,7 +14,7 @@
  ========================================================
  **/
 
-const { tlang, botpic, cmd, prefix, runtime, Config , sleep } = require('../lib')
+const { formatp, performance, tlang, botpic, cmd, prefix, runtime, Config , sleep } = require('../lib')
 const axios = require('axios')
 const speed = require('performance-now')
 const fetch = require('node-fetch');
@@ -222,6 +222,9 @@ cmd({
 },
 async(Void, citel) => {
   try{
+const { formatp, runtime } = require("../lib");
+  const os = require('os')
+  const speed = require('performance-now')
       const used = process.memoryUsage()
       const cpus = os.cpus().map(cpu => {
           cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
@@ -229,7 +232,6 @@ async(Void, citel) => {
       })
       const cpu = cpus.reduce((last, cpu, _, { length }) => 
       {
-
           last.total += cpu.total
           last.speed += cpu.speed / length
           last.times.user += cpu.times.user
@@ -240,29 +242,33 @@ async(Void, citel) => {
           return last
       },{ speed: 0,total: 0,times: {user: 0,nice: 0,sys: 0,idle: 0,irq: 0 } }
       )
-    timestampe = speed();
-    latensie = speed() - timestampe;
-    var neww = performance.now()
-    var oldd = performance.now()
+    let timestamp = speed()
+    let latensi = speed() - timestamp
+    neww = performance.now()
+    oldd = performance.now()
                   
-    respon = `*❲❍❳ king md Server Info ❲❍❳*
-    
-  *❲❍❳ Runtime:* ${runtime(process.uptime())}
-  *❲❍❳ Speed:* ${latensie.toFixed(3)}/${(oldd - neww).toFixed(3)} ms
-  *❲❍❳ RAM:* ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+    respon = `
+  Response Speed ${latensi.toFixed(1)}Sec / ${(oldd - neww).toFixed(1)}ms
+  Run-time of ${Config.botname}: ${runtime(process.uptime())}`
   
-  *❲❍❳ Memory Usage:*
-      ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n      ')}
+
+  let resp2 = ` Info Server
+  RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
   
-${cpus[0] ? `  *❲❍❳ Total CPU Usage:*
-  *${cpus[0].model.trim()} (${cpu.speed} MHZ)*
-      ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}
-\n  *❲❍❳ CPU Core Usage (${cpus.length} Core CPU)*
-  ${cpus.map((cpu, i) => `*Core ${i + 1}: ${cpu.model.trim()} (${cpu.speed} MHZ)*
-      ${Object.keys(cpu.times).map(type => `-${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n      ')}`).join('\n\n')}` : ''}
-`.trim()
-      return await citel.send(respon,{},"",citel)
-  }catch(e){citel.error(e)}
+*Memory Usage*
+  ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
+  
+  ${cpus[0] ? `*Total CPU Usage*
+  ${cpus[0].model.trim()} (${cpu.speed} MHZ)
+  ${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
+  CPU Core(s) Usage (${cpus.length} Core CPU)
+  ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)
+  ${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
+      `.trim()
+
+      return await citel.reply(respon+resp2 ) }
+      catch(e){
+        citel.send("*_Unknown Error Occured_*")}
 })
 
 //---------------------------------------------------------------------------
