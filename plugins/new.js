@@ -103,24 +103,10 @@ cmd({
     filename: __filename,
 },
 async(Void, citel, text) => {
-        
-        const response = await fetch('https://api.maher-zubair.tech/wallpaper/bike');
-const data = await response.json();
-  const url =data.urls.regular
-  //citel.reply ('url here :'+url);
-
-                let buttonMessaged = {
-                    image: { url: url },
-                    caption: `*╰┈➤ 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝙳 𝙱𝚈 ${Config.botname}*`,
-                    footer: tlang().footer,
-                    headerType: 4,
-                   
-                };
-                return await Void.sendMessage(citel.chat, buttonMessaged , {quoted : citel});
-
-
-}
-   )
+        let anu = await fetchJson('https://raw.githubusercontent.com/no-name7788/SIGMA-MD/main/Media/WallPapers/Bike_Pics.json')
+    let random = anu[Math.floor(Math.random() * anu.length)]
+    return await Void.sendMessage(citel.chat,{image :{url : random } , caption: `*╰┈➤ 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝙳 𝙱𝚈 ${Config.botname}*`  }, { quoted: citel })
+})
 
  //----------------------------------------------------------------------------
 cmd({
