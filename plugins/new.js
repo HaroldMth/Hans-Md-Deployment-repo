@@ -16,7 +16,33 @@ var dlsize = 1000 // 1000mb
 const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
+cmd({
+            pattern: "channelyt",           
+            alias :['suppvv','wasuppvv'],
+            desc: "(owner support list).",
+            category: "user",
+            react: "👁️‍🗨️",
+            filename: __filename,
+            use: '<faded-Alan walker.>',
 
+        },
+    async(Void, citel, text) => {
+  const slog = await getBuffer(global.slogo);
+  await Void.sendMessage(citel.chat, {
+    'image': slog,
+    'text': "┏━━⟪⟪ 🅼♥︎❚❚♥︎🆉 ⟫━⦿\n┃✗ *_•ɢʀᴏᴜᴘ ɴᴀᴍᴇ•_* \n┃✗ *•sɪɢᴍᴀ ᴹᴰ-sᴜᴘᴘᴏʀᴛ•* \n┃✗ *_•ɢʀᴏᴜᴘ ʟɪɴᴋ•_* " + gurl + "\n┃✗ *_•ᴅᴇᴠᴇʟᴏᴘᴇʀ•_* 𝐌𝐚𝐡𝐞𝐫 𝐙𝐮𝐛𝐚𝐢𝐫\n┗━━━━━━━━━━⦿",
+    'contextInfo': {
+      'externalAdReply': {
+        'title': "sᴜᴘᴘᴏʀᴛ",
+        'body': "Easy to Use",
+        'thumbnail': slog,
+        'mediaType': 4,
+        'mediaUrl': '',
+        'sourceUrl': gurl
+      }
+    }
+  });
+});
 
 
 //---------------------------------------------------------------------------
