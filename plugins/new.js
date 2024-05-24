@@ -1,4 +1,4 @@
-const { sck, sck1,cmd, cmdBuffer, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
+const { sck, sck1,cmd, cmdBuffer, jsonformat, fetchJson, botpic, ffmpeg, TelegraPh, RandomXP, runtime, formatp, tlang, warndb, sleep,getAdmin,getBuffer, prefix } = require('../lib')
 const { mediafire } = require("../lib/mediafire.js");
 const googleTTS = require("google-tts-api");
 const ytdl = require('ytdl-secktor')
@@ -11,9 +11,70 @@ const fetch = require('node-fetch');
 const { Sticker, createSticker, StickerTypes } = require("wa-sticker-formatter");
 const Config = require('../config')
 const maker = require('mumaker')
+const Esana = require('@sl-code-lords/esana-news');
+const hirunews = require('hirunews-scraper')
+var api = new Esana()
 var videotime = 60000 // 1000 min
 var dlsize = 1000 // 1000mb
 const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
+
+//---------------------------------------------------------------------------
+cmd({
+    pattern: 'esana',
+    alias: ['esananews','news'],
+    desc: 'whatsapp beta infomation.',
+    category: 'news',
+    react: "📃",
+    use: '<wbi>',
+  },
+        async(Void, citel, text) => {
+
+       try { const latst = await api.latest_id();
+            const nws = latst.results.news_id
+            let nn = text || nws
+            const ress = await api.news(nn);
+            const res = ress.results;
+
+            const txt2 = await Void.sendMessage(citel.chat, {image: {url: res.COVER}, caption: `\n*┣━( _📃ＥＳＥＮＡ📃ＮＥＷＳ📃_ )* \n\n*┃◉* *⇨ ᴛɪᴛᴇʟ :* ${res.TITLE}\n\n*┃◉* *⇨ ᴅᴀᴛᴇ :* ${res.PUBLISHED}\n\n*┃◉* *⇨ ᴜʀʟ :* ${res.URL}\n\n*┃◉* *⇨ Description :* ${res.DESCRIPTION}\n\n*┗━━━━━━━━━━━━━━◆*\n\nKing-ᴍᴅ ᴇꜱᴀɴᴀ ɴᴇᴡꜱ 📃\n\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴍʀ naveed`}, { quoted: citel });
+
+                await Void.sendMessage(citel.chat, { react: {
+        text: "📰",
+        key: txt2.key,
+            } } );
+
+    } catch (e) {
+    console.log(e)
+    citel.reply("❗ *" + e + "*")
+  }
+})
+
+//---------------------------------------------------------------------------
+cmd({
+        pattern: "hirunews",
+        category: "news",
+        react: "📑",
+
+        filename: __filename
+    },
+    async(Void, citel,text) => {
+    const hirunew = await hirunews()
+    const caption = `*_|📃 𝐇𝐈𝐑𝐔𝐔 𝐍𝐄𝐖𝐒_* 
+
+🌹⃝⃘̉̉̉̉̉̉🧚 *ᴛɪᴛᴇʟ* :  ${hirunew.result.title}
+
+🌹⃝⃘̉̉̉̉̉̉🧚 *ᴅᴀᴛᴇ & ᴛɪᴍᴇ* :  ${hirunew.result.dateandtime}
+
+🌹⃝⃘̉̉̉̉̉̉🧚 *ᴜʀʟ* : ${hirunew.result.link}
+
+🌹⃝⃘̉̉̉̉̉̉🧚 *ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ* : ${hirunew.result.description}
+
+*┗━━━━━━━━━━━━━━⛶*
+
+ ©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴍʀ naveed`
+
+await Void.sendMessage(citel.chat, { image: { url: hirunew.result.image }, caption: caption }, { quoted: citel })
+
+    })
 
 //---------------------------------------------------------------------------
 cmd({
