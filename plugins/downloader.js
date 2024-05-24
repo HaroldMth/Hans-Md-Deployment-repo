@@ -136,7 +136,15 @@ async (Void,citel, text,) => {
            quoted: citel,
          }
        );
-     }) 
+	}catch (error) {
+    await 
+Void.sendMessage(error + "\n\nCommand: facebook",
+         error,
+         "*_Video not found!_*"
+       );
+     }
+   }
+ );
 
 //---------------------------------------------------------------------------
 cmd({
