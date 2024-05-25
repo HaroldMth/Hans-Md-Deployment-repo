@@ -179,7 +179,7 @@ cmd({
     )
 
     //---------------------------------------------------------------------------
-smd({
+cmd({
    pattern: "github",
    category: "search",
    desc: "Finds info about song",
