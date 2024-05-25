@@ -78,6 +78,7 @@ cmd(
 cmd(
   {
     pattern: "setsudo",
+    alias:["ssudo"],
     desc: "provide owner rule to someone so he can use your bot",
     filename: __filename,
     category: "tool",
@@ -106,6 +107,50 @@ fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
 .catch(error => citel.reply('*_Error While Adding new Sudo:_* '+ error));
 
          })
+
+cmd({
+             pattern: "delsudo",
+             alias:["dsudo"],
+             desc: "del some one from sudo",
+             category: "tools",
+             filename: __filename
+         },
+  async(Void, citel, text) => {
+    
+if(!citel.quoted) return citel.reply(`*_Please Reply A User_*`);
+let user = citel.quoted.sender.split('@')[0] ;
+let  rm = ',' +user 
+if (global.sudo.includes(rm)) global.sudo = global.sudo.replace(rm, '');
+else return await citel.reply("*_User not found in the Sudo List_*\n*_All Sudo Numbers:_* " + global.sudo );
+
+
+
+const headers = 
+        {
+                'Accept': 'application/vnd.heroku+json; version=3',
+                 'Authorization': `Bearer ${authToken}`,
+                 'Content-Type': 'application/json'
+        };
+
+const varName = 'SUDO'
+const newVarValue = global.sudo        
+fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify({ [varName]: newVarValue })
+        })
+.then(response => response.json())
+.then(data => 
+      { 
+   console.log(data);
+   return citel.reply(`*_${user} Deleted Succesfully._*\n*_New Sudo Numbers:_* ${newVarValue}`);
+      })
+  
+.catch(error => {     return citel.reply('*_Error While Adding new Sudo_*:'+ error);      })
+ 
+})
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd(
   {
