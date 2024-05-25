@@ -331,17 +331,18 @@ return await citel.reply(`${nobio}${nowhatsapp}`)
         use: '<text>',
         filename: __filename,
     },
-    async(Void, citel, text) => {
+        async(Void, citel, text) => {
 let limit = 5;
-try {
-if (!text) return citel.reply("```Uhh Please, Give me Url!```");
-let urll = `https://image.thum.io/get/fullpage/=${text.match(/\bhttps?:\/\/\S+/gi)[0]}&width=1280&height=720`
-let media  = await getBuffer(urll)
-return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
-}
+ try {
+    if (!text) return citel.reply("```Uhh Please, Give me Url!```");
+    var url = text;
+    let urll = `https://s.vercel.app/api?url=${url.match(/\bhttps?:\/\/\S+/gi)[0]}&width=1280&height=720`
+    let media  = await getBuffer(urll)
+    return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
+ }
 catch (err) { return citel.reply("```Error While Fetching Snapshot```")}
-    }
-)
+        }
+    )
 
 //---------------------------------------------------------------------------
      cmd({
