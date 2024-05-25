@@ -18,42 +18,6 @@ const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
 cmd({
-        pattern: "botki",
-        alias: ["botkt", "bc", "scribot"],
-        desc: "Sends info about repo.",
-        category: "general",
-        filename: __filename,
-    },
-    async(Void, citel) => {
-        let { data } = await axios.get('https://api.github.com/repos/naveeddogar/KING-MD')
-        let cap = `🔰Hey ${citel.pushName} Welcome To King-Md🔰\n
-*❲❍❳ STARS:* ${data.stargazers_count} stars
-*❲❍❳ FORKS:* ${data.forks_count} forks
-*❲❍❳ AUTHOR:* Naveed Dogar
-*❲❍❳ REPO:* github.com/naveeddogar/KING-MD
-*❲❍❳ SCAN:* king-session.vercel.app
-*❲❍❳ VISit For Deploy:*-
-https://tinyurl.com/Technical-Naveed-Official`
-        let buttons = [{
-                    buttonId: `${prefix}alive`,
-                    buttonText: { 
-                                displayText: "📍Alive",},
-                    type: 1,},{buttonId: `${prefix}menu`,buttonText: {displayText: "📍Menu",},type: 1, },];
-        let buttonMessaged = {
-            image: { url: await botpic() },
-            caption: cap,
-            footer: tlang().footer,
-            headerType: 4,
-            buttons: buttons
-                },
-                    return await Void.sendMessage(citel.chat, buttonMessaged);
-    }
-    
-)
-
-
-
-cmd({
             pattern: "tagadmin",           
             desc: "owner support list",
             category: "group",
