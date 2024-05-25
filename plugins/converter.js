@@ -356,7 +356,7 @@ cmd({
          },
          async(Void, citel, text) => {
  if(!text) return citel.reply("*_Please provide text to generate sticker_*")
- let a = await getBuffer(`https://api.lolhuman.xyz/api/attp?apikey=GataDios&text=${text}`)
+ let a = await getBuffer(`https://api.maher-zubair.tech/maker/text2gif?q=${text}`)
  return citel.reply(a,{packname:'king-md',author:'ATTP'},"sticker") 
          }
      )
@@ -383,7 +383,7 @@ cmd({
          },
          async(Void, citel, text) => {
 let a = await getBuffer(`https://api.lolhuman.xyz/api/ttp?apikey=GataDios&text=${text}`)
- return citel.reply(a,{packname:'king-md',author:'TTP'},"sticker") 
+ return citel.reply(a,{packname:'king-md',author:'naveed'},"sticker") 
          }
      )
  //---------------------------------------------------------------------------
@@ -395,7 +395,7 @@ let a = await getBuffer(`https://api.lolhuman.xyz/api/ttp?apikey=GataDios&text=$
          },
          async(Void, citel, text) => {
 let a = await getBuffer(`https://api.lolhuman.xyz/api/ttp2?apikey=GataDios&text=${text}`)
- return citel.reply(a,{packname:'king-md',author:'TTP'},"sticker") 
+ return citel.reply(a,{packname:'king-md',author:'naveed'},"sticker") 
          }
      )
  //---------------------------------------------------------------------------
