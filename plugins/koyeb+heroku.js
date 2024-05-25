@@ -15,7 +15,7 @@
  **/
  
 const axios = require('axios');
-const { tlang,cmd } = require('../lib')
+const { tlang,cmd,formatp } = require('../lib')
 const Config = require('../config')
 const { redeploy , getvar , delvar , getallvar , change_env , get_deployments} = require('../lib/koyeb')
 
@@ -74,6 +74,38 @@ cmd(
        let data = await redeploy();
        return citel.reply(data)
   })
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+cmd(
+  {
+    pattern: "setsudo",
+    desc: "provide owner rule to someone so he can use your bot",
+    filename: __filename,
+    category: "tool",
+  },
+  async(Void, citel, text) => {
+if(!citel.quoted) return await citel.reply(`*_Please Reply A User_*`);
+let user = citel.quoted.sender.split('@')[0]
+if (global.sudo.includes(user)) return citel.reply("*_That Number Already Exist In Sudo_*");
+    global.sudo += ',' + user ;
+const headers = 
+        {
+                'Accept': 'application/vnd.heroku+json; version=3',
+                 'Authorization': `Bearer ${authToken}`,
+                 'Content-Type': 'application/json'
+        };
+const varName = 'SUDO'
+const newVarValue = global.sudo        
+fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
+        {
+                  method: 'PATCH',
+                  headers,
+                  body: JSON.stringify({ [varName]: newVarValue })
+        })
+.then(response => response.json())
+.then(data => { return citel.reply(`*_${user} Added Succesfully._*\n*_New Sudo Numbers:_* ${newVarValue}`); })
+.catch(error => citel.reply('*_Error While Adding new Sudo:_* '+ error));
+
+         })
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd(
   {
@@ -137,7 +169,7 @@ cmd(
   },
   async (Void,citel,text,{isCreator}) => {
        if(!isCreator) return citel.reply(tlang().owner);
-       if(!text.split(':')[1]) return citel.reply('*Wrong Format.*\nPlease provide key and value.\n_Eg: .setvar THEME:KING-MD_')
+       if(!text.split(':')[1]) return citel.reply('*Wrong Format.*\nPlease provide key and value.\n_Eg: .setvar ALIVE:KING-MD_')
        if (Config.heroku=true){
         const Heroku = require("heroku-client");
         const heroku = new Heroku({
