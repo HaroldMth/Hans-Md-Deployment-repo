@@ -124,14 +124,93 @@ await citel.reply (txt);
  }
      )
      //---------------------------------------------------------------------------
+cmd({
+            pattern: "whois",
+            desc: "get info about repl person",
+            category: "user",
+            filename: __filename,
+            use: 'reply to any person',
+},
+async(Void, citel, text) => { 
 
+   if (!citel.quoted) return citel.reply(`*_Please reply any User_*`);
+    var bio = await Void.fetchStatus(citel.quoted.sender);
+    var bioo = bio.status;
+    var setAt = bio.setAt.toString();
+    
+    var words = setAt.split(" ");
+    if(words.length > 3){ setAt= words.slice(0, 5).join(' ') ; }
+     
+    var num = citel.quoted.sender.split('@')[0];
+    let pfp;
+    try  {  pfp = await Void.profilePictureUrl(citel.quoted.sender, "image"); } 
+    catch (e) { pfp = await Void.profilePictureUrl(citel.sender, "image") ||  'https://telegra.ph/file/29a8c892a1d18fdb26028.jpg' ; }    //|| 'https://telegra.ph/file/29a8c892a1d18fdb26028.jpg' ;  }
+    
+    let username = await sck1.findOne({ id: citel.quoted.sender });
+    var tname = username.name;
+
+    
+    let str = `
+┏━━⟪ ${Config.botname} ⟫━👁️‍🗨️
+┃ *•ᴘᴇʀsᴏɴ's ɪɴғᴏʀᴍᴀᴛɪᴏɴ•*
+┃ *•ɴᴀᴍᴇ•* ${tname}
+┃ *•ɴᴜᴍ•* ${num}
+┃ *•ʙɪᴏ•*  ${bioo}
+┃ *•sᴇᴛ-ᴀᴛ•* ${setAt}
+┃   *•ᴋᴇᴇᴘ ᴄᴀʟᴍ ᴅᴜᴅᴇ•*
+┗━━━━━━━━━━👁️‍🗨️
+`
+    let buttonMessage = {            
+    image: { url: pfp},
+    caption: str,
+    footer: tlang().footer,
+    headerType: 4,
+    contextInfo: {
+        externalAdReply: {
+            title: Config.ownername,
+            body: `Tuch Here`,
+            thumbnail: log0,
+            mediaType: 4,
+            mediaUrl: '',
+            sourceUrl: `${Gname}`,}}}
+  
+return await Void.sendMessage(cit.chat, buttonMessage,{quoted:citel});
+}
+)
      //---------------------------------------------------------------------------
-/**
- Module_Exports({
-             kingcmd: "getpp",
-             infocmd: "Get Profile Pic For Given User",
-             kingclass: "user",
-             kingpath: __filename
+cmd({
+            pattern: "vcard",
+            desc: "create contact by given name",
+            category: "whatsapp",
+            filename: __filename,
+          },
+         async(Void, citel, text) => {
+
+if (!citel.quoted) return citel.reply (`*Please Reply to User With Name*`);
+if ( !text ) return citel.reply( `*_Please Reply User With Name_*\n *Example: ${prefix}vcard Naveed dogar*`)
+var words = text.split(" ");
+if (words.length >3) {   text= words.slice(0, 3).join(' ')  }
+// citel.reply(text);
+
+const vcard = 'BEGIN:VCARD\n' +
+            'VERSION:3.0\n' +
+            'FN:' + text + '\n' +
+            'ORG:;\n' +
+            'TEL;type=CELL;type=VOICE;waid=' + citel.quoted.sender.split('@')[0] + ':+' + owner[0] + '\n' +
+            'END:VCARD'
+        let buttonMessaged = {
+            contacts: { displayName: text, contacts: [{ vcard }] },
+            
+        };
+        return await Void.sendMessage(citel.chat, buttonMessaged, { quoted: citel });
+ 
+})
+     //---------------------------------------------------------------------------
+cmd({
+            pattern: "getpp",
+            desc: "get profile pic of given user",
+            category: "user",
+            filename: __filename,
          },
          async(Void, citel, text) => {
 
@@ -143,10 +222,10 @@ if (!citel.quoted) return citel.reply (`*_Please Reply To A User To Get Profile 
   
                 let buttonMessaged = {
 
-                            //quoted: "923184474176@s.whatsapp.net", 
+                            //quoted: "923096566451@s.whatsapp.net", 
                             //contextInfo: { forwardingScore: 1999999, isForwarded: false },
                             image: { url: pfp },
-                            caption: '  *★Profile Picture is Here★*',
+                            caption: '  *Profile Picture is Here*',
                             footer: tlang().footer,
                             headerType: 4,
                    
@@ -156,7 +235,6 @@ if (!citel.quoted) return citel.reply (`*_Please Reply To A User To Get Profile 
 
          }
      )
-     **/
 
     //---------------------------------------------------------------------------
 cmd({
