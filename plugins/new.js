@@ -32,14 +32,14 @@ cmd({
         const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
         
         
-        const listAdmin = groupAdmins.map((v, i) => `┃✗ @${v.id.split('@')[0]}`).join('\n')
+        const listAdmin = groupAdmins.map((v, i) => `┃✮ @${v.id.split('@')[0]}`).join('\n')
     
     
     let tag = `┏━━❮ ${Config.botname} ❯━❍\n┃✮ *_•𝚃𝙰𝙶𝙶𝙴𝙳 𝙱𝚈•_* @${citel.sender.split("@")[0]}
     ${text ? "≡ bot :" + text : ""}
 ┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━❍
 ${listAdmin}
-┗━━━━━━━━━━❍\n*_⤹★ᴘᴏᴡᴇʀᴇᴅ ʙʏ★⤸ ᴋɪɴɢ-ᴍᴅ_*
+┗━━━━━━━━━━❍\n*_ᴘᴏᴡᴇʀᴇᴅ ʙʏ⤸ ᴋɪɴɢ-ᴍᴅ_*
     `.trim()
     return await Void.sendMessage(citel.chat,{text : tag ,mentions: [citel.sender, ...groupAdmins.map(v => v.id) ,]} ,)
     
@@ -48,6 +48,117 @@ ${listAdmin}
     }
     )
 
+    //---------------------------------------------------------------------------
+cmd({
+            pattern: "quoted",           
+            desc: "get reply Message from Replied Message",
+            category: "user",
+            filename: __filename,
+    },
+    async(Void, citel, text) => {
+        if(!citel.quoted) return await citel.send("*_Reply to a Message_*")
+        var quote
+        try {
+             quote = await Void.serializeM(await citel.getQuotedObj())
+        } catch (error) {return console.log("error while geting Quoted Message : " , error )}
+
+        if (!quote.quoted) return await citel.replay('*_Message you replied Does Not Contain Any Reply Message_*')
+        else await Void.sendMessage(citel.chat, { react: { text: '', key: citel.key }}); 
+        try {        
+            let quote2 = await Void.serializeM(await quote.getQuotedObj())
+            return await Void.copyNForward(citel.chat, quote2 , false ,)
+        } catch (error) 
+        {       
+            const contextInfo = {}
+            Void.forward(citel.chat ,quote.quoted, contextInfo , citel ); 
+        }
+        // attp | Void.sendMessage(citel.chat, { sticker: {url: `https://api.xteam.xyz/attp?file&text=${encodeURI(text)}`}}, {quoted: citel })
+    })
+
+     //---------------------------------------------------------------------------
+cmd({
+            pattern: "blocklist",
+            alias : ['blist'],
+            desc: "owner block list",
+            category: "whatsapp",
+            filename: __filename,
+            use: '',
+    },
+    async(Void, citel, text , {isCreator}) => {
+        if(!isCreator) return await citel.reply(tlang().owner);
+        try {
+            const data = await Void.fetchBlocklist();
+            if (data.length === 0) return await citel.reply(`*_Sorry, But You don't have any Blocked Numbers._*`);
+            let txt = `${name.ownername}'s *_Block List_*\n\n*_Total Blocked Users_: ${data.length}* \n\n┏━❏\t*𝘉𝘭𝘰𝘤𝘬𝘦𝘥 𝘕𝘶𝘮𝘣𝘦𝘳𝘴*━❏\n`;
+            for (let i = 0; i < data.length; i++) {      txt += `┃ ${i + 1}: wa.me/${data[i].split("@")[0]}\n`;    }
+            txt += "┗━━━━━━━━━━━⦿";
+            return await Void.sendMessage(citel.chat, { text: txt });
+          } catch (err) {
+            console.error(err);
+            return await citel.send('*Error while getting Blocked Numbers.\nError: *' + err);
+          }
+    }
+    )
+     //---------------------------------------------------------------------------
+ cmd({
+            pattern: "location",
+            desc: "get location by coordinate",
+            category: "whatsapp",
+            filename: __filename,
+         },
+         async(Void, citel, text) => {
+          if (!text) return await citel.reply(`Give Coordinates To Send Location\n *Example:* ${prefix}location 24.121231,55.1121221`);
+         let cord1 = parseFloat(text.split(',')[0]) || ''
+         let cord2 = parseFloat(text.split(',')[1]) || ''
+         if(!cord1 || isNaN(cord1) ||  !cord2 || isNaN(cord2)) return await  citel.reply("```Cordinates Not In Format, Try Again```") 
+
+let txt  = "*----------LOCATION------------*"
+   txt +="``` \n Sending Location Of Given Data: ";
+   txt +="\n Latitude     :  "+cord1;
+   txt +="\n Longitude  :  "+cord2 +"```\n"+name.caption;
+
+await citel.reply (txt);
+
+
+      return await Void.sendMessage(citel.chat, { location: { degreesLatitude : cord1, degreesLongitude : cord2 } } ,{quoted : citel} )
+ }
+     )
+     //---------------------------------------------------------------------------
+
+     //---------------------------------------------------------------------------
+/**
+ Module_Exports({
+             kingcmd: "getpp",
+             infocmd: "Get Profile Pic For Given User",
+             kingclass: "user",
+             kingpath: __filename
+         },
+         async(Void, citel, text) => {
+
+if (!citel.quoted) return citel.reply (`*_Please Reply To A User To Get Profile Picture_*`)
+    let pfp;
+     try  {  pfp = await Void.profilePictureUrl(citel.quoted.sender, "image"); } 
+     catch (e) {  return citel.reply("```Error While Getting Profile Pic```") } 
+//const ppUrl = await Void.profilePictureUrl(citel.quoted.sender, 'image')
+  
+                let buttonMessaged = {
+
+                            //quoted: "923184474176@s.whatsapp.net", 
+                            //contextInfo: { forwardingScore: 1999999, isForwarded: false },
+                            image: { url: pfp },
+                            caption: '  *★Profile Picture is Here★*',
+                            footer: tlang().footer,
+                            headerType: 4,
+                   
+                };
+                return await Void.sendMessage(citel.chat, buttonMessaged,{quoted:citel});
+
+
+         }
+     )
+     **/
+
+    //---------------------------------------------------------------------------
 cmd({
     pattern: "antidemote",
     desc: "Detects demote and Automaticaly promote demote person",
