@@ -210,7 +210,7 @@
 
 <p align="center"> If You Need Any Help Or Any Problem Please Create An <a href="https://github.com/naveeddogar/KING-MD/issues">Issue & Problem</a></p>
 
-<h3 align="center"> <a href="https://github.com/SuhailTechInfo/KING-MD/temp/README.md">Click Here To Get External Plugins</a></h3> 
+<h3 align="center"> <a href="https://github.com/naveeddogar/KING-MD/temp/README.md">Click Here To Get External Plugins</a></h3> 
 
  
 ### `🧡 𝘛𝘩𝘢𝘯𝘬𝘴 𝘛𝘰`
