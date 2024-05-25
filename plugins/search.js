@@ -176,7 +176,46 @@ cmd({
                     await Void.sendMessage(citel.chat, {image: {  url: images,}, caption: `_King-Md Image Search_\n*${name1}*`,}, { quoted: citel, });
             }
         }
-    )    
+    )
+
+    //---------------------------------------------------------------------------
+smd({
+   pattern: "github",
+   category: "search",
+   desc: "Finds info about song",
+   filename: __filename,
+},
+async(Void, citel , text) => {
+ try{
+
+   citel.react("🔍")
+         if (!text) return citel.reply(`Give me a user name like ${prefix}github naveeddogar`)
+
+         const { data } = await axios(`https://api.github.com/users/${text}`)
+   if(!data) return await citel.send(`*_Didn't get any results, Provide valid user name!_*`)
+   let gitdata =  data
+         citel.sendMessage(citel.jid, {
+           image: { url: gitdata.avatar_url }, caption:`ㅤㅤㅤ*[ GITHUB USER INFO ]*
+
+🚩 Id : ${gitdata.id}
+🔖 Nickname : ${gitdata.name}
+🔖 Username : ${gitdata.login}
+✨ Bio : ${gitdata.bio}
+🏢 Company : ${gitdata.company}
+📍 Location : ${gitdata.location}
+📧 Email : ${gitdata.email}
+📰 Blog : ${gitdata.blog}
+🔓 Public Repo : ${gitdata.repos_url}
+🔐 Public Gists : ${gitdata.gists_url}
+💕 Followers : ${gitdata.followers}
+👉 Following : ${gitdata.following}
+🔄 Updated At : ${gitdata.updated_at}
+🧩 Created At : ${gitdata.created_at}`
+         }, { quoted: citel })
+
+          }catch(e){return await citel.error(`${e}\n\n command: github`,e,`*_Didn't get any results, Sorry!_*`) }
+   })
+
 
     //---------------------------------------------------------------------------
 cmd({
