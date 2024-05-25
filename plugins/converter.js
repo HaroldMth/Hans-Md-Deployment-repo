@@ -174,7 +174,7 @@ cmd({
         async(Void, citel, text) => {
             if (isNaN(text.split(" ")[0]) || !text) {
                 let text = tiny(
-                    "┏━━━━━━━━━━━━━━━━━━━\n┃*💬KING-MD_FANCY_TEXT*\n┗━━━━━━━━━━━━━━━━━━━\n\nExample: .fancy 32 king-md\n\n"
+                    "┏━━━━━━━━━━━━━━━━━━━\n┃💬KING-MD_FANCY_TEXT\n┗━━━━━━━━━━━━━━━━━━━\n\nExample: .fancy 32 king-md\n\n"
                 );
                 listall("King-Md").forEach((txt, num) => {
                     text += `${(num += 1)} ${txt}\n`;
@@ -338,22 +338,24 @@ else return citel.reply ("```Uhh Please, Reply To A video Message```")
              desc: "Makes glowing sticker of text.",
              category: "sticker",
              filename: __filename,
+             use: '< text.>',
          },
          async(Void, citel, text) => {
-let a = await getBuffer(`https://api.lolhuman.xyz/api/attp?apikey=GataDios&text=${text}`)
+ if(!text) return citel.reply("*Please provide text to generate sticker*")
+ let a = await getBuffer(`https://raganork-api.onrender.com/api/attp?text=${text}&apikey=with_love_souravkl11`)
  return citel.reply(a,{packname:'king-md',author:'ATTP'},"sticker") 
          }
      )
  //---------------------------------------------------------------------------
- cmd({
+cmd({
              pattern: "attp2",
              desc: "Makes glowing sticker of text.",
              category: "sticker",
              filename: __filename,
          },
          async(Void, citel, text) => {
-let a = await getBuffer(`https://api.erdwpe.com/api/maker/attp?text=${text}`)
- return citel.reply(a,{packname:'king-md',author:'ATTP'},"sticker") 
+let a = await getBuffer(`https://citel-x.herokuapp.com/attp/${text}`)
+ return citel.reply(a,{packname:'king',author:'ATTP'},"sticker") 
          }
      )
  //---------------------------------------------------------------------------
