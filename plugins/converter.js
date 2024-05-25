@@ -341,7 +341,7 @@ else return citel.reply ("```Uhh Please, Reply To A video Message```")
              use: '< text.>',
          },
          async(Void, citel, text) => {
- if(!text) return citel.reply("*Please provide text to generate sticker*")
+ if(!text) return citel.reply("*_Please provide text to generate sticker_*")
  let a = await getBuffer(`https://raganork-api.onrender.com/api/attp?text=${text}&apikey=with_love_souravkl11`)
  return citel.reply(a,{packname:'king-md',author:'ATTP'},"sticker") 
          }
@@ -352,10 +352,12 @@ cmd({
              desc: "Makes glowing sticker of text.",
              category: "sticker",
              filename: __filename,
+             use: '< text.>',
          },
          async(Void, citel, text) => {
-let a = await getBuffer(`https://citel-x.herokuapp.com/attp/${text}`)
- return citel.reply(a,{packname:'king',author:'ATTP'},"sticker") 
+ if(!text) return citel.reply("*_Please provide text to generate sticker_*")
+ let a = await getBuffer(`https://api.lolhuman.xyz/api/attp?apikey=GataDios&text=${text}`)
+ return citel.reply(a,{packname:'king-md',author:'ATTP'},"sticker") 
          }
      )
  //---------------------------------------------------------------------------
@@ -364,9 +366,11 @@ cmd({
              desc: "Makes glowing sticker of text.",
              category: "sticker",
              filename: __filename,
+             use: '< text.>',
          },
          async(Void, citel, text) => {
-let a = await getBuffer(`https://raganork-api.onrender.com/api/attp?text=${text}&apikey=with_love_souravkl11}`)
+ if(!text) return citel.reply("*_Please provide text to generate sticker_*")
+ let a = await getBuffer(`https://api.erdwpe.com/api/maker/attp?text=${text}`)
  return citel.reply(a,{packname:'king-md',author:'ATTP'},"sticker") 
          }
      )
