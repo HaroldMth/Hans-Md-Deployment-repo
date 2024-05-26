@@ -17,10 +17,25 @@
 const DB = require('../lib/scraper')
 const { execSync } = require('child_process')
 const axios = require('axios');
-const { tlang,cmd,prefix,formatp } = require('../lib')
+const { tlang,cmd,prefix,sleep,formatp } = require('../lib')
 const Config = require('../config')
 const { redeploy , getvar , delvar , getallvar , change_env , get_deployments} = require('../lib/koyeb')
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+cmd({
+        pattern: "restart",
+        desc: "To restart bot",
+        category: "tool",
+        filename: __filename
+    },
+    async(Void, citel,text,{ isCreator }) => {
+   if (!isCreator) return citel.reply(tlang().owner)
+            const { exec } = require("child_process")
+            citel.reply('Restarting')
+            await sleep(2000)
+            exec('pm2 restart all')
+    }
+);
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd({
             pattern: "update",
