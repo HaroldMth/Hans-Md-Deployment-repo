@@ -17,7 +17,7 @@
 const DB = require('../lib/scraper')
 const { execSync } = require('child_process')
 const axios = require('axios');
-const { tlang,cmd,Config,prefix,formatp } = require('../lib')
+const { tlang,cmd,prefix,formatp } = require('../lib')
 const Config = require('../config')
 const { redeploy , getvar , delvar , getallvar , change_env , get_deployments} = require('../lib/koyeb')
 
