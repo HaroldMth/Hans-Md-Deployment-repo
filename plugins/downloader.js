@@ -107,45 +107,56 @@ cmd({
   pattern: 'fb',
   alias:'facebook',
   fromMe: false,
-  category:'downloader',
-  react:'🔥',
+  catergory:'downloader',
+  react:'⚔️',
   desc: 'Download fb video without watermark',
 },
 async (Void,citel, text,) => {
-	try {
-       let query = text.split(" ")[0].trim();
-       if (!query || !query.startsWith("https://")) {
-         return await citel.reply(
-           "*_Please provide a valid Facebook Video URL._*\n*Example: .fb https://www.facebook.com/watch/?v=2018727118289093_*"
-         );
-       }
-       let video = await axios(
-         "https://api-smd.onrender.com/api/fbdown?url=" + text
-       );
-       if (!video || !video.status) {
-         return await citel.reply("*Invalid Video URL!*");
-       }
-       return await Void.sendMessage(
-         citel.chat,
-         {
-           video: {
-             url: video.result.Normal_video, // Assuming you want the normal quality video
-           },
-           caption: Config.botname,
-         },
-         {
-           quoted: citel,
-         }
-       );
-	}catch (error) {
+  let url = text.split(' ')[0];
+
+  if (!text) {
+    return citel.reply('Please provide a fb video URL.');
+  }
+
+  try {
+    let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
+
+   if(! data || !data.result ) return citel.reply("no results found")
+
     await 
-Void.sendMessage(error + "\n\nCommand: facebook",
-         error,
-         "*_Video not found!_*"
-       );
-     }
-   }
- );
+Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
+  } catch (error) {
+    citel.reply(`Error: ${error.message || error}`);
+  }
+});
+
+
+cmd({
+  pattern: 'fb2',
+  alias:'facebook2',
+  fromMe: false,
+  catergory:'downloader',
+  react:'⚔️',
+  desc: 'Download fb video without watermark',
+},
+async (Void,citel, text,) => {
+  let url = text.split(' ')[0];
+
+  if (!text) {
+    return citel.reply('Please provide a fb video URL.');
+  }
+
+  try {
+    let {data}= await axios.get(`https://api.maher-zubair.tech/download/fb?url=${encodeURIComponent(url)}`);
+
+   if(! data || !data.result ) return citel.reply("no results found")
+
+    await 
+Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
+  } catch (error) {
+    citel.reply(`Error: ${error.message || error}`);
+  }
+});
 
 //---------------------------------------------------------------------------
 cmd({
