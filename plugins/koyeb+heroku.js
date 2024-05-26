@@ -112,7 +112,7 @@ cmd({
              pattern: "delsudo",
              alias:["dsudo"],
              desc: "del some one from sudo",
-             category: "tools",
+             category: "tool",
              filename: __filename
          },
   async(Void, citel, text) => {
