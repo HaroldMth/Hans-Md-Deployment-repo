@@ -36,6 +36,23 @@ cmd({
             exec('pm2 restart all')
     }
 );
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+cmd({
+        pattern: "reboot",
+        desc: "To reboot your bot",
+        category: "tool",
+        filename: __filename
+    },
+    async(Void, citel,text,{ isCreator }) => {
+   if (!isCreator) return citel.reply(tlang().owner)
+            const { exec } = require("child_process")
+            citel.reply('*_Please Wait Rebooting Your Bot_*')
+            await sleep(2000)
+            exec('pm2 restart all')
+    }
+);
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd({
             pattern: "update",
