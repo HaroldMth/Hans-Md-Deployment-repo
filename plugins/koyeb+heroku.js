@@ -17,10 +17,14 @@
 const DB = require('../lib/scraper')
 const { execSync } = require('child_process')
 const axios = require('axios');
-const { tlang,cmd,prefix,sleep,formatp } = require('../lib')
+const { fancytext, tlang, tiny, runtime, formatp, botpic, prefix, sck1,cmd,sleep } = require('../lib')
 const Config = require('../config')
 const { redeploy , getvar , delvar , getallvar , change_env , get_deployments} = require('../lib/koyeb')
+const appName = Config.HEROKU_APP_NAME;
+const authToken = Config.HEROKU_API_KEY;
+const fetch = require('node-fetch');
 
+if(Config.HEROKU_APP_NAME && Config.HEROKU_API_KEY )
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd({
         pattern: "restart",
@@ -138,7 +142,7 @@ cmd(
   async(Void, citel, text) => {
 if(!citel.quoted) return await citel.reply(`*_Please Reply A User_*`);
 let user = citel.quoted.sender.split('@')[0]
-if (global.sudo.includes(user)) return citel.reply("*_That Number Already Exist In Sudo_*");
+if (global.sudo.includes(user)) return citel.reply("Number Already Exist In Sudo");
     global.sudo += ',' + user ;
 const headers = 
         {
@@ -155,17 +159,25 @@ fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
                   body: JSON.stringify({ [varName]: newVarValue })
         })
 .then(response => response.json())
-.then(data => { return citel.reply(`*_${user} Added Succesfully._*\n*_New Sudo Numbers:_* ${newVarValue}`); })
-.catch(error => citel.reply('*_Error While Adding new Sudo:_* '+ error));
+.then(data => { return citel.reply(`*${user} Added Succesfully.*\nSudo Numbers : ${newVarValue}`); })
+.catch(error => citel.reply('Error While Adding new Sudo :'+ error));
 
          })
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd({
+             pattern: "getsudo",
+             desc: "Makes wa me of quoted or mentioned user.",
+             category: "tools",
+             filename: __filename
+         },
+async(Void, citel, text) => {  return await  citel.reply(global.sudo);})
+//-------------------------------------------------------------------------
+
+ cmd({
              pattern: "delsudo",
-             alias:["dsudo"],
-             desc: "del some one from sudo",
-             category: "tool",
+             desc: "Makes wa me of quoted or mentioned user.",
+             category: "tools",
              filename: __filename
          },
   async(Void, citel, text) => {
@@ -174,7 +186,7 @@ if(!citel.quoted) return citel.reply(`*_Please Reply A User_*`);
 let user = citel.quoted.sender.split('@')[0] ;
 let  rm = ',' +user 
 if (global.sudo.includes(rm)) global.sudo = global.sudo.replace(rm, '');
-else return await citel.reply("*_User not found in the Sudo List_*\n*_All Sudo Numbers:_* " + global.sudo );
+else return await citel.reply("User not found in the Sudo List\n Sudo Numbers : " + global.sudo );
 
 
 
@@ -197,13 +209,12 @@ fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
 .then(data => 
       { 
    console.log(data);
-   return citel.reply(`*_${user} Deleted Succesfully._*\n*_New Sudo Numbers:_* ${newVarValue}`);
+   return citel.reply(`*${user} Deleted Succesfully.*\nSudo Numbers : ${newVarValue}`);
       })
   
-.catch(error => {     return citel.reply('*_Error While Adding new Sudo_*:'+ error);      })
+.catch(error => {     return citel.reply('Error While Adding new Sudo :'+ error);      })
  
 })
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd(
   {
