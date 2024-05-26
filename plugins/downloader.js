@@ -113,15 +113,15 @@ cmd({
 },
 async (Void,citel, text,) => {
 	try {
-  let url = text.split(" ")[0].trim();
+  let url = text.split(' ')[0].trim();
 
   if (!url || !url.startsWith("https://")) {
-    return citel.reply('Please provide a fb video URL.');
+    return await citel.reply('Please provide a fb video URL.');
   }
 
     let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
 
-   if(! data || !data.result ) return citel.reply("no results found")
+   if(! data || !data.result ) return await citel.reply("no results found")
 
     await 
 Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
@@ -146,7 +146,7 @@ async (Void,citel, text,) => {
     return citel.reply('Please provide a fb video URL.');
   }
 
-    let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
+    let {data}= await axios.get(`https://api.maher-zubair.tech/download/fb?url=${encodeURIComponent(url)}`);
 
    if(! data || !data.result ) { return citel.reply("no results found");
 			       }
