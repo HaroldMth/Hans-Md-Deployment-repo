@@ -13,12 +13,32 @@
  * @version 1.0.1                                                                                             
  ========================================================
  **/
- 
+
+const DB = require('../lib/scraper')
+const { execSync } = require('child_process')
 const axios = require('axios');
-const { tlang,cmd,formatp } = require('../lib')
+const { tlang,cmd,Config,prefix,formatp } = require('../lib')
 const Config = require('../config')
 const { redeploy , getvar , delvar , getallvar , change_env , get_deployments} = require('../lib/koyeb')
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+cmd({
+            pattern: "update",
+            desc: "Shows repo\'s refreshed commits.",
+            category: "tool",
+            filename: __filename
+        },
+        async(Void, citel, text,{ isCreator }) => {
+            if (!isCreator) return citel.reply('This command is only for my owner')
+            let commits = await DB.syncgit()
+            if (commits.total === 0) { citel.reply(`Hey ${citel.pushName}. You have latest version installed.`)} 
+            else {
+                let update = await DB.sync()
+                return await Void.sendMessage(citel.chat, { text: update,});
+            }
+
+        }
+    )
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd(
   {
@@ -108,6 +128,7 @@ fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
 
          })
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 cmd({
              pattern: "delsudo",
              alias:["dsudo"],
