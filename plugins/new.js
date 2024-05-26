@@ -113,25 +113,24 @@ cmd({
 
      //---------------------------------------------------------------------------
 cmd({
-            pattern: "blocklist",
-            alias : ['blist'],
-            desc: "owner block list",
-            category: "whatsapp",
-            filename: __filename,
-            use: '',
+        pattern: "blocklist",
+        desc: "get list of all Blocked Numbers",
+        category: "whatsapp",
+        filename: __filename,
+        use: '<text>',
     },
     async(Void, citel, text , {isCreator}) => {
         if(!isCreator) return await citel.reply(tlang().owner);
         try {
             const data = await Void.fetchBlocklist();
-            if (data.length === 0) return await citel.reply(`*_Sorry, But You don't have any Blocked Numbers._*`);
-            let txt = `${name.ownername}'s *_Block List_*\n\n*_Total Blocked Users_: ${data.length}* \n\n┏━❏\t*𝘉𝘭𝘰𝘤𝘬𝘦𝘥 𝘕𝘶𝘮𝘣𝘦𝘳𝘴*━❏\n`;
-            for (let i = 0; i < data.length; i++) {      txt += `┃ ${i + 1}: wa.me/${data[i].split("@")[0]}\n`;    }
-            txt += "┗━━━━━━━━━━━⦿";
+            if (data.length === 0) return await citel.reply(`Uhh Dear, You don't have any Blocked Numbers.`);
+            let txt = `\n*≡ List*\n\n*_Total Users:* ${data.length}_\n\n┌─⊷ \t*BLOCKED USERS*\n`;
+            for (let i = 0; i < data.length; i++) {      txt += `▢ ${i + 1}:- wa.me/${data[i].split("@")[0]}\n`;    }
+            txt += "└───────────";
             return await Void.sendMessage(citel.chat, { text: txt });
           } catch (err) {
             console.error(err);
-            return await citel.send('*Error while getting Blocked Numbers.\nError: *' + err);
+            return await citel.reply('*Error while getting Blocked Numbers.\nError: *' + err);
           }
     }
     )
@@ -162,57 +161,47 @@ await citel.reply (txt);
      //---------------------------------------------------------------------------
 cmd({
             pattern: "whois",
-            desc: "get info about repl person",
+            desc: "Get replied person info",
             category: "user",
-            filename: __filename,
-            use: 'reply to any person',
-},
-async(Void, citel, text) => { 
+            use: '<reply to any person>',
+            filename: __filename
+        },
+async(Void, citel, text) => {
+            if (!citel.quoted) return citel.reply(`Please Reply To A Person`);
+            var bio = await Void.fetchStatus(citel.quoted.sender);
+            var bioo = bio.status;
+            var setAt = bio.setAt.toString();
+            
+            var words = setAt.split(" ");
+            if(words.length > 3){ setAt= words.slice(0, 5).join(' ') ; }
+             
+            var num = citel.quoted.sender.split('@')[0];
+            let pfp;
+            try  {  pfp = await Void.profilePictureUrl(citel.quoted.sender, "image"); } 
+            catch (e) { pfp = await Void.profilePictureUrl(citel.sender, "image") ||  'https://telegra.ph/file/29a8c892a1d18fdb26028.jpg' ; }    //|| 'https://telegra.ph/file/29a8c892a1d18fdb26028.jpg' ;  }
+            
+            let username = await sck1.findOne({ id: citel.quoted.sender });
+            var tname = username.name;
 
-   if (!citel.quoted) return citel.reply(`*_Please reply any User_*`);
-    var bio = await Void.fetchStatus(citel.quoted.sender);
-    var bioo = bio.status;
-    var setAt = bio.setAt.toString();
-    
-    var words = setAt.split(" ");
-    if(words.length > 3){ setAt= words.slice(0, 5).join(' ') ; }
-     
-    var num = citel.quoted.sender.split('@')[0];
-    let pfp;
-    try  {  pfp = await Void.profilePictureUrl(citel.quoted.sender, "image"); } 
-    catch (e) { pfp = await Void.profilePictureUrl(citel.sender, "image") ||  'https://telegra.ph/file/29a8c892a1d18fdb26028.jpg' ; }    //|| 'https://telegra.ph/file/29a8c892a1d18fdb26028.jpg' ;  }
-    
-    let username = await sck1.findOne({ id: citel.quoted.sender });
-    var tname = username.name;
+            
+         return await Void.sendMessage(citel.chat, {
+                image: {   url: pfp  },
+                caption: `
+╔════◇
+║ *『Person's  Information』*
+║ 
+║ *🍫Name :* ${tname}
+║ *👤Num :* ${num}
+║ *🎐Bio    :*  ${bioo}
+║ *🌟SetAt :* ${setAt}
+║    *Keep Calm Dude🥳*    ◇
+╚════════════════╝
+`,
+            },{quoted:citel});
 
-    
-    let str = `
-┏━━⟪ ${Config.botname} ⟫━👁️‍🗨️
-┃ *•ᴘᴇʀsᴏɴ's ɪɴғᴏʀᴍᴀᴛɪᴏɴ•*
-┃ *•ɴᴀᴍᴇ•* ${tname}
-┃ *•ɴᴜᴍ•* ${num}
-┃ *•ʙɪᴏ•*  ${bioo}
-┃ *•sᴇᴛ-ᴀᴛ•* ${setAt}
-┃   *•ᴋᴇᴇᴘ ᴄᴀʟᴍ ᴅᴜᴅᴇ•*
-┗━━━━━━━━━━👁️‍🗨️
-`
-    let buttonMessage = {            
-    image: { url: pfp},
-    caption: str,
-    footer: tlang().footer,
-    headerType: 4,
-    contextInfo: {
-        externalAdReply: {
-            title: Config.ownername,
-            body: `Tuch Here`,
-            thumbnail: log0,
-            mediaType: 4,
-            mediaUrl: '',
-            sourceUrl: `${Gname}`,}}}
-  
-return await Void.sendMessage(cit.chat, buttonMessage,{quoted:citel});
-}
-)
+        }
+    )
+
      //---------------------------------------------------------------------------
 cmd({
             pattern: "vcard",
