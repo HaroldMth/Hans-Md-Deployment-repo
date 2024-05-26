@@ -146,6 +146,68 @@ cmd({
     }
 )
 
+cmd({
+  pattern: "onlyadmin",
+  alias: ["antimessge"],
+  desc: "Only Admins Allow to Send Message",
+  category: "group",
+  filename: __filename
+}, async (Void, citel, text, {
+  cmdName,
+  isCreator
+}) => {
+  if (!citel.isGroup) {
+    return citel.reply(tlang().group);
+  }
+  const groupAdmins = await getAdmin(Void, citel);
+  const botNumber = await Void.decodeJid(Void.user.id);
+  const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+  const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+  if (!isAdmins && !isCreator) {
+    return citel.reply(tlang().admin);
+  }
+  let checkinfo = (await sck.findOne({
+    'id': citel.chat
+  })) || (await new sck({
+    'id': citel.chat
+  }).save());
+  let textt = text ? text.toLowerCase().trim() : false;
+  let action = textt ? textt.split(" ")[0x0] : false;
+  if (!action) {
+    return await citel.send('*_' + cmdName + " " + (checkinfo.onlyadmin === 'false' ? "Disabled" : 'Enabled') + " in this Group!_*\n *_Toggle: " + (prefix + cmdName) + " on/off_*");
+  } else {
+    if (action.startsWith("off") || action.startsWith("deact") || action.startsWith('disable')) {
+      if (checkinfo.onlyadmin === "false") {
+        return await citel.reply("*_Onlyadmin Already Disabled in Current Chat_*");
+      }
+      await sck.updateOne({
+        'id': citel.chat
+      }, {
+        'onlyadmin': "false"
+      });
+      return await citel.send('*' + cmdName + " Succesfully Disable in group!_*\n*_Now everyone Send Message in Group_*");
+    } else {
+      if (action.startsWith('on') || action.startsWith("act") || action.startsWith("enable")) {
+        if (checkinfo.onlyadmin === "true") {
+          return await citel.reply("*_Onlyadmin Already Enabled in Current Chat_*");
+        }
+        if (isBotAdmins) {
+          await sck.updateOne({
+            'id': citel.chat
+          }, {
+            'onlyadmin': "true"
+          });
+          await Void.groupSettingUpdate(citel.chat, "announcement");
+          return await citel.send('*' + cmdName + " Succesfully set to message senders!_*\n*_Now Only Admins Allow to Send Message in Group_*");
+        } else {
+          return await citel.reply("*_UHH Please, Provide Admin Role First_*");
+        }
+      } else {
+        return await citel.reply("*_Uhh Dear, Please Provide Valid Instruction_*\n*Eg: _" + (prefix + cmdName) + " on/off_*");
+      }
+    }
+  }
+});
 //---------------------------------------------------------------------------
 cmd({
             pattern: "warn",
