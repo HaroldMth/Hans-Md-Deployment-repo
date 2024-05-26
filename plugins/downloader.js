@@ -112,13 +112,13 @@ cmd({
   desc: 'Download fb video without watermark',
 },
 async (Void,citel, text,) => {
-  let url = text.split(' ')[0];
+	try {
+  let url = text.split(" ")[0].trim();
 
-  if (!text) {
+  if (!url || !url.startsWith("https://")) {
     return citel.reply('Please provide a fb video URL.');
   }
 
-  try {
     let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
 
    if(! data || !data.result ) return citel.reply("no results found")
@@ -130,7 +130,6 @@ Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
   }
 });
 
-
 cmd({
   pattern: 'fb2',
   alias:'facebook2',
@@ -140,23 +139,24 @@ cmd({
   desc: 'Download fb video without watermark',
 },
 async (Void,citel, text,) => {
-  let url = text.split(' ')[0];
+	try {
+  let url = text.split(" ")[0].trim();
 
-  if (!text) {
+  if (!url || !url.startsWith("https://")) {
     return citel.reply('Please provide a fb video URL.');
   }
 
-  try {
-    let {data}= await axios.get(`https://api.maher-zubair.tech/download/fb?url=${encodeURIComponent(url)}`);
+    let {data}= await axios.get(`https://api-smd.vercel.app/api/fb?url=${encodeURIComponent(url)}`);
 
-   if(! data || !data.result ) return citel.reply("no results found")
-
+   if(! data || !data.result ) { return citel.reply("no results found");
+			       }
     await 
 Void.sendMessage(citel.chat, {video : { url :data.result.urls[1].url } , },)
   } catch (error) {
     citel.reply(`Error: ${error.message || error}`);
   }
 });
+
 
 //---------------------------------------------------------------------------
 cmd({
