@@ -140,6 +140,7 @@ cmd(
     category: "tool",
   },
   async(Void, citel,text,{ isCreator }) => {
+if(!isCreator) return citel.reply(tlang().owner);
 if(!citel.quoted) return await citel.reply(`*_Please Reply A User_*`);
 let user = citel.quoted.sender.split('@')[0]
 if (global.sudo.includes(user)) return citel.reply("Number Already Exist In Sudo");
@@ -171,7 +172,7 @@ cmd({
              category: "tools",
              filename: __filename
          },
-async(Void, citel,text,{ isCreator }) => {  return await  citel.reply(global.sudo);})
+async(Void, citel,text,{ isCreator }) => { if(!isCreator) return citel.reply(tlang().owner); return await  citel.reply(global.sudo);})
 //-------------------------------------------------------------------------
 
  cmd({
@@ -181,7 +182,7 @@ async(Void, citel,text,{ isCreator }) => {  return await  citel.reply(global.sud
              filename: __filename
          },
   async(Void, citel,text,{ isCreator }) => {
-    
+if(!isCreator) return citel.reply(tlang().owner);
 if(!citel.quoted) return citel.reply(`*_Please Reply A User_*`);
 let user = citel.quoted.sender.split('@')[0] ;
 let  rm = ',' +user 
