@@ -374,14 +374,13 @@ return await citel.reply(`${nobio}${nowhatsapp}`)
 let limit = 5;
  try {
     if (!text) return citel.reply("```Uhh Please, Give me Url!```");
-    var url = text;
     let urll = `https://api.maher-zubair.tech/misc/ssweb?url=${url.match(/\bhttps?:\/\/\S+/gi)[0]}&width=1280&height=720`
     let media  = await getBuffer(urll)
-    return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
- }
+return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
+}
 catch (err) { return citel.reply("```Error While Fetching Snapshot```")}
-        }
-    )
+    }
+)
 
 //---------------------------------------------------------------------------
      cmd({
