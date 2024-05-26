@@ -174,7 +174,7 @@ cmd({
   let textt = text ? text.toLowerCase().trim() : false;
   let action = textt ? textt.split(" ")[0x0] : false;
   if (!action) {
-    return await citel.send('*_' + cmdName + " " + (checkinfo.onlyadmin === 'false' ? "Disabled" : 'Enabled') + " in this Group!_*\n *_Toggle: " + (prefix + cmdName) + " on/off_*");
+    return await citel.send('*' + cmdName + " Succesfully Disable in group!_*\n*_Now everyone Send Message in Group_*");
   } else {
     if (action.startsWith("off") || action.startsWith("deact") || action.startsWith('disable')) {
       if (checkinfo.onlyadmin === "false") {
