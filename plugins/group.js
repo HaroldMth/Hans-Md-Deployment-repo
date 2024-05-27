@@ -152,62 +152,30 @@ cmd({
   desc: "Only Admins Allow to Send Message",
   category: "group",
   filename: __filename
-}, async (Void, citel, text, {
-  cmdName,
-  isCreator
-}) => {
-  if (!citel.isGroup) {
-    return citel.reply(tlang().group);
-  }
-  const groupAdmins = await getAdmin(Void, citel);
-  const botNumber = await Void.decodeJid(Void.user.id);
-  const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
-  const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
-  if (!isAdmins && !isCreator) {
-    return citel.reply(tlang().admin);
-  }
-  let checkinfo = (await sck.findOne({
-    'id': citel.chat
-  })) || (await new sck({
-    'id': citel.chat
-  }).save());
-  let textt = text ? text.toLowerCase().trim() : false;
-  let action = textt ? textt.split(" ")[0] : false;
-  if (!action) {
-    return await citel.send('*_' + cmdName + " " + (checkinfo.onlyadmin === 'false' ? "Disabled" : 'Enabled') + " in this Group!_*\n *_Toggle: " + (prefix + cmdName) + " on/off_*");
-  } else {
-    if (action.startsWith("off") || action.startsWith("deact") || action.startsWith('disable')) {
-      if (checkinfo.onlyadmin === "false") {
-        return await citel.reply("*_Onlyadmin Already Disabled in Current Chat_*");
-      }
-      await sck.updateOne({
-        'id': citel.chat
-      }, {
-        'onlyadmin': "false"
-      });
-      return await citel.send('*' + cmdName + " Succesfully Disable in group!_*\n*_Now everyone Send Message in Group_*");
-    } else {
-      if (action.startsWith('on') || action.startsWith("act") || action.startsWith("enable")) {
-        if (checkinfo.onlyadmin === "true") {
-          return await citel.reply("*_Onlyadmin Already Enabled in Current Chat_*");
+        },
+        async(Void, citel, text) => {
+            if (!citel.isGroup) return citel.reply(tlang().group);
+            const groupAdmins = await getAdmin(Void, citel)
+            const botNumber = await Void.decodeJid(Void.user.id)
+            const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+            const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+            if (!citel.isGroup) return citel.reply(tlang().group);
+            if (!isBotAdmins) return citel.reply(tlang().botAdmin);
+            if (!isAdmins) return citel.reply(tlang().admin);
+            if (text.split(" ")[0] === "off") {
+                await Void.groupSettingUpdate(citel.chat, "announcement")
+                    .then((res) => reply(`Group Chat Muted :)`))
+                    .catch((err) => console.log(err));
+            } else if (text.split(" ")[0] === "on") {
+                await Void.groupSettingUpdate(citel.chat, "not_announcement")
+                    .then((res) => reply(`Group Chat Unmuted :)`))
+                    .catch((err) => console.log(err));
+            } else {
+
+                return citel.reply(`*_Only Admin Disabled in this Group!_*\n*_use ${prefix}onlyadmin on/off to enable/disabled_*`);
+            }
         }
-        if (isBotAdmins) {
-          await sck.updateOne({
-            'id': citel.chat
-          }, {
-            'onlyadmin': "true"
-          });
-          await Void.groupSettingUpdate(citel.chat, "announcement");
-          return await citel.send('*' + cmdName + " Succesfully set to message senders!_*\n*_Now Only Admins Allow to Send Message in Group_*");
-        } else {
-          return await citel.reply("*_UHH Please, Provide Admin Role First_*");
-        }
-      } else {
-        return await citel.reply("*_Uhh Dear, Please Provide Valid Instruction_*\n*Eg: _" + (prefix + cmdName) + " on/off_*");
-      }
-    }
-  }
-});
+    )
 //---------------------------------------------------------------------------
 cmd({
             pattern: "warn",
