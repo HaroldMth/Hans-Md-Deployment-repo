@@ -169,7 +169,7 @@ fetch(`https://api.heroku.com/apps/${appName}/config-vars`,
 cmd({
              pattern: "getsudo",
              desc: "Makes wa me of quoted or mentioned user.",
-             category: "tools",
+             category: "tool",
              filename: __filename
          },
 async(Void, citel,text,{ isCreator }) => { if(!isCreator) return citel.reply(tlang().owner); return await  citel.reply(global.sudo);})
@@ -178,7 +178,7 @@ async(Void, citel,text,{ isCreator }) => { if(!isCreator) return citel.reply(tla
  cmd({
              pattern: "delsudo",
              desc: "Makes wa me of quoted or mentioned user.",
-             category: "tools",
+             category: "tool",
              filename: __filename
          },
   async(Void, citel,text,{ isCreator }) => {
