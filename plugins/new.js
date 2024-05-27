@@ -265,7 +265,7 @@ if (!citel.quoted) return citel.reply (`*_Please Reply To A User To Get Profile 
 cmd({
     pattern: "antidemote",
     desc: "Detects demote and Automaticaly promote demote person",
-    category: "wallpaper",
+    category: "group",
     filename: __filename,
 },
     async(Void, citel, text,{ isCreator }) => {
@@ -292,7 +292,7 @@ cmd({
 cmd({
     pattern: "antipromote",
     desc: "Detects Promote and Automaticaly demote promoted person",
-    category: "wallpaper",
+    category: "group",
     filename: __filename,
 },
     async(Void, citel, text,{ isCreator }) => {
