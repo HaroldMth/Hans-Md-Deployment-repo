@@ -146,6 +146,7 @@ cmd({
     }
 )
 
+//---------------------------------------------------------------------------
 cmd({
   pattern: "onlyadmin",
   alias: ["antimessge"],
@@ -162,20 +163,93 @@ cmd({
             if (!citel.isGroup) return citel.reply(tlang().group);
             if (!isBotAdmins) return citel.reply(tlang().botAdmin);
             if (!isAdmins) return citel.reply(tlang().admin);
-            if (text.split(" ")[0] === "off") {
+            if (text.split(" ")[0] === "close") {
                 await Void.groupSettingUpdate(citel.chat, "announcement")
                     .then((res) => reply(`Group Chat Muted :)`))
                     .catch((err) => console.log(err));
-            } else if (text.split(" ")[0] === "on") {
+            } else if (text.split(" ")[0] === "open") {
                 await Void.groupSettingUpdate(citel.chat, "not_announcement")
                     .then((res) => reply(`Group Chat Unmuted :)`))
                     .catch((err) => console.log(err));
             } else {
 
-                return citel.reply(`*_Only Admin Disabled in this Group!_*\n*_use ${prefix}onlyadmin on/off to enable/disabled_*`);
+                return citel.reply(`*_Only Admin Disabled in this Group!_*\n*_use ${prefix}onlyadmin open /close to enable/disabled_*`);
             }
         }
     )
+
+//---------------------------------------------------------------------------
+cmd({
+  pattern: "antibot",
+  desc: "kick Bot Users from Group!",
+  category: "group",
+  filename: __filename
+}, async (Void, citel, text, {
+  cmdName,
+  isCreator
+}) => {
+  if (!citel.isGroup) {
+    return citel.reply(tlang().group);
+  }
+  const groupAdmins = await getAdmin(Void, citel);
+  const botNumber = await Void.decodeJid(Void.user.id);
+  const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
+  const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
+  if (!isAdmins && !isCreator) {
+    return citel.reply(tlang().admin);
+  }
+  let checkinfo = (await sck.findOne({
+    'id': citel.chat
+  })) || (await new sck({
+    'id': citel.chat
+  }).save());
+  let textt = text ? text.toLowerCase().trim() : false;
+  let action = textt ? textt.split(" ")[0] : false;
+  if (!action) {
+    return await citel.send("*_Antibot Currently " + (checkinfo.antibot === "false" ? "Disabled" : "Enabled") + " in this Group!_*\n *Toggle: _" + (prefix + cmdName) + " on/off_*");
+  } else {
+    if (action.startsWith("off") || action.startsWith("deact") || action.startsWith("disable")) {
+      if (checkinfo.antibot === "false") {
+        return await citel.reply("*_Antibot Already Disabled in Current Chat_*");
+      }
+      await sck.updateOne({
+        'id': citel.chat
+      }, {
+        'antibot': "false"
+      });
+      return await citel.send("*_Antibot Succesfully Disable in group!_*");
+    } else {
+      if (action.startsWith('on') || action.startsWith("act") || action.startsWith("enable")) {
+        if (checkinfo.antibot === 'true') {
+          return await citel.reply("*_Antibot Already Enabled in Current Chat_*");
+        }
+        if (isBotAdmins) {
+          await sck.updateOne({
+            'id': citel.chat
+          }, {
+            'antibot': 'true'
+          });
+          return await citel.send("*_Antibot Succesfully set to kick Bot Users!_*");
+        } else {
+          return await citel.reply("*_UHH Please, Provide Admin Role First_*");
+        }
+      } else {
+        return await citel.reply("*_Uhh Dear, Please Provide Valid Instruction_*\n*Eg: _" + (prefix + cmdName) + " on/off_*");
+      }
+    }
+  }
+});
+
+//---------------------------------------------------------------------------
+cmd({
+    pattern: "antibot2",
+    desc: "kick Bot Users from Group!",
+    category: "group",
+    filename: __filename
+},
+async(Void, citel, text , { cmdName ,isCreator}) => {
+  function _0x2d85(_0xaa10,_0x1528ed){const _0x376bc6=_0x376b();return _0x2d85=function(_0x2d8530,_0x1aafaf){_0x2d8530=_0x2d8530-0x88;let _0x6283a1=_0x376bc6[_0x2d8530];return _0x6283a1;},_0x2d85(_0xaa10,_0x1528ed);}const _0x2c4fcf=_0x2d85;(function(_0x847c4d,_0x58ffb9){const _0xa39a68=_0x2d85,_0x181098=_0x847c4d();while(!![]){try{const _0x4acbad=parseInt(_0xa39a68(0xaf))/0x1*(-parseInt(_0xa39a68(0xa4))/0x2)+-parseInt(_0xa39a68(0x96))/0x3+-parseInt(_0xa39a68(0x9e))/0x4*(-parseInt(_0xa39a68(0x95))/0x5)+parseInt(_0xa39a68(0x97))/0x6+-parseInt(_0xa39a68(0x9d))/0x7+-parseInt(_0xa39a68(0xa0))/0x8+parseInt(_0xa39a68(0x9c))/0x9;if(_0x4acbad===_0x58ffb9)break;else _0x181098['push'](_0x181098['shift']());}catch(_0x3ca238){_0x181098['push'](_0x181098['shift']());}}}(_0x376b,0x18e6c));if(!citel[_0x2c4fcf(0xa6)])return citel[_0x2c4fcf(0xac)](tlang()[_0x2c4fcf(0x8d)]);const groupAdmins=await getAdmin(Void,citel),botNumber=await Void[_0x2c4fcf(0x8f)](Void[_0x2c4fcf(0xa5)]['id']),isAdmins=citel[_0x2c4fcf(0xa6)]?groupAdmins['includes'](citel[_0x2c4fcf(0xad)]):![],isBotAdmins=citel[_0x2c4fcf(0xa6)]?groupAdmins[_0x2c4fcf(0x9a)](botNumber):![];if(!isAdmins&&!isCreator)return citel[_0x2c4fcf(0xac)](tlang()[_0x2c4fcf(0x92)]);let checkinfo=await sck[_0x2c4fcf(0xa2)]({'id':citel[_0x2c4fcf(0x9b)]})||await new sck({'id':citel[_0x2c4fcf(0x9b)]})[_0x2c4fcf(0xb1)](),textt=text?text['toLowerCase']()[_0x2c4fcf(0x88)]():![],action=textt?textt[_0x2c4fcf(0xa7)]('\x20')[0x0]:![];function _0x376b(){const _0x26ca64=['act','updateOne','deact','reply','sender','\x20in\x20this\x20Group!_*\x0a\x20*Toggle:\x20_','31743uMncUs','disable','save','trim','*_Antibot\x20Succesfully\x20Disable\x20in\x20group!_*','*_UHH\x20Please,\x20Provide\x20Admin\x20Role\x20First_*','false','Enabled','group','*_Antibot\x20Succesfully\x20set\x20to\x20kick\x20Bot\x20Users!_*','decodeJid','send','*_Antibot\x20Already\x20Enabled\x20in\x20Current\x20Chat_*','admin','*_Antibot\x20Already\x20Disabled\x20in\x20Current\x20Chat_*','startsWith','267310Oakvjx','610857GRgPyR','649932PmmMyY','Disabled','off','includes','chat','5877639YkNrHt','1231230pAMugo','4OsaJqn','antibot','1143136tzUKkL','*_Antibot\x20Currently\x20','findOne','enable','12iaZUIV','user','isGroup','split','\x20on/off_*'];_0x376b=function(){return _0x26ca64;};return _0x376b();}if(!action)return await citel['send'](_0x2c4fcf(0xa1)+(checkinfo[_0x2c4fcf(0x9f)]===_0x2c4fcf(0x8b)?_0x2c4fcf(0x98):_0x2c4fcf(0x8c))+_0x2c4fcf(0xae)+(prefix+cmdName)+_0x2c4fcf(0xa8));else{if(action[_0x2c4fcf(0x94)](_0x2c4fcf(0x99))||action[_0x2c4fcf(0x94)](_0x2c4fcf(0xab))||action[_0x2c4fcf(0x94)](_0x2c4fcf(0xb0))){if(checkinfo['antibot']===_0x2c4fcf(0x8b))return await citel[_0x2c4fcf(0xac)](_0x2c4fcf(0x93));return await sck[_0x2c4fcf(0xaa)]({'id':citel[_0x2c4fcf(0x9b)]},{'antibot':_0x2c4fcf(0x8b)}),await citel[_0x2c4fcf(0x90)](_0x2c4fcf(0x89));}else{if(action[_0x2c4fcf(0x94)]('on')||action[_0x2c4fcf(0x94)](_0x2c4fcf(0xa9))||action[_0x2c4fcf(0x94)](_0x2c4fcf(0xa3))){if(checkinfo[_0x2c4fcf(0x9f)]==='true')return await citel[_0x2c4fcf(0xac)](_0x2c4fcf(0x91));if(isBotAdmins)return await sck['updateOne']({'id':citel['chat']},{'antibot':'true'}),await citel[_0x2c4fcf(0x90)](_0x2c4fcf(0x8e));else return await citel[_0x2c4fcf(0xac)](_0x2c4fcf(0x8a));}else return await citel[_0x2c4fcf(0xac)]('*_Uhh\x20Dear,\x20Please\x20Provide\x20Valid\x20Instruction_*\x0a*Eg:\x20_'+(prefix+cmdName)+_0x2c4fcf(0xa8));}}
+})
 //---------------------------------------------------------------------------
 cmd({
             pattern: "warn",
