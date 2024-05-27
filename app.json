@@ -28,7 +28,7 @@
      "required" :true
     },
    "THUMB_IMAGE": {
-    "description": "Put Your Image Url for bot.",
+    "description": "Put Your Image Url for bot logo",
      "value": "https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg"
     },
     "ANTI_BAD_WORD": {
@@ -55,8 +55,8 @@
      "required" :false,
      "value": "false"
     },
-    "SUDO": {
-    "description": "PUT NUMBER For Sudo and without +",
+    "CAPTION": {
+    "description": "© GENERATE BY KING MD",
      "required"  :false
     },
       "READ_MESSAGE": {
@@ -101,7 +101,7 @@
       "required" :false
     },
   "MONGODB_URI": {
-    "description": "A secret String for Mongodb Connection.(Required),change for better experience",
+    "description": "A secret String for Mongodb Connection put fresh one for better experience",
     "value": "put your mongodb"
   },
     "WORKTYPE": {
