@@ -42,13 +42,23 @@ cmd({
 𝐏𝐋𝐄𝐀𝐒𝐄 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐌𝐘 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐂𝐇𝐀𝐍𝐍𝐄𝐋*`
 	
 	
-        let buttonMessaged = 
-            {
+        let buttonMessaged = {
             image: { url: await botpic() },
             caption: cap,
             footer: tlang().footer,
-            headerType: 4
-            };
+            headerType: 4,
+            contextInfo: {
+                externalAdReply: {
+		showAdAttribution: true,
+                    title: "KING-MD",
+                    body: "Support",
+                    thumbnail: log0,
+                    mediaType: 2,
+                    mediaUrl: '',
+                    sourceUrl: `https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+                },
+            },
+        };
            
         return await Void.sendMessage(citel.chat, buttonMessaged, {   quoted: citel, });
 
