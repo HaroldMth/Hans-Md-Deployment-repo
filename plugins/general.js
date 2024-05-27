@@ -14,10 +14,12 @@
  ========================================================
  **/
 
-const { formatp, performance, tlang, botpic, cmd, prefix, runtime, Config , sleep } = require('../lib')
+const { formatp, formatDate, performance, tlang, botpic, cmd, prefix, runtime, Config , parsedJid, sleep } = require('../lib')
 const axios = require('axios')
 const speed = require('performance-now')
 const fetch = require('node-fetch');
+const API_KEY = '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'
+
 //---------------------------------------------------------------------------
 cmd({
     pattern: "chat",
@@ -221,8 +223,6 @@ cmd({
   filename: __filename,
 },
 async(Void, citel) => {
-  try{
-const { formatp, runtime } = require("../lib");
   const os = require('os')
   const speed = require('performance-now')
       const used = process.memoryUsage()
@@ -249,16 +249,16 @@ const { formatp, runtime } = require("../lib");
                   
     respon = `
   Response Speed ${latensi.toFixed(1)}Sec / ${(oldd - neww).toFixed(1)}ms
-  Run-time of ${Config.botname}: ${runtime(process.uptime())}`
+  Runtime : ${runtime(process.uptime())}`
   
 
-  let resp2 = ` Info Server
+  let resp2 = `💻 Info Server
   RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
   
-*Memory Usage*
+  NodeJS Memory Usaage
   ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
   
-  ${cpus[0] ? `*Total CPU Usage*
+  ${cpus[0] ? `Total CPU Usage
   ${cpus[0].model.trim()} (${cpu.speed} MHZ)
   ${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
   CPU Core(s) Usage (${cpus.length} Core CPU)
@@ -266,9 +266,7 @@ const { formatp, runtime } = require("../lib");
   ${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
       `.trim()
 
-      return await citel.reply(respon+resp2 ) }
-      catch(e){
-        citel.send("*_Unknown Error Occured_*")}
+      return await citel.reply(respon+resp2 )
 })
 
 //---------------------------------------------------------------------------
