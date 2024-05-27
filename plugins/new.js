@@ -17,7 +17,43 @@ var dlsize = 1000 // 1000mb
 const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
 //---------------------------------------------------------------------------
+cmd({
+        pattern: "link",
+        alias: ["ytube", "ytchannel", "myyt"],
+        desc: "Sends info about My Ytube Channel __CheckOut :_ www.Youtube.com/c/SuhailTechInfo",
+        category: "user",
+        filename: __filename,
+    },
+    async(Void, citel) => {
+       
+	let cap = `
+╔══════════════════════════╗
+  ☞𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐂𝐇𝐀𝐍𝐍𝐄𝐋☜
+╚══════════════════════════╝\n
+*⭐ Youtube Content :* How To Create Whatsapp Bot
+*🍽️ Total Subscriber:* 36 Subscribers
+*🍁 Channel Link:* _https://youtube.com/=1_\n
+╭━━━━━━━━━━━━━━━━━━━━╮
+┇  ╔═╦╗╔╦╗╔═╦═╦╦╦╦╗╔═╗
+┇  ║╚╣║║║╚╣╚╣╔╣╔╣║╚╣═╣
+┇  ╠╗║╚╝║║╠╗║╚╣║║║║║═╣
+┇  ╚═╩══╩═╩═╩═╩╝╚╩═╩═╝
+╰━━━━━━━━━━━━━━━━━━━━╯
+𝐏𝐋𝐄𝐀𝐒𝐄 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐌𝐘 𝐘𝐎𝐔𝐓𝐔𝐁𝐄 𝐂𝐇𝐀𝐍𝐍𝐄𝐋*`
+	
+	
+        let buttonMessaged = 
+            {
+            image: { url: await botpic() },
+            caption: cap,
+            footer: tlang().footer,
+            headerType: 4
+            };
+           
+        return await Void.sendMessage(citel.chat, buttonMessaged, {   quoted: citel, });
 
+    }
+)
 
     //---------------------------------------------------------------------------
 cmd({
