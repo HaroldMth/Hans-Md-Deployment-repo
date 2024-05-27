@@ -52,6 +52,7 @@ cmd({
 		showAdAttribution: true,
                     title: "KING-MD",
                     body: "Support",
+		    renderLargerThumbnail: true,
                     thumbnail: log0,
                     mediaType: 2,
                     mediaUrl: '',
