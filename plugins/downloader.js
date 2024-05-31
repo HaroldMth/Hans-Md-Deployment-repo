@@ -166,31 +166,30 @@ cmd({
             filename: __filename,
             use: '<text|image name>',
         },
-    async(Void, citel, text) => {
-        if (!text) return citel.send(`What picture are you looking for?`)
-        citel.reply('*𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳𝙸𝙽𝙶:* '+text)
-        try {
-            let anu = await pinterest(text)
-            let result = anu[Math.floor(Math.random() * anu.length)]
-            let buttonMessage = {
-                image: { url: result },
-                caption: cap ,
-                //footer: tlang().footer,
-                headerType: 4,
-                contextInfo: {
-                    externalAdReply: {
-                        title: Config.botname,
-                        body: `ᴘɪɴᴛᴇʀᴇsᴛ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ`,
-                        thumbnail: log0,
-                        mediaType: 2,
-                        mediaUrl: ``,
-                        sourceUrl: gurl
+        async(Void, citel, text) => {
+            if (!text) return citel.send(`What picture are you looking for?`) && Void.sendMessage(citel.chat, { react: {  text: '❌', key: citel.key  }  })
+            try {
+                let anu = await pinterest(text)
+                let result = anu[Math.floor(Math.random() * anu.length)]
+                let buttonMessage = {
+                    image: { url: result },
+                    caption: Config.caption ,
+                    //footer: tlang().footer,
+                    headerType: 4,
+                    contextInfo: {
+                        externalAdReply: {
+                            title: `Here it is✨`,
+                            body: `${Config.ownername}`,
+                            thumbnail: log0,
+                            mediaType: 2,
+                            mediaUrl: ``,
+                            sourceUrl: `gurl.com`
+                        }
                     }
                 }
-            }
-            return Void.sendMessage(citel.chat, buttonMessage, {  quoted: citel })
-        } catch (e) {  return citel.reply(`*_Give Me Query_*\n*_Ex ${prefix}pint crown_*`)  }
-    })
+                return Void.sendMessage(citel.chat, buttonMessage, {  quoted: citel })
+            } catch (e) {  return citel.reply("Uhh Plese, Give me a Name. Ex .pint apple")  }
+        })
 //---------------------------------------------------------------------------
 cmd({
             pattern: "tiktok2",
@@ -230,10 +229,10 @@ let buttonMessage =
   //---------------------------------------------------------------------------
 cmd({
             pattern: "gdrive",
-            desc: "Downloads google drive Via Url.",
+            desc: "Downloads telegram stickers.",
             category: "downloader",
             filename: __filename,
-            use: 'add tiktok url.'
+            use: '<add sticker url.>'
         },
 
 async(Void, citel, text) => {
@@ -246,7 +245,7 @@ try {
 	{ 
                 let data  =  "*File Name :* "+ res.fileName ;
 	            data +="\n*File Size :* " + res.size +"Mb" ;
-	            data +="\n*File Type :* "+ res.mimetype.split('/')[1] +  "\n" + name.caption;
+	            data +="\n*File Type :* "+ res.mimetype.split('/')[1] +  "\n" + Config.caption;
 	        let buttonMessage = 
 		{
 			document: { url: res.downloadUrl },
@@ -518,68 +517,27 @@ axios.get(url, { responseType: 'stream' })
 
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "apk2",
-            desc: "Downloads apks  .",
+            pattern: "sound",
+            desc: "Downloads ringtone.",
             category: "downloader",
             filename: __filename,
-            use: '<add sticker url.>',
+            use: '<Dowanload Tiktok Sounds>',
         },
-    
         async(Void, citel, text) => {
-        if(!text )return citel.reply("*Give me App Name*");
-
-	const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}`; };
-	let randomName = getRandom(".apk");
-	const filePath = `./${randomName}`;     // fs.createWriteStream(`./${randomName}`)
-        const {  search , download } = require('aptoide-scraper')
-	let searc = await search(text);          //console.log(searc);
-	let data={};
-	if(searc.length){ data = await download(searc[0].id); }
-	else return citel.send("*APP not Found, Try Other Name*");
-	
-	
-	const apkSize = parseInt(data.size);
-	if(apkSize > 150) return citel.send(`❌ File size bigger than 200mb.`);
-       const url = data.dllink;
-  let inf = "『 *ᗩᑭᏦ  ᗞᝪᗯᑎしᝪᗩᗞᗴᖇ* 』\n\n*APP Name :* " + data.name;
-  inf +="\n*App Id :* " +data.package;
-  inf +="\n*Last Up  :* " +data.lastup;
-  inf += "\n*App Size* " + data.size;
-  // inf +="\n*App Link     :* " +data.dllink;
-         
-
-axios.get(url, { responseType: 'stream' })
-  .then(response => {
-    const writer = fs.createWriteStream(filePath);
-    response.data.pipe(writer);
-
-    return new Promise((resolve, reject) => {
-      writer.on('finish', resolve);
-      writer.on('error', reject);
-    });
-  }).then(() => {
-	
-	let buttonMessage = {
-                        document: fs.readFileSync(filePath),
-                        mimetype: 'application/vnd.android.package-archive',
-                        fileName: data.name+`.apk`,
-                        caption : inf
-                        
-                    }
-                  Void.sendMessage(citel.chat, buttonMessage, { quoted: citel })
-
-    citel.send('*𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳𝙸𝙽𝙶:*')
-	console.log('File downloaded successfully');
-
-  
-    fs.unlink(filePath, (err) => {
-      if (err) { console.error('Error deleting file:', err); } else { console.log('File deleted successfully'); } });
-  }) .catch(error => {
-	fs.unlink(filePath)
-    return citel.reply('*Apk not Found, Sorry*')//:', error.message);
-  });
-}
-)
+            if (!text) return citel.send(`*Give A Number Example: ${prefix}sound 5*`)
+	const n = parseInt(text);
+	if(n.toString()=="NaN" || n < 1 || n > 160 ) return citel.reply('```❌ Give Me A Number From 1 to 160```');
+	   let url = `https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/sound${n.toString()}.mp3`
+            let anu  = await getBuffer(url)
+//await Void.sendMessage(citel.chat, { audio: botzy_buffer, mimetype: 'audio/mp4', ptt: true })
+        let buttonMessage = {
+		audio: anu,
+		fileName: url.toString() ,
+		mimetype: 'audio/mp4',
+		ptt: true 
+		}
+	return Void.sendMessage(citel.chat,buttonMessage, { quoted: citel } )
+})
 
 //-------------------------------------------------------------------------------
 cmd({
@@ -946,38 +904,7 @@ cmd({
 })
 
     //---------------------------------------------------------------------------
-cmd({
-            pattern: "pint",
-            desc: "Downloads image from pinterest.",
-            category: "downloader",
-            filename: __filename,
-            use: '<text|image name>',
-        },
-    async(Void, citel, text) => {
-        if (!text) return citel.send(`What picture are you looking for?`)
-        citel.reply('*𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳𝙸𝙽𝙶:* '+text)
-        try {
-            let anu = await pinterest(text)
-            let result = anu[Math.floor(Math.random() * anu.length)]
-            let buttonMessage = {
-                image: { url: result },
-                caption: Config.ownername ,
-                //footer: tlang().footer,
-                headerType: 4,
-                contextInfo: {
-                    externalAdReply: {
-                        title: Config.botname,
-                        body: `ᴘɪɴᴛᴇʀᴇsᴛ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ`,
-                        thumbnail: log0,
-                        mediaType: 2,
-                        mediaUrl: ``,
-                        sourceUrl: gurl,
-                    }
-                }
-            }
-            return Void.sendMessage(citel.chat, buttonMessage, {  quoted: citel })
-        } catch (e) {  return citel.reply(`*_Give Me Query_*\n*_Ex pint crown_*`)  }
-    })
+
     //---------------------------------------------------------------------------
 cmd({ 
              pattern: "video2", 
