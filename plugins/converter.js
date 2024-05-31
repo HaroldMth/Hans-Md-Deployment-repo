@@ -396,7 +396,7 @@ let a = await getBuffer(`https://api.maher-zubair.tech/maker/text2img?q=${text}`
          },
          async(Void, citel, text) => {
 if(!text) return citel.reply("*_Please provide text to generate sticker_*")
-let a = await getBuffer(`https://api.lolhuman.xyz/api/ttp2?apikey=GataDios&text=${text}`)
+let a = await getBuffer(`https://api.erdwpe.com/api/maker/ttp?text=${text}`)
  return citel.reply(a,{packname:'king-md',author:'naveed'},"sticker") 
          }
      )
@@ -410,6 +410,20 @@ let a = await getBuffer(`https://api.lolhuman.xyz/api/ttp2?apikey=GataDios&text=
          async(Void, citel, text) => {
 if(!text) return citel.reply("*_Please provide text to generate sticker_*")
 let a = await getBuffer(`https://api.lolhuman.xyz/api/ttp5?apikey=GataDios&text=${text}`)
+ return citel.reply(a,{packname:'king-md',author:'TTP'},"sticker") 
+         }
+     )
+
+ //---------------------------------------------------------------------------
+ cmd({
+             pattern: "carbonimg",
+             desc: "Makes static sticker of text.",
+             category: "sticker",
+             filename: __filename,
+         },
+         async(Void, citel, text) => {
+if(!text) return citel.reply("*_Please provide text to generate sticker_*")
+let a = await getBuffer(`https://api.maher-zubair.tech/maker/carbonimg?q=${text}`)
  return citel.reply(a,{packname:'king-md',author:'TTP'},"sticker") 
          }
      )
