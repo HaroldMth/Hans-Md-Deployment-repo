@@ -12,8 +12,8 @@ global.location = 'pakistan/multan'
 global.gurl = 'https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w' // add your username
 global.sudo = process.env.SUDO || '923096566451'
 global.devs = '923096566451';
-global.website = 'https://king-session.vercel.app' // Hello world
-global.THUMB_IMAGE = process.env.THUMB_IMAGE || 'https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg'
+global.website = 'https://king-md-session.onrender.com/' // Hello world
+global.THUMB_IMAGE = process.env.THUMB_IMAGE || 'https://telegra.ph/file/5541dfe4dc8c2f51e3f02.jpg'
 module.exports = {
   botname:   process.env.BOT_NAME === undefined ? 'KING-MD' : process.env.BOT_NAME,
   ownername: process.env.OWNER_NAME === undefined ? 'Naveed Dogar' : process.env.OWNER_NAME,
@@ -43,7 +43,7 @@ module.exports = {
     API_KEY: process.env.HEROKU_API_KEY === undefined ? '' : process.env.HEROKU_API_KEY,
     APP_NAME: process.env.HEROKU_APP_NAME === undefined ? '' : process.env.HEROKU_APP_NAME
 },
-  VERSION: process.env.VERSION === undefined ? 'Ｖ-1.2.9' : process.env.VERSION,
+  VERSION: process.env.VERSION === undefined ? 'Ｖ-1.3.0' : process.env.VERSION,
   LANG: process.env.THEME|| 'KING-MD',
   WORKTYPE: process.env.WORKTYPE === undefined ? 'public' : process.env.WORKTYPE
 };
