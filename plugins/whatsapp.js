@@ -20,7 +20,7 @@ cmd({ pattern: "ptv", desc: "send ptv Message of video", category: "whatsapp",fi
     return await forwardMessage(citel.chat, Void, citel, cmdName )
 })////------------------------------------------------------------
 cmd({pattern: "#", desc: "Save whatsapp status",category: "whatsapp",filename: __filename},async(Void, citel, text,{cmdName , isCreator}) => {
-    if(!text) return citel.reply("*Uhh Please, reply to whatsapp status*")
+    if(!citel.quoted) return await citel.reply("*Uhh Please, reply to whatsapp status*")
     let sᴜʜᴀɪʟ_ᴍᴅ_num = await Void.decodeJid(Void.user.id)
     return await forwardMessage(sᴜʜᴀɪʟ_ᴍᴅ_num, Void, citel, cmdName )
 })//--------------------------------------------------------------------
