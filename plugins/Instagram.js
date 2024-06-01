@@ -1,17 +1,23 @@
-
 /**
 ========================================================
-      █▄▀ █ █▄ █ ▄▀     █▄ ▄█ █▀▄
-      █ █ █ █ ▀█ ▀▄█ ▀▀ █ ▀ █ █▄▀
+                                                                                  
+// ░▒█░▄▀░▀█▀░▒█▄░▒█░▒█▀▀█░░░░▒█▀▄▀█░▒█▀▀▄ //
+// ░▒█▀▄░░▒█░░▒█▒█▒█░▒█░▄▄░▀▀░▒█▒█▒█░▒█░▒█ //
+// ░▒█░▒█░▄█▄░▒█░░▀█░▒█▄▄▀░░░░▒█░░▒█░▒█▄▄█ //
+
 ========================================================
- Copyright (C) 2022.                                                                                        
- Licensed under the  GPL-3.0 License;                                                      
- You may not use this file except in compliance with the License.    
- It is supplied in the hope that it may be useful                                     
+
+This Project Is Under Apache-2.0 License.
+So, No One Have Permission To Copy This Project,
+Reupload, Reversed Engineering And Any Kind Of Deobfuscation Not Allowed 
+Otherwise, A Legal Github Copyright Action Will Be Taken Against You And Your 
+Account And Repo Banned 
+
  * @project_name : KING-MD                                                                    
  * @author : naveeddogar <https://github.com/naveeddogar>   
- * @description : KING-MD ,A Multi-functional whatsapp bot.       
- * @version 1.0.1                                                                                             
+ * @description : KING-MD ,A Multi-Functional Whatsapp Bot Create By Naveed Dogar.       
+ * @version : 1.2.9
+ * @license : Apache-2.0
  ========================================================
  **/
  
