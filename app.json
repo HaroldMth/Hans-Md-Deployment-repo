@@ -37,7 +37,7 @@
     },
    "ANTILINK_VALUES": {
     "description": "Put words for antilink",
-     "value": "chat.whatsapp.com",
+     "value": "https://chat.whatsapp.com",
      "required" :false
      },
    "FAKE_COUNTRY_CODE": {
@@ -47,7 +47,7 @@
     },
      "ANTILINK_ACTION": {
     "description": "Put action for antilink",
-     "value": "remove",
+     "value": "kick",
      "required" :false
     },
   "LEVEL_UP_MESSAGE": {
@@ -55,9 +55,10 @@
      "required" :false,
      "value": "false"
     },
-    "CAPTION": {
-    "description": "© GENERATE BY KING MD",
-     "required"  :false
+      "CAPTION": {
+    "description": "Fill the value your bot caption",
+     "required" :false,
+     "value": "© GENERATE BY KING MD"
     },
       "READ_MESSAGE": {
     "description": "Fill the value true if you want bot to read all messages.",
