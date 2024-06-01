@@ -14,7 +14,7 @@ const _0x3c0522=_0x2ab3;(function(_0x42e49e,_0x4e2d41){const _0x1434b0=_0x2ab3,_
 }
 ///============================================================================================
 cmd({ pattern: "ptv", desc: "send ptv Message of video", category: "whatsapp",filename: __filename},async(Void, citel, text,{cmdName , isCreator}) => {
-    if(!citel.quoted) return await citel.send("*Uhh please, reply to a video Message*")
+    if(!citel.quoted) return await citel.reply("*Uhh please, reply to a video Message*")
     let mtype = citel.quoted.mtype 
     if(mtype !== "videoMessage") return await citel.reply("*_Replied Message is not a video, Idiot_*")
     return await forwardMessage(citel.chat, Void, citel, cmdName )
