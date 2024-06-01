@@ -1,7 +1,7 @@
 { 
   "name": "KING-MD",
   "description": "A Whatsapp md bot built By Naveed to make experience better",
-  "logo": "https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg",
+  "logo": "https://telegra.ph/file/5541dfe4dc8c2f51e3f02.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "King-Two", "KING-MD", "KING","king-Bot","theme bot","multi device","baileys"],
   "success_url": "/",
   "stack": "container",
@@ -29,7 +29,7 @@
     },
    "THUMB_IMAGE": {
     "description": "Put Your Image Url for bot logo",
-     "value": "https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg"
+     "value": "https://telegra.ph/file/5541dfe4dc8c2f51e3f02.jpg"
     },
     "ANTI_BAD_WORD": {
     "description": "Put words here. If you want it enabled in your bot otherwise leave it blank",
