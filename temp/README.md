@@ -1,5 +1,5 @@
 
-<h1 align="center"> King Md Plugins </h1>
+<h1 align="center"> HANS Md Plugins </h1>
 <div align="center">
 <br /> 
 <p align="center"> <img src="https://komarev.com/ghpvc/?username=naveeddogar&label=Visitors%20count&color=10d9c3&style=plastic" alt="lyfe-plugin-list" /> </p>
