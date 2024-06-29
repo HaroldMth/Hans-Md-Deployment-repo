@@ -1,22 +1,3 @@
-</p>
-<p align="center">
-  <a href="https://chat.whatsapp.com/JIJplkiYyrFE4dyFGade43">
-    <img alt=Support height="350" src="https://telegra.ph/file/a6b9bbde7feaa92c69c7b.jpg"> 
-    </p>
-<h1 align="center">    ꪶKING-MD-BOTꫂ
-</h1>
-<p align="center"> 
-  
-<p align="center"> A Multi Device Whatsapp Bot Create By Naveed Dogar To Do Everything That Is Possible On WhatsApp
- 
-  </a>
-</p>
-<p align="center">
-<a href="https://github.com/naveeddogar"><img title="Author" src="https://img.shields.io/badge/KING_MD-MULTI_DEVICE-black?style=for-the-badge&logo=github"></a>
-<p/>
-
-
-
 ---  
 
 </p>
