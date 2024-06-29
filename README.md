@@ -1,9 +1,9 @@
 ---  
 
 </p>
- 𝚮𝚫𝚴𝐒 𝚳𝐃 𝚩𝚯𝚻
+ <h4 align="center"> 𝚮𝚫𝚴𝐒 𝚳𝐃 𝚩𝚯𝚻
 
-**A fun WhatsApp bot.**
+   **A fun WhatsApp bot.**
 
 <h4 align="center"> ✔️ No Heroku Ban! ✔️</h4>
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
