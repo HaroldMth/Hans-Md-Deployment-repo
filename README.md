@@ -6,7 +6,7 @@
    **A fun WhatsApp bot.**
 
 <h4 align="center"> ✔️ No Heroku Ban! ✔️</h4>
-<a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img 
+<a><img src='https://i.imgur.com/LyHic3i.gif '/></a><a><img 
                                                        <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&random=false&width=435&lines=HANS-MD+BOT+BY+HAROLD+MTH" alt="Typing SVG" /></a>
                                                        src='https://i.imgur.com/LyHic3i.gif'/></a><a><img
 
