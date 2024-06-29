@@ -22,13 +22,13 @@ A fun WhatsApp bot.
 # DEPLOY SETUP
 
 
-## 1 *`⨷ FORK THIS REPO`*
+## 1 ⨷ FORK THIS REPO
 <a href='https://github.com/naveeddogar/KING-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=graphql&logoColor=white'/></a>
 
-## 2 *`⨷ SCAN OR PAIR QR`*
+## 2 ⨷ SCAN OR PAIR QR
 <a href='https://king-md-session.onrender.com/' target="_blank"><img alt='scan repo' src='https://img.shields.io/badge/Get Session Id-black?style=for-the-badge&logo=flutter&logoColor=white'/></a>
 
-## 3 *`⨷ NOW DEPLOY`*
+## 3 ⨷ NOW DEPLOY
 
 #### DEPLOY TO HEROKU 
 
@@ -172,7 +172,7 @@ A fun WhatsApp bot.
 
 
 
-<h2 align="center"> ⭐ 𝑺𝒕𝒂𝒓 𝑻𝒉𝒊𝒔 𝑹𝒆𝒑𝒐 𝑰𝒇 𝒀𝒐𝒖 𝑳𝒊𝒌𝒆 𝑲𝒊𝑵𝒈 𝑴𝑫 
+<h2 align="center"> ⭐ PLEASE STATHIS REPO 
 </h2>
 
 
@@ -181,13 +181,9 @@ A fun WhatsApp bot.
 <h3 align="center"> <a href="https://github.com/naveeddogar/KING-MD/tree/main/temp">Click Here To Get External Plugins</a></h3> 
 
  
-### `🧡 𝘛𝘩𝘢𝘯𝘬𝘴 𝘛𝘰`
-- ***Suhail***
-- ***SamPandy***
-- ***Zubair***
-- ***Who Helping Me***
-- ***Who Using This Bot***
-- ***Support Me By Subscribe On Yt [Yt Channel](https://tinyurl.com/Technical-Naveed-Official)***
+**CONTACT OWNER**
+[WHATSAPP](https://wa.me/237696900612?text=Hey+Harold+Mth)
+[GitHub](https://github.com/HaroldMth)
 
 ## ```📜 𝘋𝘪𝘴𝘤𝘭𝘢𝘪𝘮𝘦𝘳```
 
