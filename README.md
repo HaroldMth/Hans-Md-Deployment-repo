@@ -172,22 +172,24 @@
 
 
 
-<h2 align="center"> ⭐ PLEASE STATHIS REPO 
+<h2 align="center"> ⭐ PLEASE STAR THIS REPO 
 </h2>
 
 
-<p align="center"> If You Need Any Help Or Any Problem Please Create An <a href="https://github.com/naveeddogar/KING-MD/issues">Issue & Problem</a></p>
+<p align="center"> If You Need Any Help Or Any Problem Please Create An <a href="https://github.com/HaroldMth/Hans-MD./issues">Issue & Problem</a></p>
 
 <h3 align="center"> <a href="https://github.com/naveeddogar/KING-MD/tree/main/temp">Click Here To Get External Plugins</a></h3> 
 
  
 **CONTACT OWNER**
+
 [WHATSAPP](https://wa.me/237696900612?text=Hey+Harold+Mth)
+
 [GitHub](https://github.com/HaroldMth)
 
 ## ```📜 𝘋𝘪𝘴𝘤𝘭𝘢𝘪𝘮𝘦𝘳```
 
 - ***I will only Assist You in Bot Deployment and Hosting, Not in Bot Modifying.***
-- ***This Bot [KING-MD](https://github.com/naveeddogar/KING-MD) Has Been Made Under The [Apache-2.0 license](https://github.com/naveeddogar/KING-MD/blob/main/LICENSE).***
+- ***This Bot [HANS-MD](https://github.com/HAROLDMTH/HANS-MD.) Has Been Made Under The [Apache-2.0 license](https://github.com/HAROLDMTH/HANS-MD./blob/main/LICENSE).***
 
 - ***This Bot Is Only For Fun and Helps***
