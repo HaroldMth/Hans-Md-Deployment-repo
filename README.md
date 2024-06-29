@@ -20,34 +20,19 @@
 ---  
 
 </p>
+### Hans-MD WhatsApp bot
 
+A fun WhatsApp bot.
 
-   <p align="center">
-  <a href="https://github.com/naveeddogar/KING-MD/fork">
-    <img src="https://img.shields.io/github/forks/naveeddogar/KING-MD?label=Fork&style=social">
-   
-  <a href="https://github.com/naveeddogar/KING-MD/stargazers">
-    <img src="https://img.shields.io/github/stars/naveeddogar/KING-MD?style=social">
-      
+<h4 align="center"> ✔️ No Heroku Ban! ✔️</h4>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&random=false&width=435&lines=HANS-MD+BOT+BY+HAROLD+MTH" alt="Typing SVG" /></a>
 
- <p align="center">
-  <a href="https://github.com/naveeddogar">
-    <img src="https://img.shields.io/badge/OWNER-naveeddogar-black?style=social&logo=github&label=Owner">
-   
-  <a href="https://github.com/naveeddogar/KING-MD/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/naveeddogar/KING-MD?style=social">
-   
- 
-
-</p>
-<p align="center"><img src="https://profile-counter.glitch.me/{naveeddogar}/count.svg" alt="naveeddogar :: Visitor's Count" /></p>
 <p align="center">
- <a href="https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w" target="_blank">
-    <img alt="whatsapp Group" src="https://img.shields.io/badge/Support Channel -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
- <a href="https://tinyurl.com/Technical-Naveed-Official" target="_blank">
-    <img alt="whatsapp Group" src="https://img.shields.io/badge/ Subscribe My Yt-red?style=for-the-badge&logo=youtube&logoColor=white" />
+  <a href="https://telegra.ph/file/eb96c716a327862d66078.jpg">
+    <img alt="Fance MD" height="400" src="https://telegra.ph/file/eb96c716a327862d66078.jpg">
   </a>
 </p>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=7000&pause=1000&color=7AF700&random=false&width=435&lines=%F0%9D%99%83%F0%9D%99%96%F0%9D%99%A3%F0%9D%99%A8-%F0%9D%99%88%F0%9D%99%99+%F0%9D%99%88%F0%9D%99%90%F0%9D%99%87%F0%9D%99%8F%F0%9D%99%84%F0%9D%99%81%F0%9D%99%90%F0%9D%99%89%F0%9D%98%BE%F0%9D%99%8F%F0%9D%99%84%F0%9D%99%8A%F0%9D%99%89%F0%9D%98%BC%F0%9D%99%87+%F0%9D%98%BD%F0%9D%99%8A%F0%9D%99%8F;Hans+Md+MULTIFUNCTIONAL+Bot+MD" alt="Typing SVG" /></a>
 
 
 
