@@ -32,7 +32,7 @@ cmd({
 ╚══════════════════════════╝\n
 *⭐ Youtube Content :* How To Create Whatsapp Bot
 *🍽️ Total Subscriber:* 36 Subscribers
-*🍁 Channel Link:* _https://youtube.com/=1_\n
+*🍁 Channel Link:* _https://www.youtube.com/@HansTech0_\n
 ╭━━━━━━━━━━━━━━━━━━━━╮
 ┇  ╔═╦╗╔╦╗╔═╦═╦╦╦╦╗╔═╗
 ┇  ║╚╣║║║╚╣╚╣╔╣╔╣║╚╣═╣
@@ -56,7 +56,7 @@ cmd({
                     thumbnail: log0,
                     mediaType: 2,
                     mediaUrl: '',
-                    sourceUrl: `https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+                    sourceUrl: `https://www.whatsapp.com/channel/0029VaZDIdxDTkKB4JSWUk1O`,
                 },
             },
         };
@@ -122,7 +122,7 @@ cmd({
     ${text ? "≡ bot :" + text : ""}
 ┏━━ *_•𝙰𝙳𝙼𝙸𝙽𝚂•_* ━❍
 ${listAdmin}
-┗━━━━━━━━━━❍\n*_ᴘᴏᴡᴇʀᴇᴅ ʙʏ⤸ ᴋɪɴɢ-ᴍᴅ_*
+┗━━━━━━━━━━❍\n*_ᴘᴏᴡᴇʀᴇᴅ ʙʏ⤸ Hans-Md_*
     `.trim()
     return await Void.sendMessage(citel.chat,{text : tag ,mentions: [citel.sender, ...groupAdmins.map(v => v.id) ,]} ,)
     
@@ -259,7 +259,7 @@ cmd({
          async(Void, citel, text) => {
 
 if (!citel.quoted) return citel.reply (`*Please Reply to User With Name*`);
-if ( !text ) return citel.reply( `*_Please Reply User With Name_*\n *Example: ${prefix}vcard Naveed dogar*`)
+if ( !text ) return citel.reply( `*_Please Reply User With Name_*\n *Example: ${prefix}vcard HANS*`)
 var words = text.split(" ");
 if (words.length >3) {   text= words.slice(0, 3).join(' ')  }
 // citel.reply(text);
@@ -1113,7 +1113,7 @@ cmd(
                     document: { url: wamod.result.com_fmwhatsapp.link },
                     mimetype: "application/vnd.android.package-archive",
                     fileName: wamod.result.com_fmwhatsapp.name,
-                    caption: '👑 KING-VAJIRA-MD 👑\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴠᴀᴊɪʀᴀ 👨‍💻'
+                    caption: '👑 HANS-MD 👑\n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ HANS-TECH 👨‍💻'
                 },
                 { quoted: citel }
             );
@@ -1175,7 +1175,7 @@ cmd(
                     document: { url: wamod.result.com_yowhatsapp.link },
                     mimetype: "application/vnd.android.package-archive",
                     fileName: wamod.result.com_yowhatsapp.name,
-                    caption: '👑 KING-MD 👑\n\n Yo Mods Downloader \n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ ɴᴀᴠᴇᴇᴅ  👨‍💻'
+                    caption: '👑 HANS-MD 👑\n\n Yo Mods Downloader \n©ᴄʀᴇᴀᴛᴇᴅ ʙʏ HANS-TECH  👨‍💻'
                 },
                 { quoted: citel }
             );
@@ -1286,7 +1286,7 @@ Eg:- .set THUMB_IMAGE:put image url
 Eg:- .setvar WORKTYPE:public/private
 
 
-©𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙀𝘿 𝘽𝙔 𝙆𝙄𝙉𝙂-𝙈𝘿
+©𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙀𝘿 𝘽𝙔 HANS-𝙈𝘿
 `,
 
                 footer: tlang().footer,
@@ -1369,7 +1369,7 @@ ZIP CODE : 10089
 
 5148121009806072|08|2025|546
 
-*By King Md👑*
+*By HANS Md👑*
 `,
 
                 footer: tlang().footer,
@@ -1391,7 +1391,7 @@ cmd({
         citel.reply(`*Check your DM I LEFT SOMETHING THERE🤭 ${tlang().greet}*`);
         await Void.sendMessage(`${citel.sender}`, {
             image: log0,
-            caption: `*Name: King-Support*\n*Link:* https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w`,
+            caption: `*Name: King-Support*\n*Link:*https://www.whatsapp.com/channel/0029VaZDIdxDTkKB4JSWUk1O`,
         });
 
     }
@@ -1414,7 +1414,7 @@ let kap = `
 *•𝙲𝙾𝙽𝚃𝙴𝙽𝚃•* How To Create Whatsapp Bot
 *•𝚃𝙾𝚃𝙰𝙻 𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴𝚁𝚂•* 0 Subs😥
 *•𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝙻𝙸𝙽𝙺•*
-_http://lnkiy.in/Innoxent-yt_`
+_https://www.youtube.com/@HansTech0_`
 
 
   let buttonMessaged = 
@@ -1477,13 +1477,13 @@ cmd({
                 },
 
                 caption: `
- KING Md WhatsApp Bot
+ HANS Md WhatsApp Bot
 
  Official Support Channel
  
-https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w
+https://www.whatsapp.com/channel/0029VaZDIdxDTkKB4JSWUk1O
 
-*By King Md👑*
+*By Hans Md👑*
 `,
 
                 footer: tlang().footer,
