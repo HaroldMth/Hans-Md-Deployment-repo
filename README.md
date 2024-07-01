@@ -193,8 +193,7 @@
 
 <a href="https://wa.me/237696900612?text=Helloo+Harold+Mth">
     <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
-  </a>&nbsp;&nbsp;
-   <a
+  </a>
    
 
 ## ```📜 𝘋𝘪𝘴𝘤𝘭𝘢𝘪𝘮𝘦𝘳```
