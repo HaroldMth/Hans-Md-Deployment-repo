@@ -185,8 +185,8 @@
  
 **CONTACT OWNER**
 
-<a href="https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r" target="_blank">
-    <img alt="whatsapp Group" src="https://img.shields.io/badge/ Whatsapp Support Channel -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+<a href="https://whatsapp.com/channel/0029VaZDIdxDTkKB4JSWUk1O" target="_blank">
+  <img alt="whatsapp Group" src="https://img.shields.io/badge/ Whatsapp Support Channel -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
 </p>
 
@@ -196,8 +196,6 @@
   </a>&nbsp;&nbsp;
    <a
    
-
-[GitHub](https://github.com/HaroldMth)
 
 ## ```📜 𝘋𝘪𝘴𝘤𝘭𝘢𝘪𝘮𝘦𝘳```
 
