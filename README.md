@@ -102,14 +102,14 @@
  <details close>
 <summary>𝙉𝙀𝙒 𝙐𝙋𝘿𝘼𝙏𝙀 & 𝙁𝙀𝘼𝙏𝙐𝙍𝙀𝙎 </summary>
 
-- ***King-Md v1.2.9 Fixing***
+- ***Hans-Md v1.2.9 Fixing***
 - *Fixed `All Ai` Commands*
 - *Fixed `Spotify` Command*
 - *Fixed `All Anime` Commands*
 - *Fixed `Insta,Fb,Tiktok` Commands*
 - *Fixed All Not Working Commands, Due To Api*
 - *Added My Own Api In Bot https://api.maher-zubair.tech*
-- ***King-Md v1.2.9 Released***
+- ***Hans-Md v1.2.9 Released***
 - *Added `Pair Code` For Session ID*
 - *Added New `Session ID` For Bot*
 - *Added New `Qr`*
@@ -180,7 +180,7 @@
 
 <p align="center"> If You Need Any Help Or Any Problem Please Create An <a href="https://github.com/HaroldMth/Hans-MD./issues">Issue & Problem</a></p>
 
-<h3 align="center"> <a href="https://github.com/naveeddogar/KING-MD/tree/main/temp">Click Here To Get External Plugins</a></h3> 
+<h3 align="center"> <a href="https://github.com/haroldmth/HANS-MD/tree/main/temp">Click Here To Get External Plugins</a></h3> 
 
  
 **CONTACT OWNER**
