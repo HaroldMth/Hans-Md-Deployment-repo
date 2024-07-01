@@ -184,12 +184,18 @@
 
  
 **CONTACT OWNER**
+
 <a href="https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r" target="_blank">
     <img alt="whatsapp Group" src="https://img.shields.io/badge/ Whatsapp Support Channel -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
 </p>
 
-[WHATSAPP](https://wa.me/237696900612?text=Hey+Harold+Mth)
+
+<a href="https://wa.me/237696900612?text=Helloo+Harold+Mth">
+    <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+  </a>&nbsp;&nbsp;
+   <a
+   
 
 [GitHub](https://github.com/HaroldMth)
 
