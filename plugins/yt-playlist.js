@@ -88,8 +88,8 @@ yts( opts, async function ( err, playlist ) {
                                 thumbnail: log0,
                                 renderLargerThumbnail: true,
                                 mediaType: 2,
-                                mediaUrl: 'https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w',
-                                sourceUrl: 'https://whatsapp.com/channel/0029Va66s2IJENxvTJjUtM1w'
+                                mediaUrl: 'https://www.whatsapp.com/channel/0029VaZDIdxDTkKB4JSWUk1O',
+                                sourceUrl: 'https://www.whatsapp.com/channel/0029VaZDIdxDTkKB4JSWUk1O'
                             }
                         }
                     }
