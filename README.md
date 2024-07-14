@@ -24,7 +24,7 @@
 
 
 ## 1 ⨷ FORK THIS REPO
-<a href='https://github.com/naveeddogar/KING-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=graphql&logoColor=white'/></a>
+<a href='https://github.com/HaroldMth/Hans-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork This Repo-black?style=for-the-badge&logo=graphql&logoColor=white'/></a>
 
 ## 2 ⨷ SCAN OR PAIR QR
 <a href='https://king-md-session.onrender.com/' target="_blank"><img alt='scan repo' src='https://img.shields.io/badge/Get Session Id-black?style=for-the-badge&logo=flutter&logoColor=white'/></a>
